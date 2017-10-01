@@ -14,6 +14,7 @@ import User from './everflow/user';
 import utils from './everflow/utils/__init__';
 import models from './everflow/models/__init__';
 import Prototypes from './everflow/prototypes/prototypes';
+
 export {
     Vue,
     VueRouter,
