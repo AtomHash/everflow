@@ -1,0 +1,17 @@
+﻿{
+  "compilerOptions": {
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "target": "es5",
+    "lib": [ "es2015", "dom" , "es2015.promise"],
+    "declaration": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "sourceRoot": "./build/maps",
+    "rootDir": "./",
+    "sourceMap": true,
+    "outDir": "build",
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true
+  }
+}
