@@ -1,0 +1,5 @@
+node_modules/*
+everflow/*
+everflow.ts
+webpack.config.js
+tsconfig.json

@@ -1,4 +1,6 @@
-﻿export default class History
+﻿import VueRouter from 'vue-router';
+
+export default class History
 {
     router = window.app.currentView['$router'];
 

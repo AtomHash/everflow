@@ -1,3 +1,5 @@
+import Vue from 'vue';
+import VueRouter from 'vue-router';
 import App from './everflow/app';
 import Events from './everflow/events';
 import History from './everflow/history';
@@ -13,6 +15,8 @@ import utils from './everflow/utils/__init__';
 import models from './everflow/models/__init__';
 import Prototypes from './everflow/prototypes/prototypes';
 export {
+    Vue,
+    VueRouter,
     App,
     Events,
     History,
