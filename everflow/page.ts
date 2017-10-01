@@ -4,19 +4,24 @@ import App from './app';
 import Display from './utils/display';
 import Utils from './utils/utils';
 
-var mixIns: object = {
-    $refs: '',
-    pageName: 'default-page',
-    created: function () 
+class Page extends Vue {
+    $refs: any;
+    pageName: string;
+    permissions: any;
+    ready()
+    {
+        //override
+    }
+    created()
     {
         $('#app').addClass(this.pageName+"-everflow-page");
         window.app.currentView = this;
-    },
-    mounted: function ()
+    }
+    mounted()
     {
         Display.loader.off();
 
-        var _init = function (page) {
+        let _init = function (page) {
             if (typeof page.init == 'function') {
                 window[page.pageName + '-page-init'] = page.init();
                 window[page.pageName + '-page-init'].default();
@@ -88,4 +93,4 @@ var mixIns: object = {
         
     }
 }
-export default Vue.extend({ mixins: [mixIns] }) as typeof Vue;
+export default Page;
