@@ -1,6 +1,6 @@
 {
   "name": "everflow",
-  "version": "0.0.36",
+  "version": "0.0.37",
   "description": "A client-side framework using VueJS.",
   "main": "./dist/everflow.js",
   "typings": "./dist/types/everflow.d.ts",

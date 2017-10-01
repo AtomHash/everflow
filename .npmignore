@@ -3,3 +3,4 @@ everflow/*
 everflow.ts
 webpack.config.js
 tsconfig.json
+config.json
