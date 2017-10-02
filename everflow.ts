@@ -15,7 +15,7 @@ import Prototypes from './everflow/prototypes/prototypes';
 import utils from './everflow/utils/__init__';
 import models from './everflow/models/__init__';
 import decorators from './everflow/decorators/__init__';
-import permissions from './everflow/decorators/__init__';
+import permissions from './everflow/permissions/__init__';
 
 export {
     Vue,
