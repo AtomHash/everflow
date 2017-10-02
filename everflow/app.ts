@@ -1,5 +1,6 @@
 ﻿import * as $ from 'jquery';
-import Vue from 'vue';
+import Vue, { ComponentOptions } from 'vue';
+import VueRouter, { RouterMode } from 'vue-router';
 import Utils from './utils/utils'
 import Storage from './utils/storage';
 import History from './history';
@@ -15,6 +16,10 @@ export default class App implements IApp
     readyPermission: boolean = false;
     readyCallbacks: Array<any> = [];
     config: any;
+    vue: Vue;
+    router: VueRouter;
+    mountId: string = "app";
+    routerMode: RouterMode = "history"
 
     constructor(user: any, config: any)
     {
@@ -23,6 +28,23 @@ export default class App implements IApp
         this.user = new user();
         this.storage = new Storage(config.storage);
         this.loadModels();
+        this.setMount();
+        this.setRouterMode();
+        Vue.use(VueRouter);
+    }
+
+    setRouterMode(): void {
+        if (Utils.isEmpty(this.config.routerMode) == false)
+        {
+            this.routerMode = this.config.routerMode;
+        }
+    }
+
+    setMount(): void {
+        if (Utils.isEmpty(this.config.mountId) == false)
+        {
+            this.mountId = this.config.mountId;
+        }
     }
 
     loadModels(): void
@@ -68,6 +90,24 @@ export default class App implements IApp
 
         // END INTERVAL WAIT
 
+    }
+
+    run(routes: any): void 
+    {
+        window.app = this;
+
+        this.router = new VueRouter({
+            mode: this.routerMode, //remove for #examplepath type routing. 
+            routes // short for routes: routes
+        });
+
+        this.vue = new Vue({
+            router: this.router
+        }).$mount('#'+this.mountId);
+
+        //Create new history wrapper for vuejs router history.
+        window.app.history = new History();
+        this.history = window.app.history;
     }
 
     isOnline(): boolean
