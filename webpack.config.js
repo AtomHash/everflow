@@ -25,6 +25,7 @@ module.exports = {
       }),
       new webpack.optimize.UglifyJsPlugin({
           sourceMap: (Config.debug) ? false : true,
+          mangle: false,
           compress:
           {
               warnings: false
@@ -44,6 +45,10 @@ module.exports = {
         'vue$': 'vue/dist/vue.esm.js'
       },
     extensions: ['.js', '.ts', '.vue']
+  },
+  externals: {
+      jquery: 'jQuery',
+      vue: 'vue'
   },
   devServer: {
     historyApiFallback: true,

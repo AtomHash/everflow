@@ -1,7 +1,6 @@
 ﻿import Vue from 'vue';
 import Storage from '../utils/storage';
 import History from '../history';
-
 export default interface IApp
 {
     currentView: Vue;

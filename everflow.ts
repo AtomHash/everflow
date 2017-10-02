@@ -11,9 +11,11 @@ import ResponseCallback from './everflow/response-callback';
 import Response from './everflow/response';
 import UserHelper from './everflow/user-helper';
 import User from './everflow/user';
+import Prototypes from './everflow/prototypes/prototypes';
 import utils from './everflow/utils/__init__';
 import models from './everflow/models/__init__';
-import Prototypes from './everflow/prototypes/prototypes';
+import decorators from './everflow/decorators/__init__';
+import permissions from './everflow/decorators/__init__';
 
 export {
     Vue,
@@ -30,8 +32,9 @@ export {
     UserHelper,
     User,
     utils,
-    models
+    models,
+    decorators,
+    permissions
 };
-
 //Enable Prototypes
 Prototypes();
