@@ -11,14 +11,13 @@ import ResponseCallback from './everflow/response-callback';
 import Response from './everflow/response';
 import UserHelper from './everflow/user-helper';
 import User from './everflow/user';
+import Prototypes from './everflow/prototypes/prototypes';
 import utils from './everflow/utils/__init__';
 import models from './everflow/models/__init__';
 import decorators from './everflow/decorators/__init__';
-import Component from 'vue-class-component'
-import Prototypes from './everflow/prototypes/prototypes';
+import permissions from './everflow/decorators/__init__';
 
 export {
-    Component,
     Vue,
     VueRouter,
     App,
@@ -34,7 +33,8 @@ export {
     User,
     utils,
     models,
-    decorators
+    decorators,
+    permissions
 };
 //Enable Prototypes
 Prototypes();
