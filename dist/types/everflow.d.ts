@@ -14,5 +14,5 @@ import User from './everflow/user';
 import utils from './everflow/utils/__init__';
 import models from './everflow/models/__init__';
 import decorators from './everflow/decorators/__init__';
-import permissions from './everflow/decorators/__init__';
+import permissions from './everflow/permissions/__init__';
 export { Vue, VueRouter, App, Events, History, Page, Permission, Ready, Request, ResponseCallback, Response, UserHelper, User, utils, models, decorators, permissions };
