@@ -13,7 +13,7 @@ import UserHelper from './everflow/user-helper';
 import User from './everflow/user';
 import utils from './everflow/utils/__init__';
 import models from './everflow/models/__init__';
-//import decorators from './everflow/decorators/__init__';
+import decorators from './everflow/decorators/__init__';
 import Component from 'vue-class-component'
 import Prototypes from './everflow/prototypes/prototypes';
 
@@ -33,7 +33,8 @@ export {
     UserHelper,
     User,
     utils,
-    models
+    models,
+    decorators
 };
 //Enable Prototypes
 Prototypes();

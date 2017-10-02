@@ -1,9 +1,10 @@
-//TODO: decorators
-/*
 import Component from 'vue-class-component'
-import { PropOptions, WatchOptions } from 'vue'
-import { Inject, Model, Prop, Provide, Watch } from 'vue-property-decorator'
-export PropOptions;
+import Inject from './inject';
+import Model from './model';
+import Prop from './prop';
+import Provide from './provide';
+import Watch from './watch';
+
 export default {
     Component,
     Inject,
@@ -12,4 +13,3 @@ export default {
     Provide,
     Watch
 }
-*/

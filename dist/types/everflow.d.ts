@@ -13,5 +13,6 @@ import UserHelper from './everflow/user-helper';
 import User from './everflow/user';
 import utils from './everflow/utils/__init__';
 import models from './everflow/models/__init__';
+import decorators from './everflow/decorators/__init__';
 import Component from 'vue-class-component';
-export { Component, Vue, VueRouter, App, Events, History, Page, Permission, Ready, Request, ResponseCallback, Response, UserHelper, User, utils, models };
+export { Component, Vue, VueRouter, App, Events, History, Page, Permission, Ready, Request, ResponseCallback, Response, UserHelper, User, utils, models, decorators };
