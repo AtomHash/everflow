@@ -12,7 +12,6 @@ export default class App implements IApp {
     readyPermission: boolean;
     readyCallbacks: Array<any>;
     config: any;
-    vue: Vue;
     router: VueRouter;
     mountId: string;
     routerMode: RouterMode;

@@ -114,7 +114,7 @@
             return false;
         }
     },
-    isEmpty(value: string): boolean
+    isEmpty(value: any): boolean
     {
         return (!value || 0 === value.length);
     },

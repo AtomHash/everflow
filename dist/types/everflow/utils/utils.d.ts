@@ -20,7 +20,7 @@ declare const _default: {
         decode(json: any): string;
     };
     isNull(val: any): boolean;
-    isEmpty(value: string): boolean;
+    isEmpty(value: any): boolean;
     isFunction(callable: any): boolean;
     removeHtml(value: string): string;
     microTime(): number;

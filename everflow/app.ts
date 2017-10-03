@@ -16,7 +16,6 @@ export default class App implements IApp
     readyPermission: boolean = false;
     readyCallbacks: Array<any> = [];
     config: any;
-    vue: Vue;
     router: VueRouter;
     mountId: string = "app";
     routerMode: RouterMode = "history"
@@ -24,7 +23,6 @@ export default class App implements IApp
     constructor(user: any, config: any)
     {
         this.config = config
-        this.currentView = new Vue();
         this.user = new user();
         this.storage = new Storage(config.storage);
         this.loadModels();
@@ -101,7 +99,7 @@ export default class App implements IApp
             routes // short for routes: routes
         });
 
-        this.vue = new Vue({
+        this.currentView = new Vue({
             router: this.router
         }).$mount('#'+this.mountId);
 
