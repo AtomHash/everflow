@@ -1,5 +1,5 @@
 # Everflow
-A framework that utilizes the <a href="https://vuejs.org" target="_blank"><img width="10" src="https://vuejs.org/images/logo.png"></a>vuejs.
+A framework that utilizes <a href="https://vuejs.org" target="_blank"><img width="15" src="https://vuejs.org/images/logo.png"></a> vuejs.
 
 ### Stable
 Everflow version 0.0.43 is a stable release. However, Everflow is in her early stages and will be likely experience minor/major changes to the internal classes and functions.
