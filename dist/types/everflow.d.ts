@@ -15,4 +15,5 @@ import models from './everflow/models/__init__';
 import decorators from './everflow/decorators/__init__';
 import permissions from './everflow/permissions/__init__';
 import * as interfaces from './everflow/interfaces/__init__';
-export { Vue, VueRouter, App, Events, History, Page, Permission, Ready, Request, ResponseCallback, Response, errors, utils, models, decorators, permissions, interfaces };
+import Translator from './everflow/translator';
+export { Vue, VueRouter, App, Events, History, Page, Permission, Ready, Request, ResponseCallback, Response, errors, utils, models, decorators, permissions, interfaces, Translator };
