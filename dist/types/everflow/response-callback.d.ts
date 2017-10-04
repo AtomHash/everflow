@@ -8,9 +8,10 @@ export default class ResponseCallback implements IResponseCallback {
     fields: any;
     params: any;
     constructor(response: Response, params?: any);
-    setFields(): void;
-    checkForError(): void;
+    private setFields();
+    private checkForError();
     error(): void;
+    errorOther(status: number): void;
     error400(): void;
     error401(): void;
     error500(): void;

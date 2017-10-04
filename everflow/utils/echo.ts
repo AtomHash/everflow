@@ -2,7 +2,6 @@ import Utils from './utils';
 
 export default class Echo
 {
-
     private static allow(): boolean
     {
         var app = window.app;
@@ -38,4 +37,5 @@ export default class Echo
         }
         throw new Error('[everflow.echo.runtime]');
     }
+
 }

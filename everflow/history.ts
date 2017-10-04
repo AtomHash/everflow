@@ -24,4 +24,5 @@ export default class History
         if (x > 0) { x = x * -1; }
         this.router.go(x);
     }
+
 }

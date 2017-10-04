@@ -19,8 +19,5 @@ export default class UserModel extends Model
             app.go(location);
         });
     }
-    //TODO: plan for a signIn function(username, password)?
-    //TODO: have signInLink function(), so link is overridable?
-    //TODO: password reset function(username)?
 
 }

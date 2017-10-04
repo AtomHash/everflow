@@ -9,7 +9,6 @@ import Ready from './everflow/ready';
 import Request from './everflow/request';
 import ResponseCallback from './everflow/response-callback';
 import Response from './everflow/response';
-//import UserHelper from './everflow/user-helper';
 import Prototypes from './everflow/prototypes/prototypes';
 import errors from './everflow/errors/__init__';
 import utils from './everflow/utils/__init__';

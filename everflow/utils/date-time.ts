@@ -3,7 +3,6 @@ import Utils from './utils';
 
 export default class DateTime
 {
-
     private static getDateFormat(): string
     {
         var config = window.app.config;
@@ -58,4 +57,5 @@ export default class DateTime
     {
         return DateTime.moment(dateTime).format(DateTime.getTimeFormat());
     }
+
 }

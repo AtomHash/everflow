@@ -1,4 +1,4 @@
-export default class ErrorModal {
+export default class Modal {
     id: string;
     title: any;
     body: any;

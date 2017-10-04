@@ -11,6 +11,7 @@ declare global
     interface JQuery
     {
         modal(): any;
+        modal(event: string): any;
     }
     
     interface String

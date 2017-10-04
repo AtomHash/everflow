@@ -2,6 +2,7 @@
 import Utils from './utils/utils';
 import Response from './response';
 import Display from './utils/display';
+import Echo from './utils/echo'
 
 export default class Request 
 {
@@ -59,27 +60,6 @@ export default class Request
         this.data = data;
         this.send();
     }
-
-    /*
-
-    static get(endpoint: string, callback: any, authorize: boolean = false): void
-    {
-        Display.loader.on();
-        this.send(endpoint, 'get', "", authorize, callback);
-    }
-
-    static put(endpoint: string, data: any, callback: any): void
-    {
-        Display.loader.on();
-        this.send(endpoint, 'put', data, true, callback);
-    }
-
-    static update(endpoint: string, data: any, callback: any): void
-    {
-        Display.loader.on();
-        this.send(endpoint, 'update', data, true, callback);
-    }
-    */
 
     private send() : void
     {
@@ -149,9 +129,9 @@ export default class Request
                     }
                     catch (e) {
                         if (self.config.debug) {
-                            console.log(e);
-                            console.log('Hint: Most likely the server is not accessible.');
-                            console.log('Error URL: ' + url)
+                            Echo.log(e);
+                            Echo.log('Hint: Most likely the server is not accessible.');
+                            Echo.log('Error URL: ' + url)
                         }
                         _callback_func(self.callback, { status: 500, message: "api error", data: "" });
                         return;
@@ -162,7 +142,6 @@ export default class Request
 
         });
         request(this, 0);
-
     }
-    
+
 }
