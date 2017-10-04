@@ -5,7 +5,8 @@ import Prop from './prop';
 import Provide from './provide';
 import Watch from './watch';
 
-export default {
+export default
+{
     Component,
     Inject,
     Model,

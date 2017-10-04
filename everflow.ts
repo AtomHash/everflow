@@ -9,15 +9,17 @@ import Ready from './everflow/ready';
 import Request from './everflow/request';
 import ResponseCallback from './everflow/response-callback';
 import Response from './everflow/response';
-import UserHelper from './everflow/user-helper';
-import User from './everflow/user';
+//import UserHelper from './everflow/user-helper';
 import Prototypes from './everflow/prototypes/prototypes';
+import errors from './everflow/errors/__init__';
 import utils from './everflow/utils/__init__';
 import models from './everflow/models/__init__';
 import decorators from './everflow/decorators/__init__';
 import permissions from './everflow/permissions/__init__';
+import * as interfaces from './everflow/interfaces/__init__';
 
-export {
+export
+{
     Vue,
     VueRouter,
     App,
@@ -29,12 +31,12 @@ export {
     Request,
     ResponseCallback,
     Response,
-    UserHelper,
-    User,
+    errors,
     utils,
     models,
     decorators,
-    permissions
-};
+    permissions,
+    interfaces
+}
 //Enable Prototypes
 Prototypes();

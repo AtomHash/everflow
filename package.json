@@ -6,7 +6,6 @@
   "typings": "./dist/types/everflow.d.ts",
   "author": "AtomHash",
   "dependencies": {
-    "@types/es6-promise": "0.0.32",
     "@types/jquery": "^2.0.43",
     "@types/node": "6.0.46",
     "copy-webpack-plugin": "^4.0.1",

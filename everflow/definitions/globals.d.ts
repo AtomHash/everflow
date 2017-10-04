@@ -8,7 +8,8 @@ declare global
         $: any;
     }
 
-    interface JQuery {
+    interface JQuery
+    {
         modal(): any;
     }
     

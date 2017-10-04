@@ -1,8 +1,9 @@
 import Vue from 'vue';
-import VueRouter, { RouterMode } from 'vue-router';
+import VueRouter from 'vue-router';
+import IApp from './interfaces/i-app';
 import Storage from './utils/storage';
 import History from './history';
-import IApp from './interfaces/i-app';
+import * as interfaces from './interfaces/__init__';
 export default class App implements IApp {
     currentView: Vue;
     user: any;
@@ -13,11 +14,7 @@ export default class App implements IApp {
     readyCallbacks: Array<any>;
     config: any;
     router: VueRouter;
-    mountId: string;
-    routerMode: RouterMode;
-    constructor(user: any, config: any);
-    setRouterMode(): void;
-    setMount(): void;
+    constructor(User: interfaces.IModel, config: any);
     loadModels(): void;
     run(routes: any): void;
     isOnline(): boolean;

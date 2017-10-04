@@ -2,6 +2,7 @@ import Display from './display';
 import ErrorModel from './error-modal';
 import Storage from './storage';
 import DateTime from './date-time';
+import Echo from './echo';
 declare const _default: {
     Utils: {
         online: boolean;
@@ -34,5 +35,6 @@ declare const _default: {
     ErrorModel: typeof ErrorModel;
     Storage: typeof Storage;
     DateTime: typeof DateTime;
+    Echo: typeof Echo;
 };
 export default _default;
