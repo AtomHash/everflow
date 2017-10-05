@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 import IApp from './interfaces/i-app';
 import Storage from './utils/storage';
 import History from './history';
+import Language from './utils/language';
 import * as interfaces from './interfaces/__init__';
 export default class App implements IApp {
     currentView: Vue;
@@ -14,6 +15,7 @@ export default class App implements IApp {
     readyCallbacks: Array<any>;
     config: any;
     router: VueRouter;
+    language: Language;
     constructor(User: interfaces.IModel, config: any);
     loadModels(): void;
     run(routes: any): void;

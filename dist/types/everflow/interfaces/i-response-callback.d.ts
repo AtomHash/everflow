@@ -9,6 +9,6 @@ export default interface IResponseCallback {
     error400(): any;
     error401(): any;
     error500(): any;
-    errorOther(status: number): any;
+    errorOther(): any;
     entry(): any;
 }

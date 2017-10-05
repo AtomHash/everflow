@@ -39,24 +39,26 @@ String.prototype.endsWith = function (suffix): boolean
 };
 
 //Extending Array
-Array.prototype.stringify = function (): string
-{
-    try
-    {
-        return JSON.stringify(this);
-    }
-    catch (e)
-    {
-        return "";
-    }
-};
+Object.defineProperty(Array.prototype, "stringify", {
+    enumerable: false,
+    value: function() {
+        try
+        {
+            return JSON.stringify(this);
+        }
+        catch (e)
+        {
+            return "";
+        }
+  }
+});
 
 //Extending Object
 Object.defineProperty(Object.prototype, 'stringify', {
+    enumerable: false,
     value: function () {
         return JSON.stringify(this);
     },
-    enumerable: false // = Default
 });
 
 Object.defineProperty(Object.prototype, 'getName', {

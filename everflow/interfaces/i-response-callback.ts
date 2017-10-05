@@ -10,6 +10,6 @@ export default interface IResponseCallback {
     error400();
     error401();
     error500();
-    errorOther(status: number);
+    errorOther();
     entry();
 }

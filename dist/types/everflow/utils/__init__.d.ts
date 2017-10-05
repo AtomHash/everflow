@@ -3,6 +3,7 @@ import Modal from './modal';
 import Storage from './storage';
 import DateTime from './date-time';
 import Echo from './echo';
+import Language from './language';
 declare const _default: {
     Utils: {
         online: boolean;
@@ -36,5 +37,6 @@ declare const _default: {
     Storage: typeof Storage;
     DateTime: typeof DateTime;
     Echo: typeof Echo;
+    Language: typeof Language;
 };
 export default _default;

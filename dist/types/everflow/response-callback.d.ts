@@ -11,7 +11,7 @@ export default class ResponseCallback implements IResponseCallback {
     private setFields();
     private checkForError();
     error(): void;
-    errorOther(status: number): void;
+    errorOther(): void;
     error400(): void;
     error401(): void;
     error500(): void;

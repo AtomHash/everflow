@@ -62,12 +62,12 @@ export default class ResponseCallback implements IResponseCallback
             //server error / api request did not complete
             this.error500();
         } else {
-            this.errorOther(this.status);
+            this.errorOther();
         }
     }
 
     //overridable
-    errorOther(status: number)
+    errorOther()
     {
         Echo.warn('unknown http error - unhandled');
     }

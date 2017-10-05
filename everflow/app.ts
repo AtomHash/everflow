@@ -6,6 +6,7 @@ import IApp from './interfaces/i-app';
 import Storage from './utils/storage';
 import History from './history';
 import UserModel from './models/user-model';
+import Language from './utils/language';
 import errors from './errors/__init__';
 import * as interfaces from './interfaces/__init__';
 
@@ -20,12 +21,14 @@ export default class App implements IApp
     readyCallbacks: Array<any> = [];
     config: any;
     router: VueRouter;
+    language: Language;
 
     constructor(User: interfaces.IModel, config: any)
     {
         this.config = config
         this.user = new User();
         this.storage = new Storage(config.storage);
+        this.language = new Language(this);
         this.loadModels();
         Vue.use(VueRouter);
     }
