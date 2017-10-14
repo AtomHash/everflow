@@ -10,3 +10,6 @@ Everflow version 0.0.44 is a stable release. However, Everflow is in early stage
 
 ### Everflow ❤ Evernode
 Everflow is built to comunicate with Evernode. Both are in early stages but the intent is to intertwine them for easy and quick application development. However, Everflow will never be locked down to Evernode, feel free to use any server-side framework.
+
+### Everflow Notice
+Library is not compiled with jQuery or vue. You must use webpack or another bundling software to compile with these external libraries.
