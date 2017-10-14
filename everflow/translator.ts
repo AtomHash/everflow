@@ -1,10 +1,7 @@
-import IApp from './interfaces/i-app';
 import Utils from './utils/utils';
 
 export default class Translator
 {
-    app: IApp;
-
     private static loadData(key: string): any
     {
         var language = window.app.language;
