@@ -17,7 +17,7 @@ export default class App implements IApp {
     router: VueRouter;
     language: Language;
     constructor(User: interfaces.IModel, config: any);
-    loadModels(): void;
+    private loadModels();
     run(routes: any): void;
     isOnline(): boolean;
     go(name: string, data?: any): void;

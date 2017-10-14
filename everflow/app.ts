@@ -33,7 +33,7 @@ export default class App implements IApp
         Vue.use(VueRouter);
     }
 
-    loadModels(): void
+    private loadModels(): void
     {
         //Load app dependant models
 

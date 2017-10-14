@@ -65,7 +65,6 @@ Object.defineProperty(Object.prototype, 'getName', {
     value: function () {
         var funcNameRegex = /function (.{1,})\(/;
         var results = (funcNameRegex).exec((this).constructor.toString());
-        console.log((this).constructor.toString());
         return (results && results.length > 1) ? results[1] : "";
     },
     enumerable: false // = Default

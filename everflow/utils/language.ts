@@ -21,12 +21,10 @@ export default class Language
         languageModel.load(function (value) {
             if (Utils.isEmpty(value))
             {
-                console.log('sdfds');
                 self.data = {};
                 self.ready = true;
                 return;
             } else {
-                console.log('bgfb');
                 self.data = value.data;
                 self.ready = true;
             }
