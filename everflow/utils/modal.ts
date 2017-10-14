@@ -1,23 +1,27 @@
 ﻿import * as $ from 'jquery';
 
-export default class ErrorModal {
+export default class Modal
+{
     id: string = "";
     title: any;
     body: any;
     footer: any;
 
-    constructor(id: string = "errorModal") {
+    constructor(id: string = "modal") {
         this.id = id;
         this.title = $("#" + this.id + "Title");
         this.body = $("#" + this.id + "Body");
         this.footer = $("#" + this.id + "Footer");
     }
 
-    open() {
-        $("#" + this.id)['modal']();
+    open()
+    {
+        $("#" + this.id).modal('show');
     }
 
-    close() {
-        //do nothing
+    close()
+    {
+        $("#" + this.id).modal('hide');
     }
+
 }

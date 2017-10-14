@@ -2,9 +2,13 @@
 import Vue, { ComponentOptions } from 'vue';
 import VueRouter, { RouterMode } from 'vue-router';
 import Utils from './utils/utils'
+import IApp from './interfaces/i-app';
 import Storage from './utils/storage';
 import History from './history';
-import IApp from './interfaces/i-app';
+import UserModel from './models/user-model';
+import Language from './utils/language';
+import errors from './errors/__init__';
+import * as interfaces from './interfaces/__init__';
 
 export default class App implements IApp
 {
@@ -16,38 +20,20 @@ export default class App implements IApp
     readyPermission: boolean = false;
     readyCallbacks: Array<any> = [];
     config: any;
-    vue: Vue;
     router: VueRouter;
-    mountId: string = "app";
-    routerMode: RouterMode = "history"
+    language: Language;
 
-    constructor(user: any, config: any)
+    constructor(User: interfaces.IModel, config: any)
     {
         this.config = config
-        this.currentView = new Vue();
-        this.user = new user();
+        this.user = new User();
         this.storage = new Storage(config.storage);
+        this.language = new Language(this);
         this.loadModels();
-        this.setMount();
-        this.setRouterMode();
         Vue.use(VueRouter);
     }
 
-    setRouterMode(): void {
-        if (Utils.isEmpty(this.config.routerMode) == false)
-        {
-            this.routerMode = this.config.routerMode;
-        }
-    }
-
-    setMount(): void {
-        if (Utils.isEmpty(this.config.mountId) == false)
-        {
-            this.mountId = this.config.mountId;
-        }
-    }
-
-    loadModels(): void
+    private loadModels(): void
     {
         //Load app dependant models
 
@@ -95,15 +81,31 @@ export default class App implements IApp
     run(routes: any): void 
     {
         window.app = this;
+        var routerMode: RouterMode = null;
+        if (Utils.isEmpty(this.config.routerMode))
+        {
+            new errors.ConfigRouterModeError();
+        }
+        routerMode = this.config.routerMode;
+        var mountId: string = null;
+        if (Utils.isEmpty(this.config.mountId))
+        {
+            new errors.ConfigMountError();
+        }
+        mountId = this.config.mountId;
+        if (Utils.isEmpty(routes))
+        {
+            new errors.RoutesEmptyError();
+        }
 
         this.router = new VueRouter({
-            mode: this.routerMode, //remove for #examplepath type routing. 
+            mode: routerMode,
             routes // short for routes: routes
         });
 
-        this.vue = new Vue({
+        this.currentView = new Vue({
             router: this.router
-        }).$mount('#'+this.mountId);
+        }).$mount('#'+mountId);
 
         //Create new history wrapper for vuejs router history.
         window.app.history = new History();

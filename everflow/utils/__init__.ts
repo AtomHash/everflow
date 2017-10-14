@@ -1,11 +1,18 @@
-import Utils from './utils'
-import Display from './display'
-import ErrorModel from './error-modal'
-import Storage from './storage'
+import Utils from './utils';
+import Display from './display';
+import Modal from './modal';
+import Storage from './storage';
+import DateTime from './date-time';
+import Echo from './echo';
+import Language from './language';
 
-export default {
+export default
+{
     Utils,
     Display,
-    ErrorModel,
-    Storage
+    Modal,
+    Storage,
+    DateTime,
+    Echo,
+    Language
 }

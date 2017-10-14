@@ -1,5 +1,6 @@
 node_modules/*
 everflow/*
+everflow/history.ts
 everflow.ts
 webpack.config.js
 tsconfig.json

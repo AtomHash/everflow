@@ -3,6 +3,7 @@ import Response from './response';
 import Utils from './utils/utils';
 import IApp from './interfaces/i-app';
 import IResponseCallback from './interfaces/i-response-callback';
+import Echo from './utils/echo';
 
 export default class ResponseCallback implements IResponseCallback
 {
@@ -22,7 +23,7 @@ export default class ResponseCallback implements IResponseCallback
         this.checkForError();
     }
 
-    setFields()
+    private setFields()
     {
         var $elements: any = {};
         $.each(this.app.currentView.$refs, function (index, value) {
@@ -36,11 +37,9 @@ export default class ResponseCallback implements IResponseCallback
             }
         });
         this.fields = $elements;
-
     }
 
-    //DO NOT MODIFY
-    checkForError()
+    private checkForError()
     {
         // default error testing. 
         if (this.status !== 200) {
@@ -62,20 +61,27 @@ export default class ResponseCallback implements IResponseCallback
         } else if (this.status === 500) {
             //server error / api request did not complete
             this.error500();
+        } else {
+            this.errorOther();
         }
-            
+    }
+
+    //overridable
+    errorOther()
+    {
+        Echo.warn('unknown http error - unhandled');
     }
 
     //overridable
     error400()
     {
-        console.log('400 error');
+        Echo.warn('400 error - unhandled');
     }
 
     //overridable
     error401()
     {
-        console.log('401 error');
+        Echo.warn('401 error - unhandled');
     }
 
     //overridable
@@ -84,14 +90,14 @@ export default class ResponseCallback implements IResponseCallback
         //Silently fail...
         if (this.app.config.debug)
         {
-            console.log('500 error: Check database, check request method, check server ect...');
+            Echo.warn('500 error: Check database, check request method, check server ect...');
         }
         else
         {
             //Use message from config for 500error.
-            if (!Utils.isNull(this.fields.errorModal))
+            if (!Utils.isEmpty(this.fields.errorModal))
             {
-                this.fields.errorModalMessage.text(this.app.config.error500.message);
+                this.fields.errorModalMessage.text('Could not connect to server, please try again later.');
                 this.fields.errorModal.modal('open');
             }
 
@@ -102,6 +108,6 @@ export default class ResponseCallback implements IResponseCallback
     entry()
     {
         //Override this function...
-        console.log('callback parent');
     }
+
 }

@@ -1,6 +1,9 @@
 import Display from './display';
-import ErrorModel from './error-modal';
+import Modal from './modal';
 import Storage from './storage';
+import DateTime from './date-time';
+import Echo from './echo';
+import Language from './language';
 declare const _default: {
     Utils: {
         online: boolean;
@@ -24,13 +27,16 @@ declare const _default: {
             decode(json: any): string;
         };
         isNull(val: any): boolean;
-        isEmpty(value: string): boolean;
+        isEmpty(value: any): boolean;
         isFunction(callable: any): boolean;
         removeHtml(value: string): string;
         microTime(): number;
     };
     Display: typeof Display;
-    ErrorModel: typeof ErrorModel;
+    Modal: typeof Modal;
     Storage: typeof Storage;
+    DateTime: typeof DateTime;
+    Echo: typeof Echo;
+    Language: typeof Language;
 };
 export default _default;

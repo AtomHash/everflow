@@ -26,5 +26,6 @@ var mixIns: object = {
             return;
         }
     }
+
 }
 export default Vue.extend({ mixins: [mixIns] }) as typeof Vue;

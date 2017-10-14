@@ -6,11 +6,10 @@ export default interface IResponseCallback {
     app: IApp;
     status: number;
     fields: any;
-    setFields();
-    checkForError();
     error();
     error400();
     error401();
     error500();
+    errorOther();
     entry();
 }

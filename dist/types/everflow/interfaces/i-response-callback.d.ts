@@ -5,11 +5,10 @@ export default interface IResponseCallback {
     app: IApp;
     status: number;
     fields: any;
-    setFields(): any;
-    checkForError(): any;
     error(): any;
     error400(): any;
     error401(): any;
     error500(): any;
+    errorOther(): any;
     entry(): any;
 }

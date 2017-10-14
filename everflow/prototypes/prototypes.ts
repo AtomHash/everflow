@@ -39,31 +39,32 @@ String.prototype.endsWith = function (suffix): boolean
 };
 
 //Extending Array
-Array.prototype.stringify = function (): string
-{
-    try
-    {
-        return JSON.stringify(this);
-    }
-    catch (e)
-    {
-        return "";
-    }
-};
+Object.defineProperty(Array.prototype, "stringify", {
+    enumerable: false,
+    value: function() {
+        try
+        {
+            return JSON.stringify(this);
+        }
+        catch (e)
+        {
+            return "";
+        }
+  }
+});
 
 //Extending Object
 Object.defineProperty(Object.prototype, 'stringify', {
+    enumerable: false,
     value: function () {
         return JSON.stringify(this);
     },
-    enumerable: false // = Default
 });
 
 Object.defineProperty(Object.prototype, 'getName', {
     value: function () {
         var funcNameRegex = /function (.{1,})\(/;
         var results = (funcNameRegex).exec((this).constructor.toString());
-        console.log((this).constructor.toString());
         return (results && results.length > 1) ? results[1] : "";
     },
     enumerable: false // = Default

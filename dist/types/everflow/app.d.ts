@@ -1,8 +1,10 @@
 import Vue from 'vue';
-import VueRouter, { RouterMode } from 'vue-router';
+import VueRouter from 'vue-router';
+import IApp from './interfaces/i-app';
 import Storage from './utils/storage';
 import History from './history';
-import IApp from './interfaces/i-app';
+import Language from './utils/language';
+import * as interfaces from './interfaces/__init__';
 export default class App implements IApp {
     currentView: Vue;
     user: any;
@@ -12,14 +14,10 @@ export default class App implements IApp {
     readyPermission: boolean;
     readyCallbacks: Array<any>;
     config: any;
-    vue: Vue;
     router: VueRouter;
-    mountId: string;
-    routerMode: RouterMode;
-    constructor(user: any, config: any);
-    setRouterMode(): void;
-    setMount(): void;
-    loadModels(): void;
+    language: Language;
+    constructor(User: interfaces.IModel, config: any);
+    private loadModels();
     run(routes: any): void;
     isOnline(): boolean;
     go(name: string, data?: any): void;
