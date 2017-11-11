@@ -6,6 +6,7 @@ import Utils from './utils/utils';
 
 var mixIns: object = {
     $refs: '',
+    
     pageName: 'default-page',
     created: function () 
     {
@@ -54,6 +55,10 @@ var mixIns: object = {
                 {
                     _init(page);
                     page.ready();
+                    if (typeof page.ready == 'function')
+                    {
+                        this.ready();
+                    }
                     return true;
                 } else {
                     return false;
@@ -82,11 +87,14 @@ var mixIns: object = {
         {
             window.app.readyPermission = true;
             _init(this);
-            this.ready();
+            if (typeof this.ready == 'function')
+            {
+                this.ready();
+            }
             return;
         }
         
     }
 
 }
-export default Vue.extend({ mixins: [mixIns] }) as typeof Vue;
+export default Vue.extend({ mixins: [mixIns] }) as any; //typeof VueConstructor, issue: https://github.com/vuejs/vue/issues/6999

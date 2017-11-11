@@ -1,3 +1,2 @@
-import Vue from 'vue';
-declare const _default: typeof Vue;
+declare const _default: any;
 export default _default;

@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import App from './everflow/app';
-import Events from './everflow/events';
 import History from './everflow/history';
 import Page from './everflow/page';
 import Permission from './everflow/permission';
@@ -23,7 +22,6 @@ export
     Vue,
     VueRouter,
     App,
-    Events,
     History,
     Page,
     Permission,

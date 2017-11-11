@@ -28,4 +28,5 @@ var mixIns: object = {
     }
 
 }
-export default Vue.extend({ mixins: [mixIns] }) as typeof Vue;
+
+export default Vue.extend({ mixins: [mixIns] }) as any; //typeof any, issue: https://github.com/vuejs/vue/issues/6999
