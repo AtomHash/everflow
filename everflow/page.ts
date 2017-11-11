@@ -54,10 +54,9 @@ var mixIns: object = {
                 if (status)
                 {
                     _init(page);
-                    page.ready();
-                    if (typeof page.ready == 'function')
+                    if (!Utils.isNull(page.ready))
                     {
-                        this.ready();
+                        page.ready();
                     }
                     return true;
                 } else {
@@ -87,7 +86,7 @@ var mixIns: object = {
         {
             window.app.readyPermission = true;
             _init(this);
-            if (typeof this.ready == 'function')
+            if (!Utils.isNull(this.ready))
             {
                 this.ready();
             }
