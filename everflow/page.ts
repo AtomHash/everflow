@@ -6,6 +6,7 @@ import Utils from './utils/utils';
 
 var mixIns: object = {
     $refs: '',
+    
     pageName: 'default-page',
     created: function () 
     {
@@ -89,4 +90,4 @@ var mixIns: object = {
     }
 
 }
-export default Vue.extend({ mixins: [mixIns] }) as typeof Vue;
+export default Vue.extend({ mixins: [mixIns] }) as any; //typeof VueConstructor, issue: https://github.com/vuejs/vue/issues/6999
