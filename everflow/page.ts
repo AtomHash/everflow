@@ -17,10 +17,20 @@ var mixIns: object = {
     {
         Display.loader.off();
 
-        var _init = function (page) {
-            if (typeof page.init == 'function') {
+        var _init = function (page) 
+        {
+            if (Utils.isFunction(page.init))
+            {
                 window[page.pageName + '-page-init'] = page.init();
                 window[page.pageName + '-page-init'].default();
+            }
+        }
+
+        var _ready = function (page)
+        {
+            if (Utils.isFunction(page.ready))
+            {
+                page.ready();
             }
         }
 
@@ -54,10 +64,7 @@ var mixIns: object = {
                 if (status)
                 {
                     _init(page);
-                    if (!Utils.isNull(page.ready))
-                    {
-                        page.ready();
-                    }
+                    _ready(page)
                     return true;
                 } else {
                     return false;
@@ -86,10 +93,7 @@ var mixIns: object = {
         {
             window.app.readyPermission = true;
             _init(this);
-            if (!Utils.isNull(this.ready))
-            {
-                this.ready();
-            }
+            _ready(this);
             return;
         }
         

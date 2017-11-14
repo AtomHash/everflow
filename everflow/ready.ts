@@ -8,9 +8,19 @@ var mixIns: object = {
     $refs: '',
     mounted: function () {
 
-        var _init = function (page) {
-            if (typeof page.init == 'function') {
+        var _init = function (page) 
+        {
+            if (Utils.isFunction(page.init))
+            {
                 page.init().default();
+            }
+        }
+
+        var _ready = function (page)
+        {
+            if (Utils.isFunction(page.ready))
+            {
+                page.ready();
             }
         }
 
@@ -18,11 +28,11 @@ var mixIns: object = {
             var self = this;
             window.app.readyCallback(function () {
                 _init(self);
-                self.ready();
+                _ready(self);
             });
         } else {
             _init(this);
-            this.ready();
+            _ready(this);
             return;
         }
     }
