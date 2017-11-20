@@ -1,5 +1,5 @@
 ﻿import * as $ from 'jquery';
-import Vue from 'vue';
+import Vue, { VueConstructor } from 'vue';
 import App from './app';
 import Display from './utils/display';
 import Utils from './utils/utils';
@@ -100,4 +100,4 @@ var mixIns: object = {
     }
 
 }
-export default Vue.extend({ mixins: [mixIns] }) as any; //typeof VueConstructor, issue: https://github.com/vuejs/vue/issues/6999
+export default Vue.extend({ mixins: [mixIns] }) as VueConstructor; //typeof VueConstructor, issue: https://github.com/vuejs/vue/issues/6999

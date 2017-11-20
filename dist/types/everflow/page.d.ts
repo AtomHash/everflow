@@ -1,3 +1,3 @@
-import Vue from 'vue';
-declare const _default: typeof Vue;
+import Vue, { VueConstructor } from 'vue';
+declare const _default: VueConstructor<Vue>;
 export default _default;
