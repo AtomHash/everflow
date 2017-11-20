@@ -1,5 +1,5 @@
 ﻿import * as $ from 'jquery';
-import Vue from 'vue';
+import Vue, { VueConstructor } from 'vue';
 import App from './app';
 import Display from './utils/display';
 import Utils from './utils/utils';
@@ -8,26 +8,24 @@ var mixIns: object = {
     $refs: '',
     mounted: function () {
 
-        var _init = function (page) {
-            if (typeof page.init == 'function') {
-                page.init().default();
+        var _ready = function (page)
+        {
+            if (Utils.isFunction(page.ready))
+            {
+                page.ready();
             }
         }
 
         if (!window.app.ready) {
             var self = this;
             window.app.readyCallback(function () {
-                _init(self);
-                self.ready();
+                _ready(self);
             });
         } else {
-            _init(this);
-            this.ready();
+            _ready(this);
             return;
         }
     }
 
 }
-
-export default Vue.extend({ mixins: [mixIns] }) as any;
-//types set to typeof Vue, VueConstructor: issue: https://github.com/vuejs/vue/issues/6999
+export default Vue.extend({ mixins: [mixIns] }) as VueConstructor;
