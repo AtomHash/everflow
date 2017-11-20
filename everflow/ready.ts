@@ -8,14 +8,6 @@ var mixIns: object = {
     $refs: '',
     mounted: function () {
 
-        var _init = function (page) 
-        {
-            if (Utils.isFunction(page.init))
-            {
-                page.init().default();
-            }
-        }
-
         var _ready = function (page)
         {
             if (Utils.isFunction(page.ready))
@@ -27,17 +19,13 @@ var mixIns: object = {
         if (!window.app.ready) {
             var self = this;
             window.app.readyCallback(function () {
-                _init(self);
                 _ready(self);
             });
         } else {
-            _init(this);
             _ready(this);
             return;
         }
     }
 
 }
-
 export default Vue.extend({ mixins: [mixIns] }) as VueConstructor;
-//types set to typeof Vue, VueConstructor: issue: https://github.com/vuejs/vue/issues/6999

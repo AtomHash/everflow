@@ -17,15 +17,6 @@ var mixIns: object = {
     {
         Display.loader.off();
 
-        var _init = function (page) 
-        {
-            if (Utils.isFunction(page.init))
-            {
-                window[page.pageName + '-page-init'] = page.init();
-                window[page.pageName + '-page-init'].default();
-            }
-        }
-
         var _ready = function (page)
         {
             if (Utils.isFunction(page.ready))
@@ -63,7 +54,6 @@ var mixIns: object = {
                 });
                 if (status)
                 {
-                    _init(page);
                     _ready(page)
                     return true;
                 } else {
@@ -92,7 +82,6 @@ var mixIns: object = {
         else
         {
             window.app.readyPermission = true;
-            _init(this);
             _ready(this);
             return;
         }
@@ -100,4 +89,4 @@ var mixIns: object = {
     }
 
 }
-export default Vue.extend({ mixins: [mixIns] }) as VueConstructor; //typeof VueConstructor, issue: https://github.com/vuejs/vue/issues/6999
+export default Vue.extend({ mixins: [mixIns] }) as VueConstructor;
