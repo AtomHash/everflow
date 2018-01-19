@@ -1,13 +1,13 @@
 {
   "name": "everflow",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A client-side framework using VueJS.",
   "main": "./dist/everflow.js",
   "typings": "./dist/types/everflow.d.ts",
   "author": "AtomHash",
   "dependencies": {
     "@types/jquery": "^3.2.16",
-    "@types/node": "8.0.53",
+    "@types/node": "9.3.0",
     "copy-webpack-plugin": "^4.2.1",
     "cross-env": "^5.1.1",
     "css-loader": "^0.28.7",
