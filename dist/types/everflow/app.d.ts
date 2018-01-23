@@ -4,7 +4,7 @@ import IApp from './interfaces/i-app';
 import Storage from './utils/storage';
 import History from './history';
 import Language from './utils/language';
-import * as interfaces from './interfaces/__init__';
+import * as interfaces from './interfaces/--init--';
 export default class App implements IApp {
     currentView: Vue;
     user: any;

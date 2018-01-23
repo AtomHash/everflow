@@ -10,12 +10,13 @@ import ResponseCallback from './everflow/response-callback';
 import Response from './everflow/response';
 import Prototypes from './everflow/prototypes/prototypes';
 import Translator from './everflow/translator';
-import errors from './everflow/errors/__init__';
-import utils from './everflow/utils/__init__';
-import models from './everflow/models/__init__';
-import decorators from './everflow/decorators/__init__';
-import permissions from './everflow/permissions/__init__';
-import * as interfaces from './everflow/interfaces/__init__';
+import Security from './everflow/security';
+import errors from './everflow/errors/--init--';
+import utils from './everflow/utils/--init--';
+import models from './everflow/models/--init--';
+import decorators from './everflow/decorators/--init--';
+import permissions from './everflow/permissions/--init--';
+import * as interfaces from './everflow/interfaces/--init--';
 
 export
 {
@@ -35,7 +36,8 @@ export
     decorators,
     permissions,
     interfaces,
-    Translator
+    Translator,
+    Security
 }
 //Enable Prototypes
 Prototypes();

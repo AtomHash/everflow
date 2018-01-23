@@ -7,8 +7,8 @@ import Storage from './utils/storage';
 import History from './history';
 import UserModel from './models/user-model';
 import Language from './utils/language';
-import errors from './errors/__init__';
-import * as interfaces from './interfaces/__init__';
+import errors from './errors/--init--';
+import * as interfaces from './interfaces/--init--';
 
 export default class App implements IApp
 {
