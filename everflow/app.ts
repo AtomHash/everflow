@@ -125,5 +125,4 @@ export default class App implements IApp
     readyCallback(callback) {
         this.readyCallbacks.push(callback);
     }
-
 }

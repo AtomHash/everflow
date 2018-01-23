@@ -70,5 +70,4 @@ export default class Translator
         }
 
     }
-
 }

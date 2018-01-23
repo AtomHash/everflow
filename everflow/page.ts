@@ -87,6 +87,5 @@ var mixIns: object = {
         }
         
     }
-
 }
 export default Vue.extend({ mixins: [mixIns] }) as VueConstructor;

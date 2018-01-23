@@ -26,5 +26,4 @@ export default class AuthenticatedPermission extends Permission
         //Return to signin
         this.app.go(this.route);
     }
-
 }

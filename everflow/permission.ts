@@ -44,5 +44,4 @@ export default class Permission implements IPermission
     {
         //if condition is false
     }
-
 }

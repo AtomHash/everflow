@@ -25,5 +25,4 @@ export default class UnAuthenticatedPermission extends Permission
     {
         this.app.go(this.route);
     }
-
 }

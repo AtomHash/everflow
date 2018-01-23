@@ -143,5 +143,4 @@ export default class Request
         });
         request(this, 0);
     }
-
 }

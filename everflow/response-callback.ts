@@ -109,5 +109,4 @@ export default class ResponseCallback implements IResponseCallback
     {
         //Override this function...
     }
-
 }

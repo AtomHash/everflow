@@ -16,5 +16,4 @@ export default class Response implements Response
             this.data = data.data;
         }
     }
-
 }
