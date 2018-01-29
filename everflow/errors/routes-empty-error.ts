@@ -1,9 +1,7 @@
-import Echo from '../utils/echo';
-
-export default class RoutesEmptyError
+export default class RoutesEmptyError extends Error
 {
     constructor()
     {
-        Echo.error('Invalid Routes - routes passed to App.run([..]) cannot be blank.');
+        super('Routes passed to App.run([]) cannot be blank')
     }
 }

@@ -3,7 +3,6 @@ import Response from './response';
 import Utils from './utils/utils';
 import IApp from './interfaces/i-app';
 import IResponseCallback from './interfaces/i-response-callback';
-import Echo from './utils/echo';
 
 export default class ResponseCallback implements IResponseCallback
 {
@@ -69,19 +68,19 @@ export default class ResponseCallback implements IResponseCallback
     //overridable
     errorOther()
     {
-        Echo.warn('unknown http error - unhandled');
+        //Echo.warn('unknown http error - unhandled');
     }
 
     //overridable
     error400()
     {
-        Echo.warn('400 error - unhandled');
+        //Echo.warn('400 error - unhandled');
     }
 
     //overridable
     error401()
     {
-        Echo.warn('401 error - unhandled');
+        //Echo.warn('401 error - unhandled');
     }
 
     //overridable
@@ -90,7 +89,7 @@ export default class ResponseCallback implements IResponseCallback
         //Silently fail...
         if (this.app.config.debug)
         {
-            Echo.warn('500 error: Check database, check request method, check server ect...');
+            //Echo.warn('500 error: Check database, check request method, check server ect...');
         }
         else
         {

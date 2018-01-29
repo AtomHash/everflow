@@ -1,146 +1,151 @@
-﻿import * as $ from 'jquery';
+﻿import Axios, { AxiosInstance, AxiosPromise } from 'axios';
 import Utils from './utils/utils';
 import Response from './response';
 import Display from './utils/display';
-import Echo from './utils/echo'
+import errors from './errors/--init--';
 
 export default class Request 
 {
-    config: any = null;
+    config: any = window['app'].config;
     endPoint:string = "";
-    callback: any = null;
     authorize: boolean = false;
     method: string = "";
     data: any = null;
-    dataType: string = "json";
+    responseType: string = "json";
     headers: object = {};
-    attempts: number = 0;
-    maxTime: number = 10000;
+    retries: number = 0;
+    maxTime: number = 8000;
 
-    constructor(endPoint: string, callback: any, authorize: boolean = false) {
-        this.config = window['app'].config;
-        this.endPoint = endPoint;
-        this.callback = callback;
+    constructor(url: string, authorize: boolean = false)
+    {
+        this.endPoint = url;
         this.authorize = authorize;
     }
 
-    retry(attempts: number = 1): Request {
-        this.attempts = attempts;
+    addHeader(name, value): Request
+    {
+        this.headers[name] = value
         return this;
     }
 
-    timeout(maxTime: number = 10000): Request {
-        this.maxTime = maxTime;
+    static getAxiosEngine(): AxiosInstance
+    {
+        return Axios.create({
+            baseURL: window['app'].config.baseURL,
+            timeout: 8000,
+        });
+    }
+
+    retry(retries: number = 3): Request
+    {
+        this.retries = retries;
         return this;
     }
 
-    post(data: any): void {
-        Display.loader.on();
-        this.method = "POST";
-        this.data = data;
-        this.send();
+    timeout(miliseconds: number = 8000): Request
+    {
+        this.maxTime = miliseconds;
+        return this;
     }
 
-    get(): void {
-        Display.loader.on();
+    get(): AxiosPromise
+    {
+        //Display.loader.on();
         this.method = "GET";
-        this.send();
+        return this.construct();
     }
 
-    put(data: any): void {
-        Display.loader.on();
+    delete(): AxiosPromise
+    {
+        //Display.loader.on();
+        this.method = "DELETE";
+        return this.construct();
+    }
+
+    put(data: any): AxiosPromise
+    {
+        //Display.loader.on();
         this.method = "PUT";
         this.data = data;
-        this.send();
+        return this.construct();
     }
 
-    update(data: any): void {
-        Display.loader.on();
+    post(data: any): AxiosPromise
+    {
+        //Display.loader.on();
+        this.method = "POST";
+        this.data = data;
+        return this.construct();
+    }
+
+    patch(data: any): AxiosPromise
+    {
+        //Display.loader.on();
+        this.method = "PATCH";
+        this.data = data;
+        return this.construct();
+    }
+
+/*
+    update(data: any): AxiosPromise
+    {
+        //Display.loader.on();
         this.method = "UPDATE";
         this.data = data;
-        this.send();
+        return this.construct();
     }
+*/
 
-    private send() : void
+    private construct() : AxiosPromise
     {
-        var headers = {};
-        var url: string = "";
-
+        var url: string = '';
         if (this.authorize)
         {
-            headers = {
-                'Authorization': 'Bearer ' + window.app.user.token
-            };
+            this.addHeader('Authorization', `Bearer ${window.app.user.token}`)
         }
-        //addded to support more custom headers
-        //TODO: add a custom headers (array) to the http methods
-        //Object.assign ES6, however browser support is limited.
-        //headers = Object.assign(this.headers, headers);
-        for (var header in headers) { this.headers[header] = headers[header]; }
-
-        //added to support external ajax links
-        if (this.endPoint.toLowerCase()['startsWith']("http")) {
+        //added to support external links
+        if (this.endPoint.toLowerCase()['startsWith']('http')) {
             url = this.endPoint;
         } else {
-            url = this.config.apiEntry + this.endPoint;
-        }
-
-        var _callback_func = function (callback: any, data: any) {
-            try {
-                var params = callback.params;
-                new callback.callback(new Response(data), params);
-            } catch (e) {
-                new callback(new Response(data));
-            }
-            return;
-        }
-
-        var request = (function (self, attempt) {
-            $.ajax({
-                url: url,
-                type: self.method,
-                dataType: self.dataType,
-                crossDomain: true,
-                headers: self.headers,
-                async: true,
-                timeout: self.maxTime,
-                data: self.data,
-                success: function (data: object, textStatus, xhr) {
-                    Display.loader.off()
-                    _callback_func(self.callback, data);
-                    return;
-                },
-                error: function (xhr: any) {
-
-                    let status = parseInt(xhr.status);
-                    if (status == 500 || status == 504 || status == 0) {
-                        if (self.attempts > 0 && attempt < self.attempts) {
-                            request(self, attempt + 1);
-                            return;
-                        }
-                    }
-
-                    Display.loader.off();
-                    // Callable
-                    try {
-                        var json = xhr.responseText.toJson();
-                        _callback_func(self.callback, json);
-                        return;
-                    }
-                    catch (e) {
-                        if (self.config.debug) {
-                            Echo.log(e);
-                            Echo.log('Hint: Most likely the server is not accessible.');
-                            Echo.log('Error URL: ' + url)
-                        }
-                        _callback_func(self.callback, { status: 500, message: "api error", data: "" });
-                        return;
-                    }
+            // make sure entry point starts with /
+            if (window['app'].config.debug)
+            {
+                /*
+                if (!this.endPoint['startsWith']('/'))
+                {
+                    throw new errors.RequestEndPointFormatError();
                 }
-
-            });
-
-        });
-        request(this, 0);
+                */
+            }
+            url = window['app'].config.baseURL + this.endPoint;
+        }
+        var config = {
+            url: url,
+            method: this.method,
+            headers: this.headers,
+            responseType: this.responseType,
+            timeout: this.maxTime,
+            data: this.data
+        };
+        var ax = Axios.create(config);
+        let self= this;
+        var retryFunction = function (error) {
+            console.log(error);
+            console.log(config);
+            console.log(config['retries']);
+            var errorCode = Utils.isNull(error.response)? error.request.status : error.response.status;
+            config['retries'] = config['retries'] - 1;
+            if (errorCode === 500 && config['retries'] > 0) {
+                console.log('retrying...');
+                return ax[`${config.method.toLowerCase()}`](config.url, config)
+            }
+            console.log('promised error');
+            return Promise.reject(error);
+        }
+        ax.interceptors.response.use(undefined, retryFunction);
+        ax.interceptors.request.use(undefined, retryFunction);
+        // add retires to config
+        config['retries'] = self.retries;
+        return ax[`${config.method.toLowerCase()}`](config.url, config)
     }
 }

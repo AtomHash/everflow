@@ -1,7 +1,8 @@
 # Everflow
-<a href="https://www.npmjs.com/package/everflow"><img src="https://img.shields.io/npm/dm/everflow.svg" alt="Downloads"></a>
-<a href="https://www.npmjs.com/package/everflow"><img src="https://img.shields.io/npm/v/everflow.svg" alt="Version"></a>
-<a href="https://www.npmjs.com/package/everflow"><img src="https://img.shields.io/npm/l/everflow.svg" alt="License"></a>
+[![downloads](https://img.shields.io/npm/dm/everflow.svg)](https://www.npmjs.com/package/everflow)
+[![npm](https://img.shields.io/npm/v/everflow.svg)](https://www.npmjs.com/package/everflow)
+[![license](https://img.shields.io/npm/l/everflow.svg)](https://github.com/AtomHash/everflow/blob/master/LICENSE)
+[![Dependency Status](https://david-dm.org/AtomHash/everflow.svg)](https://david-dm.org/AtomHash/everflow)
 
 A framework that utilizes vuejs <a href="https://vuejs.org" target="_blank"><img width="15" src="https://vuejs.org/images/logo.png"></a>.
 

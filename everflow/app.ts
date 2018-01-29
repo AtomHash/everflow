@@ -84,29 +84,26 @@ export default class App implements IApp
         var routerMode: RouterMode = null;
         if (Utils.isEmpty(this.config.routerMode))
         {
-            new errors.ConfigRouterModeError();
+            throw new errors.ConfigRouterModeError();
         }
         routerMode = this.config.routerMode;
         var mountId: string = null;
         if (Utils.isEmpty(this.config.mountId))
         {
-            new errors.ConfigMountError();
+            throw new errors.ConfigMountError();
         }
         mountId = this.config.mountId;
         if (Utils.isEmpty(routes))
         {
-            new errors.RoutesEmptyError();
+            throw new errors.RoutesEmptyError();
         }
-
         this.router = new VueRouter({
             mode: routerMode,
             routes // short for routes: routes
         });
-
         this.currentView = new Vue({
             router: this.router
         }).$mount('#'+mountId);
-
         //Create new history wrapper for vuejs router history.
         window.app.history = new History();
         this.history = window.app.history;
@@ -119,7 +116,7 @@ export default class App implements IApp
 
     go(name: string, data: any = {})
     {
-        this.currentView['$router']['push']({ name: name, params: data});
+        this.currentView.$router.push({ name: name, params: data});
     }
 
     readyCallback(callback) {

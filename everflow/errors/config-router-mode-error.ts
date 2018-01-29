@@ -1,9 +1,8 @@
-import Echo from '../utils/echo';
-
-export default class ConfigRouterModeError
+export default class ConfigRouterModeError extends Error
 {
     constructor()
     {
-        Echo.error('Invalid Config - App.config.routerMode missing. Must be "hash", "history" or "abstract"');
+        super('App.config.routerMode missing. Must be "hash", "history" or "abstract"')
     }
 }
+
