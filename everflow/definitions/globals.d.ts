@@ -5,13 +5,6 @@ declare global
     interface Window
     {
         app: IApp;
-        $: any;
-    }
-
-    interface JQuery
-    {
-        modal(): any;
-        modal(event: string): any;
     }
     
     interface String
@@ -28,5 +21,4 @@ declare global
         stringify(): string;
         getName(): string;
     }
-
 }

@@ -1,4 +1,4 @@
-import * as moment from "moment";
+import * as moment from 'moment';
 import Utils from './utils';
 
 export default class DateTime
@@ -10,7 +10,7 @@ export default class DateTime
         try {
             dateFormat = window.app.config.datetime.date.format;
         } catch (e){
-            dateFormat = "YYYY-MM-DD";
+            dateFormat = 'YYYY-MM-DD';
         }
         return dateFormat;
     }
@@ -22,7 +22,7 @@ export default class DateTime
         try {
             timeFormat = window.app.config.datetime.time.format;
         } catch (e){
-            timeFormat = "LTS";
+            timeFormat = 'LTS';
         }
         return timeFormat;
     }
@@ -31,7 +31,7 @@ export default class DateTime
     {
         if (Utils.isEmpty(format))
         {
-            format = DateTime.getDateFormat() + " " + DateTime.getTimeFormat();
+            format = `${DateTime.getDateFormat()} ${DateTime.getTimeFormat()}`;
         }
         if (override)
         {
@@ -43,7 +43,7 @@ export default class DateTime
         }
         if (Utils.isEmpty(format))
         {
-            format = "MMMM Do YYYY, h:mm:ss a";
+            format = 'MMMM Do YYYY, h:mm:ss a';
         }
         return moment(dateTime, format);
     }

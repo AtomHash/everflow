@@ -1,4 +1,4 @@
-﻿import * as storage from "localforage";
+﻿import * as storage from 'localforage';
 import Utils from './utils';
 
 export default class Storage

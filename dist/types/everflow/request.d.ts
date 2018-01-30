@@ -1,4 +1,4 @@
-import { AxiosInstance, AxiosPromise } from 'axios';
+import { AxiosInstance, AxiosPromise, AxiosResponse } from 'axios';
 export default class Request {
     config: any;
     endPoint: string;
@@ -10,8 +10,10 @@ export default class Request {
     retries: number;
     maxTime: number;
     constructor(url: string, authorize?: boolean);
-    addHeader(name: any, value: any): Request;
+    static multiple(requests: Array<AxiosPromise>): Promise<AxiosResponse<any>[]>;
+    static spread(callback: any): (array: {}[]) => {};
     static getAxiosEngine(): AxiosInstance;
+    addHeader(name: any, value: any): Request;
     retry(retries?: number): Request;
     timeout(miliseconds?: number): Request;
     get(): AxiosPromise;
@@ -19,5 +21,5 @@ export default class Request {
     put(data: any): AxiosPromise;
     post(data: any): AxiosPromise;
     patch(data: any): AxiosPromise;
-    private construct();
+    private build();
 }

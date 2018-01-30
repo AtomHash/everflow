@@ -32,7 +32,7 @@ export default class Translator
     
     static convertPage()
     {
-        var elements = document.getElementsByTagName("*");
+        var elements = document.getElementsByTagName('*');
         var checkProperties =
         [
             'placeholder',

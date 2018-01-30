@@ -6,7 +6,6 @@ import Page from './everflow/page';
 import Permission from './everflow/permission';
 import Ready from './everflow/ready';
 import Request from './everflow/request';
-import ResponseCallback from './everflow/response-callback';
 import Response from './everflow/response';
 import Prototypes from './everflow/prototypes/prototypes';
 import Translator from './everflow/translator';
@@ -28,7 +27,6 @@ export
     Permission,
     Ready,
     Request,
-    ResponseCallback,
     Response,
     errors,
     utils,

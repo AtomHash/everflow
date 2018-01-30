@@ -1,5 +1,4 @@
-﻿import * as $ from 'jquery';
-import Vue, { ComponentOptions } from 'vue';
+﻿import Vue, { ComponentOptions } from 'vue';
 import VueRouter, { RouterMode } from 'vue-router';
 import Utils from './utils/utils'
 import IApp from './interfaces/i-app';
@@ -36,11 +35,8 @@ export default class App implements IApp
     private loadModels(): void
     {
         //Load app dependant models
-
         var app = this;
-
         // CRITICAL
-
         this.user.load(function (value) {
             if (!Utils.isNull(value))
             {
@@ -48,34 +44,28 @@ export default class App implements IApp
             }
             app.ready = true; //sets app state to ready.
         }, this.storage);
-
         // END - CRITICAL
-
         // INTERVAL WAIT - APP LOADED USER
-
         var appReadyInterval = setInterval(function () {
             if (window.app.ready) {
                 clearInterval(appReadyInterval);
                 var status: boolean = true;
-                    $.each(app.readyCallbacks, function (index, callback) {
-                        if (!Utils.isFunction(callback)) {
-                            var result = callback.function();
-                            status = result;
-                        }
-                        //new callback();
-                });
-                    if (status) {
-                        $.each(app.readyCallbacks, function (index, callback) {
-                            if (Utils.isFunction(callback)) {
-                                new callback();
-                            }
-                        });
+                for (var callback of app.readyCallbacks) {
+                    if (!Utils.isFunction(callback)) {
+                        var result = callback.function();
+                        status = result;
                     }
+                }
+                if (status) {
+                    for (var callback of app.readyCallbacks) {
+                        if (Utils.isFunction(callback)) {
+                            new callback();
+                        }
+                    }
+                }
             }
         }, 200);
-
         // END INTERVAL WAIT
-
     }
 
     run(routes: any): void 

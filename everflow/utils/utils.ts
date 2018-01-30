@@ -49,7 +49,7 @@
             try {
                 return decodeURIComponent(url);
             } catch (e) {
-                return "";
+                return '';
             }
         },
         encode(url: string): string {
@@ -57,7 +57,7 @@
                 return encodeURIComponent(url);
             }
             catch (e) {
-                return "";
+                return '';
             }
         }
     },
@@ -75,7 +75,7 @@
         },
         isObject(data: any)
         {
-            if (typeof data === "object") {
+            if (typeof data === 'object') {
                 return true;
             }
             return false;
@@ -87,7 +87,7 @@
             }
             catch (e)
             {
-                return "";
+                return '';
             }
         },
         decode(json: any): string {
@@ -97,7 +97,7 @@
             }
             catch (e)
             {
-                return "";
+                return '';
             }
         }
     },
@@ -123,7 +123,7 @@
     },
     removeHtml(value: string): string
     {
-        return value.replace(/<\/?[^>]+(>|$)/g, "");
+        return value.replace(/<\/?[^>]+(>|$)/g, '');
     },
     microTime() : number {
         var unixtime_ms = (new Date).getTime();

@@ -1,15 +1,10 @@
-﻿/*
- * Defined permission for user authentication...
- *
-*/
-
-import Permission from '../permission';
+﻿import Permission from '../permission';
 import Utils from '../utils/utils';
 
 export default class AuthenticatedPermission extends Permission
 {
-    route = "";
-    constructor(route: string="signin")
+    route = '';
+    constructor(route: string='signin')
     {
         super(false);
         this.route = route;

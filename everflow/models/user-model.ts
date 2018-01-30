@@ -1,5 +1,4 @@
 ﻿import Model from './model';
-import Display from '../utils/display';
 
 export default class UserModel extends Model
 {
@@ -12,7 +11,6 @@ export default class UserModel extends Model
     signOut(location: string = 'login')
     {
         var app = window.app;
-        Display.loader.on();
         app.user.delete(function ()
         {
             app.user = new UserModel();

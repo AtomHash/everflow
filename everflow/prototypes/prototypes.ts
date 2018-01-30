@@ -39,7 +39,7 @@ String.prototype.endsWith = function (suffix): boolean
 };
 
 //Extending Array
-Object.defineProperty(Array.prototype, "stringify", {
+Object.defineProperty(Array.prototype, 'stringify', {
     enumerable: false,
     value: function() {
         try
