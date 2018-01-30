@@ -1,4 +1,4 @@
-import * as moment from "moment";
+import * as moment from 'moment';
 export default class DateTime {
     private static getDateFormat();
     private static getTimeFormat();

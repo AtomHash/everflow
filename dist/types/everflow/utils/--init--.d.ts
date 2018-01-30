@@ -1,5 +1,3 @@
-import Display from './display';
-import Modal from './modal';
 import Storage from './storage';
 import DateTime from './date-time';
 import Language from './language';
@@ -31,8 +29,6 @@ declare const _default: {
         removeHtml(value: string): string;
         microTime(): number;
     };
-    Display: typeof Display;
-    Modal: typeof Modal;
     Storage: typeof Storage;
     DateTime: typeof DateTime;
     Language: typeof Language;
