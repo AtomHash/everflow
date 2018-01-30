@@ -8,7 +8,7 @@ var mixIns: object = {
     pageName: 'default-page',
     created: function () 
     {
-        document.getElementById(window.app.config.mountId).className += ` ${this.pageName}-everflow-page`;
+        // document.getElementById(window.app.config.mountId).className += ` ${this.pageName}-everflow-page`;
         window.app.currentView = this;
     },
     mounted: function ()
@@ -44,9 +44,6 @@ var mixIns: object = {
                     if (!permission.status)
                     {
                         status = false;
-                        return false;
-                    } else {
-                        return true;
                     }
                 }
                 if (status)
