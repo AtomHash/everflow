@@ -2,6 +2,11 @@
 import App from './app';
 import Utils from './utils/utils';
 
+/**
+ * Adds support triggering ready function without permissions
+ * @mixin
+ * @mixes Vue
+ */
 var mixIns: object = {
     $refs: '',
     mounted: function () {

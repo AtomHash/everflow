@@ -2,18 +2,33 @@ import LanguageModel from '../models/language-model';
 import Utils from '../utils/utils';
 import IApp from '../interfaces/i-app';
 
+/**
+ * Creates an Everflow Language object. Adds the ability to load object language packages to translate from.
+ * @class
+ */
 export default class Language
 {
     data: any = null;
     ready: boolean = false;
     current: string = 'en';
 
+    /**
+     * Initializes Language class with an Everflow App
+     * @constructor
+     * @param {IApp} app - an everflow app
+     */
     constructor(app: IApp)
     {
         this.current = app.config.language;
         this.init(app);
     }
 
+    /**
+     * Expanded constrcutor() for clean code, load the Language model on to the App
+     * @function init
+     * @param {IApp} app - an everflow app
+     * @private
+     */
     private init(app: IApp)
     {
         var self = this;
@@ -31,6 +46,11 @@ export default class Language
         }, app.storage);
     }
 
+    /**
+     * Saves the LanguageModel data
+     * @function save
+     * @private
+     */
     private save(): void
     {
         var languageModel = new LanguageModel();
@@ -38,6 +58,12 @@ export default class Language
         languageModel.save();
     }
 
+    /**
+     * Loads a language pack
+     * @function loadParse
+     * @param {object} languagePack - an object with a root of language pack name
+     * @private
+     */
     private loadParse(languagePack: any): void
     {
         for(var i in languagePack)
@@ -46,6 +72,11 @@ export default class Language
         }
     }
 
+    /**
+     * Loads a language pack
+     * @function load
+     * @param {object} languagePack - an object with a root of language pack name
+     */
     load(languagePack: any): void
     {
         var self = this;
@@ -58,10 +89,14 @@ export default class Language
         }, 200);
     }
 
+    /**
+     * Deletes a language pack
+     * @function delete
+     * @param {object} languagePack - root language pack name
+     */
     delete(languagePackName: string)
     {
         delete this.data[languagePackName];
         this.save();
     }
-
 }

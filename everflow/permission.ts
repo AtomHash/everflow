@@ -1,21 +1,29 @@
 ﻿import IPermission from './interfaces/i-permission';
 import IApp from './interfaces/i-app';
 
+/**
+ * Creates an Everflow Permission object. Permissions are used for checking on Page load
+ * @class
+ */
 export default class Permission implements IPermission
 {
     app: IApp;
     status: boolean;
 
-    constructor(action: boolean = true)
+    /**
+     * Initializes Permission and triggers condition function
+     * @constructor
+     */
+    constructor()
     {
         this.app = window.app;
         this.status = this.condition();
-        if (action) 
-        {
-           this.action();
-        }
     }
 
+    /**
+     * Triggers success() or failure() depending on the condition() status
+     * @function action
+     */
     action(): void
     {
         if (this.status)
@@ -28,20 +36,33 @@ export default class Permission implements IPermission
         }
     }
 
-    //Override
+    /**
+     * Override to add a condition to trigger on action()
+     * @function condition
+     * @override
+     */
     condition(): boolean
     {
         return false;
-        //condition and action
     }
 
+    /**
+     * Action to trigger on condition is true
+     * @function success
+     * @override
+     */
     success(): void
     {
-        //if condition is true
+        // if condition is true
     }
 
+    /**
+     * Action to trigger on condition is false
+     * @function failure
+     * @override
+     */
     failure(): void
     {
-        //if condition is false
+        // if condition is false
     }
 }

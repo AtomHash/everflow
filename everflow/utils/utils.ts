@@ -1,4 +1,7 @@
-﻿export default {
+﻿/**
+* Cluster of random useful functions. Clean up in the future.
+*/
+export default {
 	online: navigator.onLine,
 	validate: {
 		email: function(string){

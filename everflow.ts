@@ -6,7 +6,6 @@ import Page from './everflow/page';
 import Permission from './everflow/permission';
 import Ready from './everflow/ready';
 import Request from './everflow/request';
-import Response from './everflow/response';
 import Prototypes from './everflow/prototypes/prototypes';
 import Translator from './everflow/translator';
 import Security from './everflow/security';
@@ -27,7 +26,6 @@ export
     Permission,
     Ready,
     Request,
-    Response,
     errors,
     utils,
     models,

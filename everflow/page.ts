@@ -2,13 +2,17 @@
 import App from './app';
 import Utils from './utils/utils';
 
+/**
+ * Adds support for permisisons and triggering ready function
+ * @mixin
+ * @mixes Vue
+ */
 var mixIns: object = {
     $refs: '',
-    
     pageName: 'default-page',
     created: function () 
     {
-        // document.getElementById(window.app.config.mountId).className += ` ${this.pageName}-everflow-page`;
+        document.getElementById(window.app.config.mountId).className += ` ${this.pageName}-everflow-page`;
         window.app.currentView = this;
     },
     mounted: function ()

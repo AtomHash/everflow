@@ -18,8 +18,7 @@ export default class App implements IApp {
     language: Language;
     constructor(User: interfaces.IModel, config: any);
     private loadModels();
-    run(routes: any): void;
-    isOnline(): boolean;
+    run(routes: Array<any>): void;
     go(name: string, data?: any): void;
     readyCallback(callback: any): void;
 }

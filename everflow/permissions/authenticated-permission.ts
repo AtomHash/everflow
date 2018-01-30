@@ -1,12 +1,22 @@
 ﻿import Permission from '../permission';
 import Utils from '../utils/utils';
 
+/**
+ * User is authenticated permission
+ * @class
+ */
 export default class AuthenticatedPermission extends Permission
 {
     route = '';
+
+    /**
+     * Initializes AuthenticatedPermission
+     * @constructor
+     * @param {string} route - named route to navigate to after failure()
+     */
     constructor(route: string='signin')
     {
-        super(false);
+        super();
         this.route = route;
         this.action();
     }

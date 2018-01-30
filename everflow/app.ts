@@ -9,6 +9,10 @@ import Language from './utils/language';
 import errors from './errors/--init--';
 import * as interfaces from './interfaces/--init--';
 
+/**
+ * Creates an Everflow App object. The primary application object.
+ * @class
+ */
 export default class App implements IApp
 {
     currentView: Vue;
@@ -22,6 +26,12 @@ export default class App implements IApp
     router: VueRouter;
     language: Language;
 
+    /**
+     * Initializes App
+     * @constructor
+     * @param {interfaces.IModel} User - a user model object 
+     * @param {object} config - everflow config
+     */
     constructor(User: interfaces.IModel, config: any)
     {
         this.config = config
@@ -32,6 +42,11 @@ export default class App implements IApp
         Vue.use(VueRouter);
     }
 
+    /**
+     * Load the user model specified in the constructor
+     * @function loadModels
+     * @private
+     */
     private loadModels(): void
     {
         //Load app dependant models
@@ -68,7 +83,12 @@ export default class App implements IApp
         // END INTERVAL WAIT
     }
 
-    run(routes: any): void 
+    /**
+     * Add header to Request
+     * @function run
+     * @param {Array<object>} routes - array of routes to be served by the app
+     */
+    run(routes: Array<any>): void 
     {
         window.app = this;
         var routerMode: RouterMode = null;
@@ -99,17 +119,24 @@ export default class App implements IApp
         this.history = window.app.history;
     }
 
-    isOnline(): boolean
-    {
-        return Utils.online;
-    }
-
+    /**
+     * Add header to Request
+     * @function go
+     * @param {string} name - name of route to navigate to
+     * @param {object} data - params to send to the new route
+     */
     go(name: string, data: any = {})
     {
         this.currentView.$router.push({ name: name, params: data});
     }
 
-    readyCallback(callback) {
+    /**
+     * Add callbacks to trigger once app is loaded (models are loaded)
+     * @function readyCallback
+     * @param {callable} callback - a callback to trigger on app ready
+     */
+    readyCallback(callback)
+    {
         this.readyCallbacks.push(callback);
     }
 }

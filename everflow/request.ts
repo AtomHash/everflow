@@ -1,6 +1,5 @@
 ﻿import Axios, { AxiosInstance, AxiosPromise, AxiosResponse } from 'axios';
 import Utils from './utils/utils';
-import Response from './response';
 import errors from './errors/--init--';
 
 /**
@@ -45,7 +44,7 @@ export default class Request
     /**
      * Axios spread function to handle mutiple response callbacks
      * @function spread
-     * @param {callback} callback - callback with a paramter for each response in Request.multiple([])
+     * @param {callable} callback - callback with a paramter for each response in Request.multiple([])
      * @static
      */
     static spread(callback): (array: {}[]) => {}

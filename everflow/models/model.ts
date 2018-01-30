@@ -1,6 +1,10 @@
 ﻿import Utils from '../utils/utils';
 import Storage from '../utils/storage';
 
+/**
+ * The primary Model
+ * @class
+ */
 export default class Model
 {
     saveName: string = 'defaultModel';
