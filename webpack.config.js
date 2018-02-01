@@ -46,10 +46,6 @@ module.exports = {
       },
     extensions: ['.js', '.ts', '.vue']
   },
-  externals: {
-      jquery: 'jQuery',
-      vue: 'vue'
-  },
   devServer: {
     historyApiFallback: true,
     noInfo: true

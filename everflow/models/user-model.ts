@@ -1,6 +1,9 @@
 ﻿import Model from './model';
-import Display from '../utils/display';
 
+/**
+ * Model for an Everflow user
+ * @class
+ */
 export default class UserModel extends Model
 {
     saveName: string    = 'user';
@@ -12,12 +15,10 @@ export default class UserModel extends Model
     signOut(location: string = 'login')
     {
         var app = window.app;
-        Display.loader.on();
         app.user.delete(function ()
         {
             app.user = new UserModel();
             app.go(location);
         });
     }
-
 }

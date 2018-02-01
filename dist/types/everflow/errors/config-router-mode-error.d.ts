@@ -1,3 +1,3 @@
-export default class ConfigRouterModeError {
+export default class ConfigRouterModeError extends Error {
     constructor();
 }

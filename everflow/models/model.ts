@@ -1,6 +1,10 @@
-﻿import Utils from '../utils/utils';
+﻿import * as _ from 'lodash';
 import Storage from '../utils/storage';
 
+/**
+ * The primary Model
+ * @class
+ */
 export default class Model
 {
     saveName: string = 'defaultModel';
@@ -22,18 +26,23 @@ export default class Model
 
     load(callback, storage: Storage = window.app.storage)
     {
+        var self = this;
         storage.get(this.saveName, function (error, value) {
-            new callback(value);
+            if (!_.isNil(value))
+            {
+                self.map(value);
+            }
+            new callback(self, value);
         });
     }
 
     delete(callback, storage: Storage = window.app.storage)
     {
         storage.remove(this.saveName, function () {
-            if (!Utils.isNull(callback)) {
+            if (!_.isNil(callback))
+            {
                 new callback();
             }
         });
     }
-
 }

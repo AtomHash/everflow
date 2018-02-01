@@ -4,7 +4,7 @@ import IApp from './interfaces/i-app';
 import Storage from './utils/storage';
 import History from './history';
 import Language from './utils/language';
-import * as interfaces from './interfaces/__init__';
+import * as interfaces from './interfaces/--init--';
 export default class App implements IApp {
     currentView: Vue;
     user: any;
@@ -17,9 +17,9 @@ export default class App implements IApp {
     router: VueRouter;
     language: Language;
     constructor(User: interfaces.IModel, config: any);
+    private loadConfig();
     private loadModels();
-    run(routes: any): void;
-    isOnline(): boolean;
+    run(routes: Array<any>): void;
     go(name: string, data?: any): void;
     readyCallback(callback: any): void;
 }

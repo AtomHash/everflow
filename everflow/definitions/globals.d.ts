@@ -1,17 +1,12 @@
 ﻿import IApp from '../interfaces/i-app';
+import LoDashStatic from 'lodash';
 
 declare global
 {
     interface Window
     {
         app: IApp;
-        $: any;
-    }
-
-    interface JQuery
-    {
-        modal(): any;
-        modal(event: string): any;
+        _: LoDashStatic
     }
     
     interface String
@@ -28,5 +23,4 @@ declare global
         stringify(): string;
         getName(): string;
     }
-
 }

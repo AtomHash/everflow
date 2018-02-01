@@ -1,9 +1,7 @@
-import Echo from '../utils/echo';
-
-export default class ConfigMountError
+export default class ConfigMountError extends Error
 {
     constructor()
     {
-        Echo.error('Invalid Config - App.config.mountId missing.');
+        super('Cannot find mountId in config file')
     }
 }

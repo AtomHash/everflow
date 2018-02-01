@@ -1,20 +1,25 @@
+import { AxiosInstance, AxiosPromise, AxiosResponse } from 'axios';
 export default class Request {
     config: any;
     endPoint: string;
-    callback: any;
     authorize: boolean;
     method: string;
     data: any;
-    dataType: string;
+    responseType: string;
     headers: object;
-    attempts: number;
+    retries: number;
     maxTime: number;
-    constructor(endPoint: string, callback: any, authorize?: boolean);
-    retry(attempts?: number): Request;
-    timeout(maxTime?: number): Request;
-    post(data: any): void;
-    get(): void;
-    put(data: any): void;
-    update(data: any): void;
-    private send();
+    constructor(url: string, authorize?: boolean);
+    static multiple(requests: Array<AxiosPromise>): Promise<AxiosResponse<any>[]>;
+    static spread(callback: any): (array: {}[]) => {};
+    static getAxiosEngine(): AxiosInstance;
+    addHeader(name: any, value: any): Request;
+    retry(retries?: number): Request;
+    timeout(miliseconds?: number): Request;
+    get(): AxiosPromise;
+    delete(): AxiosPromise;
+    put(data: any): AxiosPromise;
+    post(data: any): AxiosPromise;
+    patch(data: any): AxiosPromise;
+    private build();
 }

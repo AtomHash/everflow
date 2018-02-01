@@ -1,8 +1,11 @@
 import Model from './model';
 
+/**
+ * Model to save language data
+ * @class
+ */
 export default class LanguageModel extends Model
 {
-    saveName: string    = 'language';
-    data: string       = '';
-
+    saveName: string = 'language';
+    data: string = '';
 }

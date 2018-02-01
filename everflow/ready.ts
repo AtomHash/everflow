@@ -1,31 +1,32 @@
-﻿import * as $ from 'jquery';
-import Vue, { VueConstructor } from 'vue';
+﻿import Vue, { VueConstructor } from 'vue';
+import * as _ from 'lodash';
 import App from './app';
-import Display from './utils/display';
-import Utils from './utils/utils';
 
+/**
+ * Adds support triggering ready function without permissions
+ * @mixin
+ * @mixes Vue
+ */
 var mixIns: object = {
     $refs: '',
     mounted: function () {
-
-        var _ready = function (page)
+        let iReady = function (page)
         {
-            if (Utils.isFunction(page.ready))
+            if (_.isFunction(page.ready))
             {
                 page.ready();
             }
         }
-
-        if (!window.app.ready) {
-            var self = this;
+        if (!window.app.ready)
+        {
+            let self = this;
             window.app.readyCallback(function () {
-                _ready(self);
+                iReady(self);
             });
         } else {
-            _ready(this);
+            iReady(this);
             return;
         }
     }
-
 }
 export default Vue.extend({ mixins: [mixIns] }) as VueConstructor;

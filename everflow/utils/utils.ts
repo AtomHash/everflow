@@ -1,4 +1,7 @@
-﻿export default {
+﻿/**
+* Cluster of random useful functions. Clean up in the future.
+*/
+export default {
 	online: navigator.onLine,
 	validate: {
 		email: function(string){
@@ -49,7 +52,7 @@
             try {
                 return decodeURIComponent(url);
             } catch (e) {
-                return "";
+                return '';
             }
         },
         encode(url: string): string {
@@ -57,7 +60,7 @@
                 return encodeURIComponent(url);
             }
             catch (e) {
-                return "";
+                return '';
             }
         }
     },
@@ -75,7 +78,7 @@
         },
         isObject(data: any)
         {
-            if (typeof data === "object") {
+            if (typeof data === 'object') {
                 return true;
             }
             return false;
@@ -87,7 +90,7 @@
             }
             catch (e)
             {
-                return "";
+                return '';
             }
         },
         decode(json: any): string {
@@ -97,33 +100,13 @@
             }
             catch (e)
             {
-                return "";
+                return '';
             }
         }
-    },
-    isNull(val: any): boolean
-    {
-        if (typeof val === 'undefined')
-        {
-            return true;
-        } else {
-            if (val === null)
-            {
-                return true;
-            }
-            return false;
-        }
-    },
-    isEmpty(value: any): boolean
-    {
-        return (!value || 0 === value.length);
-    },
-    isFunction(callable: any): boolean {
-        return !!(callable && callable.constructor && callable.call && callable.apply)
     },
     removeHtml(value: string): string
     {
-        return value.replace(/<\/?[^>]+(>|$)/g, "");
+        return value.replace(/<\/?[^>]+(>|$)/g, '');
     },
     microTime() : number {
         var unixtime_ms = (new Date).getTime();

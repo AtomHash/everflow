@@ -1,4 +1,5 @@
-﻿export default interface IResponse {
+﻿export default interface IResponse 
+{
     status: number;
     message: string;
     data: any;

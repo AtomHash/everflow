@@ -1,28 +1,31 @@
 ﻿import VueRouter from 'vue-router';
 
+/**
+ * Creates an Everflow History object.
+ * @class
+ */
 export default class History
 {
     router = window.app.currentView['$router'];
 
-    forward()
-    {
-        this.router.go(1);
-    }
-
-    forwardX( x: number )
+    /**
+     * Makes the router go forward once
+     * @function forward
+     * @param {number} x - amount of times to go forward
+     */
+    forward(x: number = 1)
     {
         this.router.go(Math.abs(x));
     }
 
-    back()
-    {
-        this.router.go(-1);
-    }
-
-    backX( x: number )
+    /**
+     * Makes the router go back
+     * @function back
+     * @param {number} x - amount of times to go back
+     */
+    back(x: number = 1)
     {
         if (x > 0) { x = x * -1; }
         this.router.go(x);
     }
-
 }

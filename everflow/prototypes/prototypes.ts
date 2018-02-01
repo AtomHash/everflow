@@ -1,19 +1,20 @@
+import * as _ from 'lodash';
+
 var prototypes = function()
 {
 //Extending String
 String.prototype.contains = function (needle): boolean
 {
-    var lowerCase = this.toLowerCase();
-    needle = needle.toLowerCase();
-    return lowerCase.indexOf(needle) != -1;
+    return this.toLowerCase()
+        .indexOf(needle.toLowerCase()) != -1;
 };
 
 String.prototype.shorten = function (n, useWordBoundary): string
 {
     var isTooLong = this.length > n,
-    s_ = isTooLong ? this.substr(0, n - 1) : this;
-    s_ = (useWordBoundary && isTooLong) ? s_.substr(0, s_.lastIndexOf(' ')) : s_;
-    return isTooLong ? s_ + '&hellip;' : s_;
+        sub = isTooLong ? this.substr(0, n - 1) : this;
+    sub = (useWordBoundary && isTooLong) ? sub.substr(0, sub.lastIndexOf(' ')) : sub;
+    return isTooLong ? sub + '&hellip;' : sub;
 };
 
 String.prototype.toJson = function (): object
@@ -30,16 +31,17 @@ String.prototype.toJson = function (): object
 
 String.prototype.isEmpty = function (): boolean
 {
-    return (!this || 0 === this.length);
+    return _.isEmpty(this)
 };
 
 String.prototype.endsWith = function (suffix): boolean
 {
-    return this.substr(-suffix.length).toLowerCase() === suffix.toLowerCase();
+    return this.substr(-suffix.length)
+        .toLowerCase() === suffix.toLowerCase();
 };
 
 //Extending Array
-Object.defineProperty(Array.prototype, "stringify", {
+Object.defineProperty(Array.prototype, 'stringify', {
     enumerable: false,
     value: function() {
         try

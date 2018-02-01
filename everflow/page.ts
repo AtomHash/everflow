@@ -1,42 +1,43 @@
-﻿import * as $ from 'jquery';
-import Vue, { VueConstructor } from 'vue';
+﻿import Vue, { VueConstructor } from 'vue';
+import * as _ from 'lodash';
 import App from './app';
-import Display from './utils/display';
-import Utils from './utils/utils';
 
+/**
+ * Adds support for permisisons and triggering ready function
+ * @mixin
+ * @mixes Vue
+ */
 var mixIns: object = {
     $refs: '',
-    
     pageName: 'default-page',
     created: function () 
     {
-        $('#app').addClass(this.pageName+"-everflow-page");
+        document.getElementById(window.app.config.mountId).className += ` ${this.pageName}-everflow-page`;
         window.app.currentView = this;
     },
     mounted: function ()
     {
-        Display.loader.off();
-
-        var _ready = function (page)
+        let iReady = function (page)
         {
-            if (Utils.isFunction(page.ready))
+            if (_.isFunction(page.ready))
             {
                 page.ready();
             }
         }
-
-        if (!Utils.isNull(this.permissions))
+        if (!_.isNil(this.permissions))
         {
-            var perms = this.permissions;
-            var app = window.app;
-            var page = this;
-
-            var _fireParms = function (perms)
+            let perms = this.permissions;
+            let app = window.app;
+            let page = this;
+            let iFireParms = function (perms)
             {
                 var status: boolean = true;
-                $.each(perms, function (index, callback) {
-                    if ("callback" in callback){
-                        if ("params" in callback){
+                for (var callback of perms)
+                {
+                    if ('callback' in callback)
+                    {
+                        if ('params' in callback)
+                        {
                             var permission: any = new callback['callback'](callback['params']);
                         } else {
                             var permission: any = new callback['callback']();
@@ -47,46 +48,36 @@ var mixIns: object = {
                     if (!permission.status)
                     {
                         status = false;
-                        return false;
-                    } else {
-                        return true;
                     }
-                });
+                }
                 if (status)
                 {
-                    _ready(page)
+                    iReady(page)
                     return true;
                 } else {
                     return false;
                 }
             }
-
             if (!app.ready)
             {
-
                 // ASYNC - This waits until the app is ready(user has loaded - async)
-
                 app.readyCallback({
-                    type: "page",
-                    function: function () { return _fireParms(perms); }
+                    type: 'page',
+                    function: function () { return iFireParms(perms); }
                 });
-
                 // END ASYNC
             }
             else
             {
-                _fireParms(perms);
+                iFireParms(perms);
             }
-
         }
         else
         {
             window.app.readyPermission = true;
-            _ready(this);
+            iReady(this);
             return;
         }
-        
     }
-
 }
 export default Vue.extend({ mixins: [mixIns] }) as VueConstructor;

@@ -1,7 +1,8 @@
 ﻿import IResponse from './i-response';
 import IApp from './i-app';
 
-export default interface IResponseCallback {
+export default interface IResponseCallback 
+{
     response: IResponse;
     app: IApp;
     status: number;

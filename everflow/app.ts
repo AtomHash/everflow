@@ -1,15 +1,18 @@
-﻿import * as $ from 'jquery';
-import Vue, { ComponentOptions } from 'vue';
+﻿import Vue, { ComponentOptions } from 'vue';
+import * as _ from 'lodash';
 import VueRouter, { RouterMode } from 'vue-router';
-import Utils from './utils/utils'
 import IApp from './interfaces/i-app';
 import Storage from './utils/storage';
 import History from './history';
 import UserModel from './models/user-model';
 import Language from './utils/language';
-import errors from './errors/__init__';
-import * as interfaces from './interfaces/__init__';
+import errors from './errors/--init--';
+import * as interfaces from './interfaces/--init--';
 
+/**
+ * Creates an Everflow App object. The primary application object.
+ * @class
+ */
 export default class App implements IApp
 {
     currentView: Vue;
@@ -23,107 +26,134 @@ export default class App implements IApp
     router: VueRouter;
     language: Language;
 
+    /**
+     * Initializes App
+     * @constructor
+     * @param {interfaces.IModel} User - a user model object 
+     * @param {object} config - everflow config
+     */
     constructor(User: interfaces.IModel, config: any)
     {
         this.config = config
         this.user = new User();
         this.storage = new Storage(config.storage);
         this.language = new Language(this);
+        this.loadConfig();
         this.loadModels();
         Vue.use(VueRouter);
     }
 
+    /**
+     * Configure global everflow settings
+     * @function loadConfig
+     * @private
+     */
+    private loadConfig(): void
+    {
+        // easy disable for console messages in production
+        if (!this.config.debug)
+        {
+            window.console.log = function(){};
+        }
+    }
+
+    /**
+     * Load the user model specified in the constructor
+     * @function loadModels
+     * @private
+     */
     private loadModels(): void
     {
         //Load app dependant models
-
         var app = this;
-
         // CRITICAL
-
-        this.user.load(function (value) {
-            if (!Utils.isNull(value))
-            {
-                app.user.map(value);
-            }
+        this.user.load(function (self, value) {
+            app.user = self;
             app.ready = true; //sets app state to ready.
         }, this.storage);
-
         // END - CRITICAL
-
         // INTERVAL WAIT - APP LOADED USER
-
         var appReadyInterval = setInterval(function () {
             if (window.app.ready) {
                 clearInterval(appReadyInterval);
                 var status: boolean = true;
-                    $.each(app.readyCallbacks, function (index, callback) {
-                        if (!Utils.isFunction(callback)) {
-                            var result = callback.function();
-                            status = result;
-                        }
-                        //new callback();
-                });
-                    if (status) {
-                        $.each(app.readyCallbacks, function (index, callback) {
-                            if (Utils.isFunction(callback)) {
-                                new callback();
-                            }
-                        });
+                for (var callback of app.readyCallbacks)
+                {
+                    if (!_.isFunction(callback))
+                    {
+                        var result = callback.function();
+                        status = result;
                     }
+                }
+                if (status)
+                {
+                    for (let callback of app.readyCallbacks)
+                    {
+                        if (!!(callback && callback.constructor && callback.call && callback.apply))
+                        {
+                            new callback();
+                        }
+                    }
+                }
             }
         }, 200);
-
         // END INTERVAL WAIT
-
     }
 
-    run(routes: any): void 
+    /**
+     * Add header to Request
+     * @function run
+     * @param {Array<object>} routes - array of routes to be served by the app
+     */
+    run(routes: Array<any>): void 
     {
         window.app = this;
         var routerMode: RouterMode = null;
-        if (Utils.isEmpty(this.config.routerMode))
+        if (_.isEmpty(this.config.routerMode))
         {
-            new errors.ConfigRouterModeError();
+            throw new errors.ConfigRouterModeError();
         }
         routerMode = this.config.routerMode;
         var mountId: string = null;
-        if (Utils.isEmpty(this.config.mountId))
+        if (_.isEmpty(this.config.mountId))
         {
-            new errors.ConfigMountError();
+            throw new errors.ConfigMountError();
         }
         mountId = this.config.mountId;
-        if (Utils.isEmpty(routes))
+        if (_.isEmpty(routes))
         {
-            new errors.RoutesEmptyError();
+            throw new errors.RoutesEmptyError();
         }
-
         this.router = new VueRouter({
             mode: routerMode,
             routes // short for routes: routes
         });
-
         this.currentView = new Vue({
             router: this.router
         }).$mount('#'+mountId);
-
         //Create new history wrapper for vuejs router history.
         window.app.history = new History();
         this.history = window.app.history;
     }
 
-    isOnline(): boolean
-    {
-        return Utils.online;
-    }
-
+    /**
+     * Add header to Request
+     * @function go
+     * @param {string} name - name of route to navigate to
+     * @param {object} data - params to send to the new route
+     */
     go(name: string, data: any = {})
     {
-        this.currentView['$router']['push']({ name: name, params: data});
+        this.currentView.$router.push({ name: name, params: data});
     }
 
-    readyCallback(callback) {
+    /**
+     * Add callbacks to trigger once app is loaded (models are loaded)
+     * @function readyCallback
+     * @param {callable} callback - a callback to trigger on app ready
+     */
+    readyCallback(callback)
+    {
         this.readyCallbacks.push(callback);
     }
-
 }
