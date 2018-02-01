@@ -1,5 +1,5 @@
 ﻿import * as storage from 'localforage';
-import Utils from './utils';
+import * as _ from 'lodash';
 
 /**
  * Creates an Everflow Storage object. Adds the ability to load objects and save objects in localstorage(ASYNC)
@@ -47,7 +47,7 @@ export default class Storage
      */
     remove(key: string, callback = null): void
     {
-        if (!Utils.isNull(callback))
+        if (!_.isNil(callback))
         {
             storage.removeItem(key, callback);
             return;

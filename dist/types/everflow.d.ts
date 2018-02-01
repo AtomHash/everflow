@@ -1,4 +1,6 @@
 import Vue from 'vue';
+import async from 'async';
+import * as _ from "lodash";
 import VueRouter from 'vue-router';
 import App from './everflow/app';
 import History from './everflow/history';
@@ -14,4 +16,4 @@ import models from './everflow/models/--init--';
 import decorators from './everflow/decorators/--init--';
 import permissions from './everflow/permissions/--init--';
 import * as interfaces from './everflow/interfaces/--init--';
-export { Vue, VueRouter, App, History, Page, Permission, Ready, Request, errors, utils, models, decorators, permissions, interfaces, Translator, Security };
+export { _, async, Vue, VueRouter, App, History, Page, Permission, Ready, Request, errors, utils, models, decorators, permissions, interfaces, Translator, Security };

@@ -1,4 +1,4 @@
-import Utils from './utils/utils';
+import * as _ from 'lodash';
 
 /**
  * Creates an Everflow Translator object. Adds the ability to translate langauges using keys
@@ -43,7 +43,7 @@ export default class Translator
     private static convertProperty(element, property)
     {
         var value = element[property];
-        if (Utils.isEmpty(value))
+        if (_.isEmpty(value))
         {
             return;
         }
@@ -72,7 +72,7 @@ export default class Translator
         for (var key in keyList)
         {
             var objectKey = keyList[key];
-            if (!Utils.isFunction(objectKey))
+            if (!_.isFunction(objectKey))
             {
                 currentSelection = currentSelection[objectKey];
             }

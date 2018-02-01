@@ -1,6 +1,6 @@
 ﻿import Vue, { ComponentOptions } from 'vue';
+import * as _ from 'lodash';
 import VueRouter, { RouterMode } from 'vue-router';
-import Utils from './utils/utils'
 import IApp from './interfaces/i-app';
 import Storage from './utils/storage';
 import History from './history';
@@ -38,8 +38,23 @@ export default class App implements IApp
         this.user = new User();
         this.storage = new Storage(config.storage);
         this.language = new Language(this);
+        this.loadConfig();
         this.loadModels();
         Vue.use(VueRouter);
+    }
+
+    /**
+     * Configure global everflow settings
+     * @function loadConfig
+     * @private
+     */
+    private loadConfig(): void
+    {
+        // easy disable for console messages in production
+        if (!this.config.debug)
+        {
+            window.console.log = function(){};
+        }
     }
 
     /**
@@ -52,11 +67,8 @@ export default class App implements IApp
         //Load app dependant models
         var app = this;
         // CRITICAL
-        this.user.load(function (value) {
-            if (!Utils.isNull(value))
-            {
-                app.user.map(value);
-            }
+        this.user.load(function (self, value) {
+            app.user = self;
             app.ready = true; //sets app state to ready.
         }, this.storage);
         // END - CRITICAL
@@ -65,15 +77,20 @@ export default class App implements IApp
             if (window.app.ready) {
                 clearInterval(appReadyInterval);
                 var status: boolean = true;
-                for (var callback of app.readyCallbacks) {
-                    if (!Utils.isFunction(callback)) {
+                for (var callback of app.readyCallbacks)
+                {
+                    if (!_.isFunction(callback))
+                    {
                         var result = callback.function();
                         status = result;
                     }
                 }
-                if (status) {
-                    for (var callback of app.readyCallbacks) {
-                        if (Utils.isFunction(callback)) {
+                if (status)
+                {
+                    for (let callback of app.readyCallbacks)
+                    {
+                        if (!!(callback && callback.constructor && callback.call && callback.apply))
+                        {
                             new callback();
                         }
                     }
@@ -92,18 +109,18 @@ export default class App implements IApp
     {
         window.app = this;
         var routerMode: RouterMode = null;
-        if (Utils.isEmpty(this.config.routerMode))
+        if (_.isEmpty(this.config.routerMode))
         {
             throw new errors.ConfigRouterModeError();
         }
         routerMode = this.config.routerMode;
         var mountId: string = null;
-        if (Utils.isEmpty(this.config.mountId))
+        if (_.isEmpty(this.config.mountId))
         {
             throw new errors.ConfigMountError();
         }
         mountId = this.config.mountId;
-        if (Utils.isEmpty(routes))
+        if (_.isEmpty(routes))
         {
             throw new errors.RoutesEmptyError();
         }

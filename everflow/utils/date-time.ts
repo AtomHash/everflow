@@ -1,5 +1,5 @@
 import * as moment from 'moment';
-import Utils from './utils';
+import * as _ from 'lodash';
 
 /**
  * Adds the ability to convert dates and times using config options.
@@ -52,15 +52,15 @@ export default class DateTime
      */
     static moment(dateTime: moment.MomentInput = null, format: string = null): moment.Moment
     {
-        if (Utils.isEmpty(format))
+        if (_.isEmpty(format))
         {
             format = `${DateTime.getDateFormat()} ${DateTime.getTimeFormat()}`;
         }
-        if (Utils.isEmpty(dateTime))
+        if (_.isEmpty(dateTime))
         {
             dateTime = new Date();
         }
-        if (Utils.isEmpty(format))
+        if (_.isEmpty(format))
         {
             format = 'MMMM Do YYYY, h:mm:ss a';
         }

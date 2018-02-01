@@ -1,5 +1,5 @@
+import * as _ from 'lodash';
 import LanguageModel from '../models/language-model';
-import Utils from '../utils/utils';
 import IApp from '../interfaces/i-app';
 
 /**
@@ -11,6 +11,7 @@ export default class Language
     data: any = null;
     ready: boolean = false;
     current: string = 'en';
+    languageModel: LanguageModel
 
     /**
      * Initializes Language class with an Everflow App
@@ -31,18 +32,10 @@ export default class Language
      */
     private init(app: IApp)
     {
-        var self = this;
-        var languageModel = new LanguageModel();
-        languageModel.load(function (value) {
-            if (Utils.isEmpty(value))
-            {
-                self.data = {};
-                self.ready = true;
-                return;
-            } else {
-                self.data = value.data;
-                self.ready = true;
-            }
+        var language = this;
+        this.languageModel = new LanguageModel();
+        this.languageModel.load(function (self, value) {
+            language.languageModel = self;
         }, app.storage);
     }
 
@@ -53,9 +46,8 @@ export default class Language
      */
     private save(): void
     {
-        var languageModel = new LanguageModel();
-        languageModel.data = this.data;
-        languageModel.save();
+        this.languageModel.data = this.data;
+        this.languageModel.save();
     }
 
     /**

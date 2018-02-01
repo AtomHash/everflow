@@ -1,6 +1,6 @@
 ﻿import Vue, { VueConstructor } from 'vue';
+import * as _ from 'lodash';
 import App from './app';
-import Utils from './utils/utils';
 
 /**
  * Adds support for permisisons and triggering ready function
@@ -19,12 +19,12 @@ var mixIns: object = {
     {
         let iReady = function (page)
         {
-            if (Utils.isFunction(page.ready))
+            if (_.isFunction(page.ready))
             {
                 page.ready();
             }
         }
-        if (!Utils.isNull(this.permissions))
+        if (!_.isNil(this.permissions))
         {
             let perms = this.permissions;
             let app = window.app;

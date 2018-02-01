@@ -104,26 +104,6 @@ export default {
             }
         }
     },
-    isNull(val: any): boolean
-    {
-        if (typeof val === 'undefined')
-        {
-            return true;
-        } else {
-            if (val === null)
-            {
-                return true;
-            }
-            return false;
-        }
-    },
-    isEmpty(value: any): boolean
-    {
-        return (!value || 0 === value.length);
-    },
-    isFunction(callable: any): boolean {
-        return !!(callable && callable.constructor && callable.call && callable.apply)
-    },
     removeHtml(value: string): string
     {
         return value.replace(/<\/?[^>]+(>|$)/g, '');

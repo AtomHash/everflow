@@ -1,5 +1,5 @@
 ﻿import Axios, { AxiosInstance, AxiosPromise, AxiosResponse } from 'axios';
-import Utils from './utils/utils';
+import * as _ from 'lodash';
 import errors from './errors/--init--';
 
 /**
@@ -194,7 +194,7 @@ export default class Request
         let self= this;
         var iRetryFunction = function (error)
         {
-            var errorCode = Utils.isNull(error.response)? error.request.status : error.response.status;
+            var errorCode = _.isNil(error.response)? error.request.status : error.response.status;
             config['retries'] = config['retries'] - 1;
             if (errorCode === 500 && config['retries'] > 0) {
                 return ax[`${config.method.toLowerCase()}`](config.url, config)

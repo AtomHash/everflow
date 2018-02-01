@@ -1,6 +1,6 @@
 ﻿import Vue, { VueConstructor } from 'vue';
+import * as _ from 'lodash';
 import App from './app';
-import Utils from './utils/utils';
 
 /**
  * Adds support triggering ready function without permissions
@@ -12,7 +12,7 @@ var mixIns: object = {
     mounted: function () {
         let iReady = function (page)
         {
-            if (Utils.isFunction(page.ready))
+            if (_.isFunction(page.ready))
             {
                 page.ready();
             }

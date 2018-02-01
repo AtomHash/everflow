@@ -1,5 +1,4 @@
 ﻿import Permission from '../permission';
-import Utils from '../utils/utils';
 
 /**
  * User is not authenticated permission
