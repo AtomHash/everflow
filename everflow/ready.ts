@@ -1,6 +1,33 @@
 ﻿import Vue, { VueConstructor } from 'vue';
 import * as _ from 'lodash';
 import App from './app';
+import decorators from './decorators/--init--'
+
+/**
+ * Creates the Ready class to extend Vue. Adds ready() triggering
+ * @class
+ */
+@decorators.Component({})
+class Ready extends Vue
+{
+    ready()
+    {
+
+    }
+
+    /**
+     * Just fire ready()
+     * @function everflowReadyLoadChange
+     */
+    @decorators.Watch('$route', {deep: true})
+    everflowReadyLoadChange()
+    {
+        if (_.isFunction(this.ready))
+        {
+            this.ready();
+        }
+    }
+}
 
 /**
  * Adds support triggering ready function without permissions
@@ -10,23 +37,19 @@ import App from './app';
 var mixIns: object = {
     $refs: '',
     mounted: function () {
-        let iReady = function (page)
+        let app = window.app;
+        let ready = this;
+        if (!app.ready)
         {
-            if (_.isFunction(page.ready))
-            {
-                page.ready();
-            }
-        }
-        if (!window.app.ready)
-        {
-            let self = this;
-            window.app.readyCallback(function () {
-                iReady(self);
+            app.readyCallback({
+                    type: 'ready',
+                    function: function() { ready.everflowReadyLoadChange() }
             });
+            return;
         } else {
-            iReady(this);
+            this.everflowReadyLoadChange()
             return;
         }
     }
 }
-export default Vue.extend({ mixins: [mixIns] }) as VueConstructor;
+export default Ready.extend({ mixins: [mixIns] }) as VueConstructor;

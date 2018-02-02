@@ -77,22 +77,16 @@ export default class App implements IApp
             if (window.app.ready) {
                 clearInterval(appReadyInterval);
                 var status: boolean = true;
-                for (var callback of app.readyCallbacks)
+                for (let callback of app.readyCallbacks)
                 {
                     if (!_.isFunction(callback))
                     {
-                        var result = callback.function();
-                        status = result;
-                    }
-                }
-                if (status)
-                {
-                    for (let callback of app.readyCallbacks)
-                    {
-                        if (!!(callback && callback.constructor && callback.call && callback.apply))
+                        if (_.isFunction(callback.function))
                         {
-                            new callback();
+                            callback.function();
                         }
+                    } else {
+                        callback();
                     }
                 }
             }
