@@ -81,8 +81,13 @@ export default class App implements IApp
                 {
                     if (!_.isFunction(callback))
                     {
-                        var result = callback.function();
-                        status = result;
+                        if (_.isFunction(callback.function))
+                        {
+                            var result = callback.function();
+                            status = result;
+                        }
+                    } else {
+                        callback();
                     }
                 }
                 if (status)
