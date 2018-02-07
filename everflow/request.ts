@@ -192,7 +192,7 @@ export default class Request
             var prefix = "";
             if (_.has(window.app.config, 'prefix'))
             {
-                prefix = `/${window.app.config.prefix}`;
+                prefix = window.app.config.prefix;
             }
             url = window.app.config.baseURL + prefix + this.endPoint;
         }
