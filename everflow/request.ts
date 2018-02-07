@@ -166,21 +166,35 @@ export default class Request
             this.addHeader('Authorization', `Bearer ${window.app.user.token}`)
         }
         //added to support external links
-        if (this.endPoint.toLowerCase().startsWith('http'))
+        if (_.startsWith(this.endPoint.toLowerCase(), 'http'))
         {
             url = this.endPoint;
         } else {
             // make sure entry point starts with /
             if (window.app.config.debug)
             {
-                /*
-                if (!this.endPoint['startsWith']('/'))
+                if (_.endsWith(window.app.config.baseURL, '/'))
+                {
+                    throw new errors.RequestBaseurlFormatError();
+                }
+                if (!_.startsWith(this.endPoint, '/'))
                 {
                     throw new errors.RequestEndPointFormatError();
                 }
-                */
+                if (_.has(window.app.config, 'prefix'))
+                {
+                    if (!_.startsWith(window.app.config.prefix, '/') || _.endsWith(window.app.config.prefix, '/'))
+                    {
+                        throw new errors.RequestPrefixFormatError();
+                    }
+                }
             }
-            url = window.app.config.baseURL + this.endPoint;
+            var prefix = "";
+            if (_.has(window.app.config, 'prefix'))
+            {
+                prefix = `/${window.app.config.prefix}`;
+            }
+            url = window.app.config.baseURL + prefix + this.endPoint;
         }
         var config = {
             url: url,
