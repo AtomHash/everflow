@@ -2,8 +2,10 @@
 var path = require('path');
 var webpack = require('webpack');
 var Config = require('./config.json');
+var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
+  mode: (Config.debug) ? 'development' : 'production',
   context: __dirname,
   entry: [
       './everflow.ts'
@@ -16,22 +18,20 @@ module.exports = {
     library: 'everflow',
     umdNamedDefine: true
   },
-  plugins: [
-      new webpack.DefinePlugin({
-          'process.env': {
-              //set to development(adds vuejs debugging) or production (remove vuejs debugging)
-              NODE_ENV: (Config.debug) ? '"development"' : '"production"'
-          }
-      }),
-      new webpack.optimize.UglifyJsPlugin({
-          sourceMap: (Config.debug) ? false : true,
-          mangle: false,
-          compress:
-          {
-              warnings: false
-          }
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        uglifyOptions: {
+          compress: false,
+          ecma: 5,
+          mangle: true
+        },
+        sourceMap: true
       })
-  ],
+    ]
+  },
   module: {
       rules: [
           {
@@ -53,5 +53,5 @@ module.exports = {
   performance: {
     hints: false
   },
-  devtool: (Config.debug) ? '#eval-source-map' : '#source-map'
+  devtool: '#source-map'
 }
