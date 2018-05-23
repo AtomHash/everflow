@@ -1,6 +1,7 @@
 ﻿import Vue, { ComponentOptions } from 'vue';
 import * as _ from 'lodash';
 import VueRouter, { RouterMode } from 'vue-router';
+import VeeValidate from 'vee-validate';
 import IApp from './interfaces/i-app';
 import Storage from './utils/storage';
 import History from './history';
@@ -41,6 +42,7 @@ export default class App implements IApp
         this.loadConfig();
         this.loadModels();
         Vue.use(VueRouter);
+        Vue.use(VeeValidate);
     }
 
     /**
