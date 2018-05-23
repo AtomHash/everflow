@@ -1,6 +1,6 @@
 {
   "name": "everflow",
-  "version": "2.1.6",
+  "version": "2.1.7",
   "description": "A client-side framework using VueJS.",
   "main": "./dist/everflow.js",
   "typings": "./dist/types/everflow.d.ts",
@@ -28,7 +28,8 @@
     "vue-router": "^3.0.1",
     "vue-template-compiler": "^2.5.16",
     "vuex": "^3.0.1",
-    "webpack": "^4.8.3"
+    "webpack": "^4.8.3",
+    "vee-validate": "^2.0.9"
   },
   "repository": {
     "type": "git",
