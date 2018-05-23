@@ -69,6 +69,7 @@ class Page extends Vue
 {
     pageName: string = 'default-page';
     routeName: string = '';
+    appName: string = '';
     permissions: Array<any> = [];
     ready()
     {
@@ -83,6 +84,10 @@ class Page extends Vue
     everflowPageLoadChange()
     {
         this.routeName = this.$route.path.substring(this.$route.path.lastIndexOf('/') + 1);
+        if (_.has(window, 'app.config.name')){
+            this.appName = window['app']['config']['name'];
+        }
+        document.title = this.appName + " - " + this.pageName;
         if(PageHelper.fireParms(this, this.permissions))
         {
             PageHelper.pageReady(this);
@@ -98,6 +103,8 @@ class Page extends Vue
 var mixIns: object = {
     $refs: '',
     pageName: 'default-page',
+    routeName: '',
+    appName: '',
     created: function () 
     {
         document.getElementById(window.app.config.mountId).className += ` ${this.pageName}-everflow-page`;
