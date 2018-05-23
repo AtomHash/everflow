@@ -14,7 +14,14 @@ export default class Storage
      */
     constructor(config: object)
     {
-        storage.config(config);
+        var defaultEverflowStorageConfig = {
+            driver:  [storage.INDEXEDDB, storage.WEBSQL, storage.LOCALSTORAGE],
+            name: 'everflow-db',
+            storeName: 'default',
+            size: 4980736
+        }
+        var newConfig = _.merge(defaultEverflowStorageConfig, config);
+        storage.config(newConfig);
     }
 
     /**
