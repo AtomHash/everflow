@@ -1,6 +1,6 @@
 {
   "name": "everflow",
-  "version": "2.1.8",
+  "version": "2.1.9",
   "description": "A client-side framework using VueJS.",
   "main": "./dist/everflow.js",
   "typings": "./dist/types/everflow.d.ts",
@@ -8,12 +8,11 @@
   "dependencies": {
     "@types/crypto-js": "^3.1.39",
     "@types/lodash": "^4.14.109",
-    "@types/node": "10.0.6",
+    "@types/node": "10.1.2",
     "async": "^2.6.1",
     "axios": "^0.18.0",
     "crypto-js": "^3.1.9-1",
     "deep-extend": "^0.6.0",
-    "es6-promise": "^4.2.4",
     "file-loader": "^1.1.11",
     "glob": "^7.1.2",
     "localforage": "^1.7.1",
