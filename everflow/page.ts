@@ -84,7 +84,8 @@ class Page extends Vue
     everflowPageLoadChange()
     {
         this.routeName = this.$route.path.substring(this.$route.path.lastIndexOf('/') + 1);
-        if (_.has(window, 'app.config.name')){
+        if (_.has(window, 'app.config.name'))
+        {
             this.appName = window['app']['config']['name'];
         }
         document.title = this.appName + " - " + this.pageName;
