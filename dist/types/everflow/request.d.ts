@@ -21,5 +21,5 @@ export default class Request {
     put(data: any): AxiosPromise;
     post(data: any): AxiosPromise;
     patch(data: any): AxiosPromise;
-    private build();
+    private build;
 }

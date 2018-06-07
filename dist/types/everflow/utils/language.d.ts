@@ -6,9 +6,9 @@ export default class Language {
     current: string;
     languageModel: LanguageModel;
     constructor(app: IApp);
-    private init(app);
-    private save();
-    private loadParse(languagePack);
+    private init;
+    private save;
+    private loadParse;
     load(languagePack: any): void;
     delete(languagePackName: string): void;
 }
