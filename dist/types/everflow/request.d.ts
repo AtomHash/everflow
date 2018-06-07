@@ -9,12 +9,14 @@ export default class Request {
     headers: object;
     retries: number;
     maxTime: number;
+    disableAllButtons: boolean;
     constructor(url: string, authorize?: boolean);
     static multiple(requests: Array<AxiosPromise>): Promise<AxiosResponse<any>[]>;
     static spread(callback: any): (array: {}[]) => {};
     static getAxiosEngine(): AxiosInstance;
     addHeader(name: any, value: any): Request;
     retry(retries?: number): Request;
+    disableAll(): this;
     timeout(miliseconds?: number): Request;
     get(): AxiosPromise;
     delete(): AxiosPromise;
