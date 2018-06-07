@@ -1,7 +1,7 @@
 export default class Translator {
-    private static loadData(key);
-    private static listKey(key);
-    private static convertProperty(element, property);
+    private static loadData;
+    private static listKey;
+    private static convertProperty;
     static trans(dotKey?: string): string;
     static convertPage(): void;
 }

@@ -17,8 +17,8 @@ export default class App implements IApp {
     router: VueRouter;
     language: Language;
     constructor(User: interfaces.IModel, config: any);
-    private loadConfig();
-    private loadModels();
+    private loadConfig;
+    private loadModels;
     run(routes: Array<any>): void;
     go(name: string, data?: any): void;
     readyCallback(callback: any): void;
