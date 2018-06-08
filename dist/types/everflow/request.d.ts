@@ -19,7 +19,7 @@ export default class Request {
     disableAll(): this;
     timeout(miliseconds?: number): Request;
     get(): AxiosPromise;
-    delete(): AxiosPromise;
+    delete(data?: any): AxiosPromise;
     put(data: any): AxiosPromise;
     post(data: any): AxiosPromise;
     patch(data: any): AxiosPromise;
