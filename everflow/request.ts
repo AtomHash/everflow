@@ -121,9 +121,13 @@ import errors from './errors/--init--';
      * Set Request to HTTP method of DELETE and execute
      * @function delete
      */
-     delete(): AxiosPromise
+     delete(data?: any): AxiosPromise
      {
          this.method = 'DELETE';
+         if (!_.isNil(data))
+         {
+             this.data = data;
+         }
          return this.build();
      }
 
