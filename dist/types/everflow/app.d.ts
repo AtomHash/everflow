@@ -16,6 +16,8 @@ export default class App implements IApp {
     config: any;
     router: VueRouter;
     language: Language;
+    globals: any;
+    requestErrorHandlers: any;
     constructor(User: interfaces.IModel, config: any);
     private loadConfig;
     private loadModels;
