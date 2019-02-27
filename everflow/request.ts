@@ -217,7 +217,7 @@ import errors from './errors/--init--';
             headers: this.headers,
             responseType: this.responseType,
             timeout: this.maxTime,
-            data: this.data
+            data: JSON.stringify(this.data)
         };
         var ax = Axios.create(config);
         let self= this;
@@ -226,7 +226,7 @@ import errors from './errors/--init--';
             var errorCode = _.isNil(error.response)? error.request.status : error.response.status;
             config['retries'] = config['retries'] - 1;
             if (errorCode === 500 && config['retries'] > 0) {
-                return ax[`${config.method.toLowerCase()}`](config.url, config)
+                return ax.request(config);
             }
             return Promise.reject(error);
         }
@@ -259,6 +259,6 @@ import errors from './errors/--init--';
         }
         // add retires to config
         config['retries'] = self.retries;
-        return ax[`${config.method.toLowerCase()}`](config.url, config)
+        return ax.request(config);
     }
 }

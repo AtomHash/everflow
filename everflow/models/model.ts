@@ -24,19 +24,24 @@ export default class Model
         storage.set(this.saveName, this);
     }
 
-    load(callback, storage: Storage = window.app.storage)
+    load(callback: any = null, storage: Storage = window.app.storage)
     {
         var self = this;
         storage.get(this.saveName, function (error, value) {
+            // map loaded values right into object
             if (!_.isNil(value))
             {
                 self.map(value);
             }
-            new callback(self, value);
+            // if callback, call it
+            if (!_.isNil(callback))
+            {
+                new callback(self, value);
+            }
         });
     }
 
-    delete(callback, storage: Storage = window.app.storage)
+    delete(callback: any = null, storage: Storage = window.app.storage)
     {
         storage.remove(this.saveName, function () {
             if (!_.isNil(callback))
