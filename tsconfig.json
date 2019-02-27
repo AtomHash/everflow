@@ -10,7 +10,7 @@
     "sourceRoot": "./build/maps",
     "rootDir": "./",
     "sourceMap": true,
-    "outDir": "types",
+    "outDir": "dist/types",
     "experimentalDecorators": true
   }
 }
