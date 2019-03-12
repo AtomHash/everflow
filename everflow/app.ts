@@ -29,35 +29,37 @@ export default class App implements IApp
     globals: any = {};
     requestErrorHandlers: any = {};
 
+
     /**
      * Initializes App
      * @constructor
      * @param {interfaces.IModel} User - a user model object 
      * @param {object} config - everflow config
      */
-    constructor(User: interfaces.IModel, config: any)
+    constructor(userClass: interfaces.IModel, config: any)
     {
         this.config = config
-        this.user = new User();
+        this.user = new userClass();
         this.storage = new Storage(config.storage);
         this.language = new Language(this);
-        this.loadConfig();
-        this.loadModels();
         Vue.use(VueRouter);
         Vue.use(VeeValidate);
     }
 
     /**
      * Configure global everflow settings
-     * @function loadConfig
+     * @function processConfig
      * @private
      */
-    private loadConfig(): void
+    private processConfig(): void
     {
         // easy disable for console messages in production
-        if (!this.config.debug)
+        if (window.console)
         {
-            window.console.log = function(){};
+            if (!this.config.debug)
+            {
+                window.console.log = function(){};
+            }
         }
     }
 
@@ -71,12 +73,11 @@ export default class App implements IApp
         //Load app dependant models
         var app = this;
         // CRITICAL
-        this.user.load(function (self, value) {
-            app.user = self;
+        this.user.load(function () {
             app.ready = true; //sets app state to ready.
         }, this.storage);
         // END - CRITICAL
-        // INTERVAL WAIT - APP LOADED USER
+        // ASYNC INTERVAL WAIT - APP LOADED USER
         var appReadyInterval = setInterval(function () {
             if (window.app.ready) {
                 clearInterval(appReadyInterval);
@@ -95,11 +96,11 @@ export default class App implements IApp
                 }
             }
         }, 200);
-        // END INTERVAL WAIT
+        // END ASYNC INTERVAL WAIT
     }
 
     /**
-     * Add header to Request
+     * Start the EverFlow application
      * @function run
      * @param {Array<object>} routes - array of routes to be served by the app
      */
@@ -132,10 +133,12 @@ export default class App implements IApp
         //Create new history wrapper for vuejs router history.
         window.app.history = new History();
         this.history = window.app.history;
+        this.processConfig();
+        this.loadModels();
     }
 
     /**
-     * Add header to Request
+     * $router.push, goes to page name
      * @function go
      * @param {string} name - name of route to navigate to
      * @param {object} data - params to send to the new route

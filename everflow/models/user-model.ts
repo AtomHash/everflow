@@ -7,7 +7,7 @@
 export default class UserModel extends Model
 {
     saveName: string    = 'user';
-    token: string       = '';
+    token: string       = null;
     firstname: string   = '';
     lastname: string    = '';
     email: string       = '';

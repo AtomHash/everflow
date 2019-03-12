@@ -1,4 +1,5 @@
-﻿import Permission from '../permission';
+﻿import * as _ from 'lodash';
+import Permission from '../permission';
 
 /**
  * User is authenticated permission
@@ -22,7 +23,10 @@ export default class AuthenticatedPermission extends Permission
 
     condition(): boolean
     {
-        return !this.app.user.token.isEmpty();
+        if (!_.isNil(this.app.user.token) || !_.isEmpty(this.app.user.token))
+        {
+            return true;
+        }
     }
 
     failure(): void
