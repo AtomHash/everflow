@@ -1,7 +1,11 @@
 import Permission from '../permission';
 export default class AuthenticatedPermission extends Permission {
     route: string;
-    constructor(route?: string);
+    data: {};
+    successCallback: Function;
+    failureCallback: Function;
+    constructor(page?: any, params?: any);
     condition(): boolean;
+    success(): void;
     failure(): void;
 }

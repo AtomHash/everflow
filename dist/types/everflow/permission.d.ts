@@ -3,7 +3,8 @@ import IApp from './interfaces/i-app';
 export default class Permission implements IPermission {
     app: IApp;
     status: boolean;
-    constructor();
+    page: any;
+    constructor(page?: any);
     action(): void;
     condition(): boolean;
     success(): void;

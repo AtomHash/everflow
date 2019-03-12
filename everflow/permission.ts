@@ -9,14 +9,16 @@ export default class Permission implements IPermission
 {
     app: IApp;
     status: boolean;
+    page: any = null;
 
     /**
      * Initializes Permission and triggers condition function
      * @constructor
      */
-    constructor()
+    constructor(page: any = null)
     {
         this.app = window.app;
+        this.page = page;
         this.status = this.condition();
     }
 
