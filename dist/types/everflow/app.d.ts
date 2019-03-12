@@ -18,8 +18,8 @@ export default class App implements IApp {
     language: Language;
     globals: any;
     requestErrorHandlers: any;
-    constructor(User: interfaces.IModel, config: any);
-    private loadConfig;
+    constructor(userClass: interfaces.IModel, config: any);
+    private processConfig;
     private loadModels;
     run(routes: Array<any>): void;
     go(name: string, data?: any): void;
