@@ -39,12 +39,12 @@ class PageHelper
             {
                 if ('params' in callback)
                 {
-                    var permission: any = new callback['callback'](callback['params']);
+                    var permission: any = new callback['callback'](page, callback['params']);
                 } else {
-                    var permission: any = new callback['callback']();
+                    var permission: any = new callback['callback'](page);
                 }
             } else {
-                var permission: any = new callback();
+                var permission: any = new callback(page);
             }
             if (!permission.status)
             {
