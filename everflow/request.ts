@@ -1,4 +1,4 @@
-﻿import Axios, { AxiosInstance, AxiosPromise, AxiosResponse } from 'axios';
+﻿import Axios, { AxiosInstance, AxiosPromise, AxiosResponse, Method, ResponseType } from 'axios';
 import * as _ from 'lodash';
 import errors from './errors/--init--';
 
@@ -11,9 +11,9 @@ import errors from './errors/--init--';
      config: any = window.app.config;
      endPoint:string = '';
      authorize: boolean = false;
-     method: string = '';
+     method: Method;
      data: any = null;
-     responseType: string = 'json';
+     responseType: ResponseType = 'json';
      headers: object = {};
      retries: number = 0;
      maxTime: number = 8000;

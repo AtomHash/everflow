@@ -1,11 +1,11 @@
-import { AxiosInstance, AxiosPromise, AxiosResponse } from 'axios';
+import { AxiosInstance, AxiosPromise, AxiosResponse, Method, ResponseType } from 'axios';
 export default class Request {
     config: any;
     endPoint: string;
     authorize: boolean;
-    method: string;
+    method: Method;
     data: any;
-    responseType: string;
+    responseType: ResponseType;
     headers: object;
     retries: number;
     maxTime: number;
