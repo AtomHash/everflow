@@ -18,7 +18,7 @@ export default class App implements IApp {
     language: Language;
     globals: any;
     requestErrorHandlers: any;
-    constructor(userClass: interfaces.IModel, config: any);
+    constructor(userClass: interfaces.IModel, config: any, plugins: Array<any>);
     private processConfig;
     private loadModels;
     run(routes: Array<any>): void;

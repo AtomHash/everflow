@@ -1,7 +1,6 @@
 ﻿import Vue, { ComponentOptions } from 'vue';
 import * as _ from 'lodash';
 import VueRouter, { RouterMode } from 'vue-router';
-import VeeValidate from 'vee-validate';
 import IApp from './interfaces/i-app';
 import Storage from './utils/storage';
 import History from './history';
@@ -36,14 +35,16 @@ export default class App implements IApp
      * @param {interfaces.IModel} User - a user model object 
      * @param {object} config - everflow config
      */
-    constructor(userClass: interfaces.IModel, config: any)
+    constructor(userClass: interfaces.IModel, config: any, plugins: Array<any>)
     {
         this.config = config
         this.user = new userClass();
         this.storage = new Storage(config.storage);
         this.language = new Language(this);
         Vue.use(VueRouter);
-        Vue.use(VeeValidate);
+        _.forEach(plugins, function(plugin, index, arr){
+            Vue.use(plugin);
+        });
     }
 
     /**

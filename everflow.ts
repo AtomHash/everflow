@@ -1,6 +1,4 @@
 import Vue from 'vue';
-import async from 'async';
-import * as _ from "lodash";
 import VueRouter from 'vue-router';
 import App from './everflow/app';
 import History from './everflow/history';
@@ -20,8 +18,6 @@ import * as interfaces from './everflow/interfaces/--init--';
 
 export
 {
-    _,
-    async,
     Vue,
     VueRouter,
     App,

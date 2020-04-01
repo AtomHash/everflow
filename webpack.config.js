@@ -2,7 +2,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var Config = require('./config.json');
-var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
   mode: (Config.debug) ? 'development' : 'production',
@@ -18,20 +18,32 @@ module.exports = {
     library: 'everflow',
     umdNamedDefine: true
   },
-  optimization: {
+  plugins: [
+    new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        uglifyOptions: {
+          compress: true,
+          ecma: 5,
+          mangle: true
+        },
+        sourceMap: true
+      })
+  ],
+  /*optimization: {
     minimizer: [
       new UglifyJsPlugin({
         cache: true,
         parallel: true,
         uglifyOptions: {
-          compress: false,
+          compress: true,
           ecma: 5,
           mangle: true
         },
         sourceMap: true
       })
     ]
-  },
+  },*/
   module: {
       rules: [
           {
