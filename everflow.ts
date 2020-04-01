@@ -1,3 +1,4 @@
+import * as _ from 'lodash';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import App from './everflow/app';
@@ -18,6 +19,7 @@ import * as interfaces from './everflow/interfaces/--init--';
 
 export
 {
+    _,
     Vue,
     VueRouter,
     App,
