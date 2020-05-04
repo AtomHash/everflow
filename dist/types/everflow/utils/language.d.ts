@@ -1,11 +1,11 @@
 import LanguageModel from '../models/language-model';
-import IApp from '../interfaces/i-app';
+import App from '../app';
 export default class Language {
     data: any;
     ready: boolean;
     current: string;
     languageModel: LanguageModel;
-    constructor(app: IApp);
+    constructor(everflowApp: App);
     private init;
     private save;
     private loadParse;

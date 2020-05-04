@@ -30,9 +30,15 @@ export default class Storage
      * @param {string} key - local storage index-key
      * @param {any} value - value to save
      */
-    set(key: string, value: any): void 
+    set(key: string, value: any, onSuccess: CallableFunction|null, onFail:CallableFunction|null): void 
     {
-        storage.setItem(key, value);
+        storage.setItem(key, value).then(function (value) {
+            if (_.isFunction(onSuccess)) {
+                onSuccess(value);
+            }}).catch(function (err) {
+            if (_.isFunction(onFail)){
+                onFail(err);
+            }});
     }
 
     /**
@@ -43,7 +49,7 @@ export default class Storage
      */
     get(key: string, callback): void
     {
-        storage.getItem(key, callback);
+        storage.getItem(key, callback)
     }
 
     /**

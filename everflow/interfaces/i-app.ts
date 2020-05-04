@@ -6,7 +6,7 @@ import Language from '../utils/language';
 
 export default interface IApp
 {
-    currentView: Vue;
+    vue: Vue;
     user: any;
     storage: Storage;
     go(name: string): void;

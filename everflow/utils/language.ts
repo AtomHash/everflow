@@ -1,6 +1,7 @@
 import * as _ from 'lodash';
 import LanguageModel from '../models/language-model';
-import IApp from '../interfaces/i-app';
+import App from '../app';
+import Storage from './storage';
 
 /**
  * Creates an Everflow Language object. Adds the ability to load object language packages to translate from.
@@ -18,10 +19,10 @@ export default class Language
      * @constructor
      * @param {IApp} app - an everflow app
      */
-    constructor(app: IApp)
+    constructor(everflowApp: App)
     {
-        this.current = app.config.language;
-        this.init(app);
+        this.current = everflowApp.config.language;
+        this.init(everflowApp.storage);
     }
 
     /**
@@ -30,13 +31,13 @@ export default class Language
      * @param {IApp} app - an everflow app
      * @private
      */
-    private init(app: IApp)
+    private init(storage: Storage)
     {
         var language = this;
-        this.languageModel = new LanguageModel();
+        this.languageModel = new LanguageModel(storage);
         this.languageModel.load(function (self, value) {
             language.languageModel = self;
-        }, app.storage);
+        }, storage);
     }
 
     /**

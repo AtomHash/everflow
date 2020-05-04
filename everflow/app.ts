@@ -8,6 +8,14 @@ import UserModel from './models/user-model';
 import Language from './utils/language';
 import errors from './errors/--init--';
 import * as interfaces from './interfaces/--init--';
+import EverFlow from './plugin/everflow-plugin';
+
+
+declare module 'vue/types/vue' {
+  interface Vue {
+    $everflowApp: App
+  }
+}
 
 /**
  * Creates an Everflow App object. The primary application object.
@@ -15,7 +23,7 @@ import * as interfaces from './interfaces/--init--';
  */
 export default class App implements IApp
 {
-    currentView: Vue;
+    vue: Vue;
     user: any;
     storage: Storage;
     history: History;
@@ -23,9 +31,8 @@ export default class App implements IApp
     readyPermission: boolean = false;
     readyCallbacks: Array<any> = [];
     config: any;
-    router: VueRouter;
     language: Language;
-    globals: any = {};
+    $globals: any = {};
     requestErrorHandlers: any = {};
 
 
@@ -35,12 +42,12 @@ export default class App implements IApp
      * @param {interfaces.IModel} User - a user model object 
      * @param {object} config - everflow config
      */
-    constructor(userClass: interfaces.IModel, config: any, plugins: Array<any>)
+    constructor(userClass: any, config: any, plugins: Array<any>)
     {
-        this.config = config
-        this.user = new userClass();
+        this.config = config;
         this.storage = new Storage(config.storage);
         this.language = new Language(this);
+        this.user = new userClass(this.storage);
         Vue.use(VueRouter);
         _.forEach(plugins, function(plugin, index, arr){
             Vue.use(plugin);
@@ -55,6 +62,7 @@ export default class App implements IApp
     private processConfig(): void
     {
         // easy disable for console messages in production
+        /*
         if (window.console)
         {
             if (!this.config.debug)
@@ -62,6 +70,7 @@ export default class App implements IApp
                 window.console.log = function(){};
             }
         }
+        */
     }
 
     /**
@@ -75,14 +84,9 @@ export default class App implements IApp
         var app = this;
         // CRITICAL
         this.user.load(function () {
+            console.log('called Models Load in everflow.js')
             app.ready = true; //sets app state to ready.
-        }, this.storage);
-        // END - CRITICAL
-        // ASYNC INTERVAL WAIT - APP LOADED USER
-        var appReadyInterval = setInterval(function () {
-            if (window.app.ready) {
-                clearInterval(appReadyInterval);
-                var status: boolean = true;
+            var status: boolean = true;
                 for (let callback of app.readyCallbacks)
                 {
                     if (!_.isFunction(callback))
@@ -95,9 +99,8 @@ export default class App implements IApp
                         callback();
                     }
                 }
-            }
-        }, 200);
-        // END ASYNC INTERVAL WAIT
+        }, this.storage);
+        // END - CRITICAL
     }
 
     /**
@@ -107,7 +110,6 @@ export default class App implements IApp
      */
     run(routes: Array<any>): void 
     {
-        window.app = this;
         var routerMode: RouterMode = null;
         if (_.isEmpty(this.config.routerMode))
         {
@@ -124,17 +126,15 @@ export default class App implements IApp
         {
             throw new errors.RoutesEmptyError();
         }
-        this.router = new VueRouter({
-            mode: routerMode,
-            routes // short for routes: routes
-        });
-        this.currentView = new Vue({
-            router: this.router
+        Vue.use(EverFlow, { everflowApp: this });
+        this.vue = new Vue({
+            router: new VueRouter({
+                mode: routerMode,
+                routes})
         }).$mount('#'+mountId);
         //Create new history wrapper for vuejs router history.
-        window.app.history = new History();
-        this.history = window.app.history;
         this.processConfig();
+        this.history = new History(this);
         this.loadModels();
     }
 
@@ -146,7 +146,7 @@ export default class App implements IApp
      */
     go(name: string, data: any = {})
     {
-        this.currentView.$router.push({ name: name, params: data});
+        this.vue.$router.push({ name: name, params: data});
     }
 
     /**

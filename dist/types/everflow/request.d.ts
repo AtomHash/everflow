@@ -1,6 +1,7 @@
 import { AxiosInstance, AxiosPromise, AxiosResponse, Method, ResponseType } from 'axios';
+import App from './app';
 export default class Request {
-    config: any;
+    everflowApp: App;
     endPoint: string;
     authorize: boolean;
     method: Method;
@@ -10,7 +11,7 @@ export default class Request {
     retries: number;
     maxTime: number;
     disableAllButtons: boolean;
-    constructor(url: string, authorize?: boolean);
+    constructor(everflowApp: App, url: string, authorize?: boolean);
     static multiple(requests: Array<AxiosPromise>): Promise<AxiosResponse<any>[]>;
     static spread(callback: any): (array: {}[]) => {};
     static getAxiosEngine(): AxiosInstance;

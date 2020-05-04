@@ -1,5 +1,5 @@
-﻿import Vue, { VueConstructor } from 'vue';
-import * as _ from 'lodash';
+﻿import * as _ from 'lodash';
+import Vue, { VueConstructor } from 'vue';
 import App from './app';
 import decorators from './decorators/--init--'
 
@@ -22,42 +22,6 @@ class PageHelper
             page.ready();
         }
     }
-
-    /**
-     * Check Page permissions and trigger the permissions conditions if not satisfied
-     * @function fireParms
-     * @param {Page} page - Page class
-     * @param {Array<any>} permissions - Array of everflow permissions 
-     * @static
-     */
-    static fireParms(page, permissions)
-    {
-        var status: boolean = true;
-        for (var callback of permissions)
-        {
-            if ('callback' in callback)
-            {
-                if ('params' in callback)
-                {
-                    var permission: any = new callback['callback'](page, callback['params']);
-                } else {
-                    var permission: any = new callback['callback'](page);
-                }
-            } else {
-                var permission: any = new callback(page);
-            }
-            if (!permission.status)
-            {
-                status = false;
-            }
-        }
-        if (status)
-        {
-            return true;
-        } else {
-            return false;
-        }
-    }
 }
 
 /**
@@ -69,8 +33,6 @@ class Page extends Vue
 {
     pageName: string = 'default-page';
     routeName: string = '';
-    appName: string = '';
-    permissions: Array<any> = [];
     ready()
     {
 
@@ -84,15 +46,7 @@ class Page extends Vue
     everflowPageLoadChange()
     {
         this.routeName = this.$route.path.substring(this.$route.path.lastIndexOf('/') + 1);
-        if (_.has(window, 'app.config.name'))
-        {
-            this.appName = window['app']['config']['name'];
-        }
-        document.title = this.appName + " - " + this.pageName;
-        if(PageHelper.fireParms(this, this.permissions))
-        {
-            PageHelper.pageReady(this);
-        }
+        document.title = this.pageName;
     }
 }
 
@@ -105,37 +59,14 @@ var mixIns: object = {
     $refs: '',
     pageName: 'default-page',
     routeName: '',
-    appName: '',
-    created: function () 
+    created() 
     {
-        document.getElementById(window.app.config.mountId).className += ` ${this.pageName}-everflow-page`;
-        window.app.currentView = this;
+        document.getElementById(this.$everflowApp.config.mountId).className += ` ${this.pageName}-everflow-page`;
     },
-    mounted: function ()
+    mounted()
     {
-        if (!_.isNil(this.permissions) && !_.isEmpty(this.permissions))
-        {
-            let perms = this.permissions;
-            let app = window.app;
-            let page = this;
-            if (!app.ready)
-            {
-                // ASYNC - This waits until the app is ready(user has loaded - async)
-                app.readyCallback({
-                    type: 'page',
-                    function: function() { page.everflowPageLoadChange(); }
-                });
-                // END ASYNC
-            } else {
-                page.everflowPageLoadChange()
-            }
-        }
-        else
-        {
-            window.app.readyPermission = true;
-            PageHelper.pageReady(this);
-            return;
-        }
+        this.$everflowApp.readyPermission = true;
+        PageHelper.pageReady(this);
     }
 }
 export default Page.extend({ mixins: [mixIns] }) as VueConstructor;

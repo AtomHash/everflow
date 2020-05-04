@@ -1,5 +1,6 @@
 import * as moment from 'moment';
 import * as _ from 'lodash';
+import App from '../app';
 
 /**
  * Adds the ability to convert dates and times using config options.
@@ -13,12 +14,12 @@ export default class DateTime
      * @private
      * @static
      */
-    private static getDateFormat(): string
+    private static getDateFormat(everflowApp: App = null): string
     {
-        var config = window.app.config;
         var dateFormat = null;
         try {
-            dateFormat = window.app.config.datetime.date.format;
+            var config = everflowApp.config;
+            dateFormat = everflowApp.config.datetime.date.format;
         } catch (e){
             dateFormat = 'YYYY-MM-DD';
         }
@@ -31,12 +32,12 @@ export default class DateTime
      * @private
      * @static
      */
-    private static getTimeFormat(): string
+    private static getTimeFormat(everflowApp: App = null): string
     {
-        var config = window.app.config;
         var timeFormat = null;
         try {
-            timeFormat = window.app.config.datetime.time.format;
+            var config = everflowApp.config;
+            timeFormat = everflowApp.config.datetime.time.format;
         } catch (e){
             timeFormat = 'LTS';
         }

@@ -12,6 +12,7 @@ export default class UserModel extends Model
     lastname: string    = '';
     email: string       = '';
 
+    /*
     signOut(location: string = 'login', locationParams: any = {})
     {
         var app = window.app;
@@ -21,4 +22,5 @@ export default class UserModel extends Model
             app.go(location, locationParams);
         });
     }
+    */
 }

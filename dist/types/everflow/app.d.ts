@@ -1,12 +1,15 @@
 import Vue from 'vue';
-import VueRouter from 'vue-router';
 import IApp from './interfaces/i-app';
 import Storage from './utils/storage';
 import History from './history';
 import Language from './utils/language';
-import * as interfaces from './interfaces/--init--';
+declare module 'vue/types/vue' {
+    interface Vue {
+        $everflowApp: App;
+    }
+}
 export default class App implements IApp {
-    currentView: Vue;
+    vue: Vue;
     user: any;
     storage: Storage;
     history: History;
@@ -14,11 +17,10 @@ export default class App implements IApp {
     readyPermission: boolean;
     readyCallbacks: Array<any>;
     config: any;
-    router: VueRouter;
     language: Language;
-    globals: any;
+    $globals: any;
     requestErrorHandlers: any;
-    constructor(userClass: interfaces.IModel, config: any, plugins: Array<any>);
+    constructor(userClass: any, config: any, plugins: Array<any>);
     private processConfig;
     private loadModels;
     run(routes: Array<any>): void;

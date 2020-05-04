@@ -1,5 +1,5 @@
-﻿import Vue, { VueConstructor } from 'vue';
-import * as _ from 'lodash';
+﻿import * as _ from 'lodash';
+import Vue, { VueConstructor } from 'vue';
 import App from './app';
 import decorators from './decorators/--init--'
 
@@ -37,7 +37,7 @@ class Ready extends Vue
 var mixIns: object = {
     $refs: '',
     mounted: function () {
-        let app = window.app;
+        let app = this.$everflowApp;
         let ready = this;
         if (!app.ready)
         {

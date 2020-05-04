@@ -3,7 +3,7 @@ import Storage from '../utils/storage';
 import History from '../history';
 import Language from '../utils/language';
 export default interface IApp {
-    currentView: Vue;
+    vue: Vue;
     user: any;
     storage: Storage;
     go(name: string): void;

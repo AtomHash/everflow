@@ -1,4 +1,5 @@
-﻿import VueRouter from 'vue-router';
+﻿import App from './app';
+import VueRouter from 'vue-router';
 
 /**
  * Creates an Everflow History object.
@@ -6,7 +7,17 @@
  */
 export default class History
 {
-    router = window.app.currentView['$router'];
+    router: VueRouter;
+
+    /**
+     * Initializes App
+     * @constructor
+     * @param {object} App - everflow app object
+     */
+    constructor(app: App)
+    {
+        this.router = app.vue.$router;
+    }
 
     /**
      * Makes the router go forward once

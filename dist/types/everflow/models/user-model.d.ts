@@ -5,5 +5,4 @@ export default class UserModel extends Model {
     firstname: string;
     lastname: string;
     email: string;
-    signOut(location?: string, locationParams?: any): void;
 }

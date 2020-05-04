@@ -1,6 +1,7 @@
 ﻿import Axios, { AxiosInstance, AxiosPromise, AxiosResponse, Method, ResponseType } from 'axios';
 import * as _ from 'lodash';
 import errors from './errors/--init--';
+import App from './app';
 
 /**
  * Creates an Everflow Request object. Intergrates Axios into the Everflow framework.
@@ -8,7 +9,7 @@ import errors from './errors/--init--';
  */
  export default class Request 
  {
-     config: any = window.app.config;
+     everflowApp: App;
      endPoint:string = '';
      authorize: boolean = false;
      method: Method;
@@ -25,8 +26,9 @@ import errors from './errors/--init--';
      * @param {string} url - request url
      * @param {boolean} authorize - if true add JWT to request 
      */
-     constructor(url: string, authorize: boolean = false)
+     constructor(everflowApp: App, url: string, authorize: boolean = false)
      {
+         this.everflowApp = everflowApp;
          this.endPoint = url;
          this.authorize = authorize;
      }
@@ -178,7 +180,7 @@ import errors from './errors/--init--';
          var url: string = '';
          if (this.authorize)
          {
-             this.addHeader('Authorization', `Bearer ${window.app.user.token}`)
+             this.addHeader('Authorization', `Bearer ${this.everflowApp.user.token}`)
          }
         //added to support external links
         if (_.startsWith(this.endPoint.toLowerCase(), 'http'))
@@ -186,9 +188,9 @@ import errors from './errors/--init--';
             url = this.endPoint;
         } else {
             // make sure entry point starts with /
-            if (window.app.config.debug)
+            if (this.everflowApp.config.debug)
             {
-                if (_.endsWith(window.app.config.baseURL, '/'))
+                if (_.endsWith(this.everflowApp.config.baseURL, '/'))
                 {
                     throw new errors.RequestBaseurlFormatError();
                 }
@@ -196,20 +198,20 @@ import errors from './errors/--init--';
                 {
                     throw new errors.RequestEndPointFormatError();
                 }
-                if (_.has(window.app.config, 'prefix'))
+                if (_.has(this.everflowApp.config, 'prefix'))
                 {
-                    if (!_.startsWith(window.app.config.prefix, '/') || _.endsWith(window.app.config.prefix, '/'))
+                    if (!_.startsWith(this.everflowApp.config.prefix, '/') || _.endsWith(this.everflowApp.config.prefix, '/'))
                     {
                         throw new errors.RequestPrefixFormatError();
                     }
                 }
             }
             var prefix = "";
-            if (_.has(window.app.config, 'prefix'))
+            if (_.has(this.everflowApp.config, 'prefix'))
             {
-                prefix = window.app.config.prefix;
+                prefix = this.everflowApp.config.prefix;
             }
-            url = window.app.config.baseURL + prefix + this.endPoint;
+            url = this.everflowApp.config.baseURL + prefix + this.endPoint;
         }
         var config = {
             url: url,
@@ -225,7 +227,8 @@ import errors from './errors/--init--';
         {
             var errorCode = _.isNil(error.response)? error.request.status : error.response.status;
             config['retries'] = config['retries'] - 1;
-            if (errorCode === 500 && config['retries'] > 0) {
+            if (errorCode === 500 && config['retries'] > 0)
+            {
                 return ax.request(config);
             }
             return Promise.reject(error);

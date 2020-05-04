@@ -1,4 +1,5 @@
 import * as _ from 'lodash';
+import App from './app';
 
 /**
  * Creates an Everflow Translator object. Adds the ability to translate langauges using keys
@@ -13,10 +14,10 @@ export default class Translator
      * @private
      * @static
      */
-    private static loadData(key: string): any
+    private static loadData(everflowApp: App, key: string): any
     {
-        var language = window.app.language;
-        return window.app.language.data[key][language.current];
+        var language = everflowApp.language;
+        return everflowApp.language.data[key][language.current];
     }
 
     /**
@@ -64,10 +65,10 @@ export default class Translator
      * @param {string} key - a string with dot keys (packageName.message)
      * @static
      */
-    static trans(dotKey: string = null): string
+    static trans(everflowApp: App, dotKey: string = null): string
     {
         var keyList = Translator.listKey(dotKey);
-        var currentSelection = Translator.loadData(keyList[0]);
+        var currentSelection = Translator.loadData(everflowApp, keyList[0]);
         delete keyList[0];
         for (var key in keyList)
         {
