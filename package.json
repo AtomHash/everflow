@@ -1,6 +1,6 @@
 {
   "name": "everflow",
-  "version": "4.0.0-alpha.1",
+  "version": "4.0.0-alpha.2",
   "description": "Everflow is a fully modular framework for VueJS to make code reuse easier.",
   "main": "./dist/everflow.js",
   "typings": "./dist/types/everflow.d.ts",

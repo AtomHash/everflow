@@ -190,7 +190,7 @@ import App from './app';
             // make sure entry point starts with /
             if (this.everflowApp.config.debug)
             {
-                if (_.endsWith(this.everflowApp.config.baseURL, '/'))
+                if (_.endsWith(this.everflowApp.config.apiURL, '/'))
                 {
                     throw new errors.RequestBaseurlFormatError();
                 }
@@ -198,20 +198,8 @@ import App from './app';
                 {
                     throw new errors.RequestEndPointFormatError();
                 }
-                if (_.has(this.everflowApp.config, 'prefix'))
-                {
-                    if (!_.startsWith(this.everflowApp.config.prefix, '/') || _.endsWith(this.everflowApp.config.prefix, '/'))
-                    {
-                        throw new errors.RequestPrefixFormatError();
-                    }
-                }
             }
-            var prefix = "";
-            if (_.has(this.everflowApp.config, 'prefix'))
-            {
-                prefix = this.everflowApp.config.prefix;
-            }
-            url = this.everflowApp.config.baseURL + prefix + this.endPoint;
+            url = this.everflowApp.config.apiURL + this.endPoint;
         }
         var config = {
             url: url,
