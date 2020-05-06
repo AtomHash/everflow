@@ -1,22 +1,20 @@
 {
   "name": "everflow",
-  "version": "4.0.0-alpha.2",
+  "version": "4.0.0-alpha.3",
   "description": "Everflow is a fully modular framework for VueJS to make code reuse easier.",
   "main": "./dist/everflow.js",
   "typings": "./dist/types/everflow.d.ts",
   "author": "AtomHash",
-  "dependencies": {
-    "@types/crypto-js": "^3.1.45",
-    "@types/lodash": "^4.14.150",
-    "@types/node": "13.13.4",
-    "glob": "^7.1.6",
-    "file-loader": "^6.0.0",
+  "devDependencies": {
+    "fs-extra": "9.0.0",
+    "terser-webpack-plugin": "^3.0.0",
     "ts-loader": "^7.0.2",
     "typescript": "^3.8.3",
-    "uglifyjs-webpack-plugin": "^2.2.0",
-    "vue-template-compiler": "^2.6.11",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11",
+    "file-loader": "^6.0.0"
+  },
+  "dependencies": {
     "axios": "^0.19.2",
     "crypto-js": "^4.0.0",
     "localforage": "^1.7.3",
@@ -42,8 +40,5 @@
   "bugs": {
     "url": "https://github.com/atomhash/everflow/issues"
   },
-  "homepage": "https://github.com/atomhash/everflow#readme",
-  "devDependencies": {
-    "webpack-cli": "^3.3.11"
-  }
+  "homepage": "https://github.com/atomhash/everflow#readme"
 }

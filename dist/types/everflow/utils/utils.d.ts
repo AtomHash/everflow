@@ -22,4 +22,7 @@ declare const _default: {
     removeHtml(value: string): string;
     microTime(): number;
 };
+/**
+* Cluster of random useful functions. Clean up in the future.
+*/
 export default _default;

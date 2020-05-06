@@ -1,4 +1,8 @@
 import Storage from '../utils/storage';
+/**
+ * The primary Model - Future up to vuex states...
+ * @class
+ */
 export default class Model {
     saveName: string;
     __storage: Storage;

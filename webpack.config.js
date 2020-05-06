@@ -1,11 +1,34 @@
 ﻿var glob = require("glob");
 var path = require('path');
+var fs = require('fs-extra');
 var webpack = require('webpack');
-var Config = require('./config.json');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+var packageJSON = fs.readJsonSync('./package.json');
+
+var nodeModules = {};
+fs.readdirSync('node_modules')
+  .filter(function(x) {
+    return ['.bin'].indexOf(x) === -1;
+  })
+  .filter(function(y) {
+    return !(y in packageJSON.devDependencies);
+  })
+  .forEach(function(mod) {
+    nodeModules[mod] = 'commonjs ' + mod;
+});
+
+delete nodeModules['vue'];
+delete nodeModules['axios'];
+// delete nodeModules['crypto-js'];
+delete nodeModules['localforage'];
+// delete nodeModules['lodash'];
+// delete nodeModules['moment'];
+delete nodeModules['vue-class-component'];
+delete nodeModules['vue-property-decorator'];
+delete nodeModules['vue-router'];
 
 module.exports = {
-  mode: (Config.debug) ? 'development' : 'production',
+  mode: 'production',
   context: __dirname,
   entry: [
       './everflow.ts'
@@ -18,6 +41,11 @@ module.exports = {
     library: 'everflow',
     umdNamedDefine: true
   },
+   optimization: {
+    minimize: true,
+    minimizer: [new TerserPlugin()],
+  },
+  /*
   plugins: [
     new UglifyJsPlugin({
         cache: true,
@@ -30,20 +58,8 @@ module.exports = {
         sourceMap: true
       })
   ],
-  /*optimization: {
-    minimizer: [
-      new UglifyJsPlugin({
-        cache: true,
-        parallel: true,
-        uglifyOptions: {
-          compress: true,
-          ecma: 5,
-          mangle: true
-        },
-        sourceMap: true
-      })
-    ]
-  },*/
+  */
+  externals: nodeModules,
   module: {
       rules: [
           {
@@ -57,10 +73,6 @@ module.exports = {
         'vue$': 'vue/dist/vue.esm.js'
       },
     extensions: ['.js', '.ts', '.vue']
-  },
-  devServer: {
-    historyApiFallback: true,
-    noInfo: true
   },
   performance: {
     hints: false

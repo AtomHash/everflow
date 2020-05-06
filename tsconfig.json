@@ -1,12 +1,9 @@
 ﻿{
   "compilerOptions": {
-    "module": "commonjs",
+    "module": "esnext",
     "moduleResolution": "node",
-    "target": "es5",
-    "lib": [ "es2015", "dom" , "es2015.promise"],
+    "target": "esnext",
     "declaration": true,
-    "removeComments": true,
-    "preserveConstEnums": true,
     "sourceRoot": "./build/maps",
     "rootDir": "./",
     "sourceMap": true,
