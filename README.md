@@ -9,23 +9,23 @@ A framework for a VueJS TypeScript application. Scalability and Modularity that 
 ### Alpha
 Lots of work in progress for this batteries included VueJS TypeScript framework.
 
-### Gettign Started - CLI TOOLS for Vue CLI
+### Getting Started - VueJS Cli
 1. `vue create <app-name>`
     - babel (required)
-        - Use Babel alongside TypeScript (...)? **Yes**
+        - Use Babel alongside TypeScript: **Yes**
     - TypeScript (required)
-        - Use class-style component syntax? **Yes**
+        - Use class-style component syntax: **Yes**
     - Router  (required)
-        - Use history mode for router? (...) **Yes/No**
+        - Use history mode for router: **Your Choice**
     - Vuex (required)
     - CSS Pre Processors (optional) - *However recommended.*
-        - Pick a CSS pre-processor (...): **Sass/SCSS (with node-sass)**
+        - Pick a CSS pre-processor: **(node-sass)/Your Choice**
     - Progressive Web App (optional) - *However recommended.*
     - Linter
-        - Pick a linter / formatter config: **Basic/Your Choice**
+        - Pick a linter|formatter config: **Basic/Your Choice**
         - Pick additional lint features: **Lint on save/Your Choice**
     - Config Files
-        - Where do you prefer placing config ...? **In dedicated config files**
+        - Where do you prefer placing config? **In dedicated config files**
 2. `vue add vue-cli-plugin-everflow`
 
 ### Everflow Design Pattern
