@@ -5,7 +5,6 @@ import * as _ from 'lodash';
 import VueRouter, { RouterOptions, RouteConfig, RouterMode } from 'vue-router';
 import IApp from './interfaces/i-app';
 import Storage from './utils/storage';
-import History from './history';
 import UserModel from './models/user-model';
 import Language from './utils/language';
 import errors from './errors/--init--';
@@ -26,7 +25,6 @@ declare module 'vue/types/vue' {
  {
      bearerToken: string;
      storage: Storage;
-     history: History;
      ready: boolean = false;
      readyPermission: boolean = false;
      readyCallbacks: Array<any> = [];

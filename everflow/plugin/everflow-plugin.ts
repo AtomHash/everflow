@@ -8,6 +8,6 @@ const Everflow: PluginObject<EverflowPluginOptions> = {
 };
 
 export class EverflowPluginOptions {
-    everflowApp: App
+    everflowApp: App;
 }
 export default Everflow;

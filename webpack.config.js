@@ -43,7 +43,22 @@ module.exports = {
   },
    optimization: {
     minimize: true,
-    minimizer: [new TerserPlugin()],
+    minimizer: [new TerserPlugin({
+        parallel: true,
+        cache: true,
+        sourceMap: true,
+        terserOptions: {
+          output: {
+            comments: false,
+            semicolons: false
+          },
+          compress: {
+            collapse_vars: false, // some platforms have issues. disabled. 
+            sequences: false // some platforms have issues. disabled. 
+          },
+          keep_fnames: true
+        }
+      })],
   },
   /*
   plugins: [

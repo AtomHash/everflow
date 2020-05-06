@@ -14,19 +14,6 @@ class Ready extends Vue
     {
 
     }
-
-    /**
-     * Just fire ready()
-     * @function everflowReadyLoadChange
-     */
-    @decorators.Watch('$route', {deep: true})
-    everflowReadyLoadChange()
-    {
-        if (_.isFunction(this.ready))
-        {
-            this.ready();
-        }
-    }
 }
 
 /**
@@ -37,9 +24,10 @@ class Ready extends Vue
 var mixIns: object = {
     $refs: '',
     mounted: function () {
-        let app = this.$everflowApp;
-        let ready = this;
-        this.everflowReadyLoadChange()
+        if (_.isFunction(this.ready))
+        {
+            this.ready();
+        }
         return;
     }
 }

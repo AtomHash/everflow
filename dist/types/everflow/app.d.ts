@@ -2,7 +2,6 @@ import { Store } from 'vuex';
 import VueRouter, { RouterOptions, RouteConfig } from 'vue-router';
 import IApp from './interfaces/i-app';
 import Storage from './utils/storage';
-import History from './history';
 import Language from './utils/language';
 declare module 'vue/types/vue' {
     interface Vue {
@@ -16,7 +15,6 @@ declare module 'vue/types/vue' {
 export default class App implements IApp {
     bearerToken: string;
     storage: Storage;
-    history: History;
     ready: boolean;
     readyPermission: boolean;
     readyCallbacks: Array<any>;
