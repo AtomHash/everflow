@@ -39,17 +39,8 @@ var mixIns: object = {
     mounted: function () {
         let app = this.$everflowApp;
         let ready = this;
-        if (!app.ready)
-        {
-            app.readyCallback({
-                    type: 'ready',
-                    function: function() { ready.everflowReadyLoadChange() }
-            });
-            return;
-        } else {
-            this.everflowReadyLoadChange()
-            return;
-        }
+        this.everflowReadyLoadChange()
+        return;
     }
 }
 export default Ready.extend({ mixins: [mixIns] }) as VueConstructor;

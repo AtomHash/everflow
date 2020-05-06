@@ -18,9 +18,9 @@ fs.readdirSync('node_modules')
 });
 
 delete nodeModules['vue'];
-delete nodeModules['axios'];
+// delete nodeModules['axios'];
 // delete nodeModules['crypto-js'];
-delete nodeModules['localforage'];
+// delete nodeModules['localforage'];
 // delete nodeModules['lodash'];
 // delete nodeModules['moment'];
 delete nodeModules['vue-class-component'];

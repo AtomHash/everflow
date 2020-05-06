@@ -1,10 +1,8 @@
-import Vue from 'vue';
+import VueRouter from 'vue-router';
 import Storage from '../utils/storage';
 import History from '../history';
 import Language from '../utils/language';
 export default interface IApp {
-    vue: Vue;
-    user: any;
     storage: Storage;
     go(name: string): void;
     go(name: string, data: any): void;
@@ -15,4 +13,6 @@ export default interface IApp {
     readyCallbacks: Array<any>;
     readyCallback(callback: any): void;
     config: any;
+    bearerToken: string;
+    $router: VueRouter;
 }

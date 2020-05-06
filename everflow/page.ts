@@ -31,22 +31,9 @@ class PageHelper
 @decorators.Component({})
 class Page extends Vue
 {
-    pageName: string = 'default-page';
-    routeName: string = '';
     ready()
     {
 
-    }
-
-    /**
-     * Check permissions then fire ready()
-     * @function everflowPageLoadChange
-     */
-    @decorators.Watch('$route', {deep: true})
-    everflowPageLoadChange()
-    {
-        this.routeName = this.$route.path.substring(this.$route.path.lastIndexOf('/') + 1);
-        document.title = this.pageName;
     }
 }
 
@@ -57,8 +44,6 @@ class Page extends Vue
  */
 var mixIns: object = {
     $refs: '',
-    pageName: 'default-page',
-    routeName: '',
     created() 
     {
         document.getElementById(this.$everflowApp.config.mountId).className += ` ${this.pageName}-everflow-page`;
@@ -67,6 +52,7 @@ var mixIns: object = {
     {
         this.$everflowApp.readyPermission = true;
         PageHelper.pageReady(this);
+        // document.title = this.pageName;
     }
 }
 export default Page.extend({ mixins: [mixIns] }) as VueConstructor;

@@ -1,10 +1,13 @@
-import Vue from 'vue';
+import _Vue, {PluginObject} from 'vue';
 import App from '../app';
 
-const EverFlow: any =  {
+const Everflow: PluginObject<EverflowPluginOptions> = {
   install(Vue, options) {
     Vue.prototype.$everflowApp = options.everflowApp;
   }
 };
 
-export default EverFlow;
+export class EverflowPluginOptions {
+    everflowApp: App
+}
+export default Everflow;

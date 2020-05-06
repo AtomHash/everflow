@@ -6,6 +6,7 @@ import App from './app';
  */
 export default class Request {
     everflowApp: App;
+    token: string;
     endPoint: string;
     authorize: boolean;
     method: Method;

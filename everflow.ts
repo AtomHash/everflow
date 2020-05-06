@@ -1,4 +1,4 @@
-import Vue from 'vue';
+import Everflow, { EverflowPluginOptions } from './everflow/plugin/everflow-plugin';
 import VueRouter from 'vue-router';
 import App from './everflow/app';
 import History from './everflow/history';
@@ -13,10 +13,12 @@ import utils from './everflow/utils/--init--';
 import models from './everflow/models/--init--';
 import decorators from './everflow/decorators/--init--';
 import * as interfaces from './everflow/interfaces/--init--';
+import NavigationGuards from './everflow/navigation-guards';
 
 export
 {
-    Vue,
+    NavigationGuards,
+    EverflowPluginOptions,
     VueRouter,
     App,
     History,
@@ -31,5 +33,6 @@ export
     Translator,
     Security
 }
+export default Everflow;
 // Enable Prototypes
 Prototypes();

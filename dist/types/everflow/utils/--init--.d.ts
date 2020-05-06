@@ -4,25 +4,6 @@ import Language from './language';
 declare const _default: {
     Utils: {
         online: boolean;
-        validate: {
-            email: (string: any) => boolean;
-            phone: (string: any) => boolean;
-            number: (string: any) => boolean;
-        };
-        browser: {
-            getName: () => string;
-            getVersion: () => string;
-        };
-        url: {
-            decode(url: string): string;
-            encode(url: string): string;
-        };
-        json: {
-            isString(json: any): boolean;
-            isObject(data: any): boolean;
-            encode(jsonString: string): any;
-            decode(json: any): string;
-        };
         removeHtml(value: string): string;
         microTime(): number;
     };

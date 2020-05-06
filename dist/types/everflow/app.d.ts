@@ -1,4 +1,5 @@
-import Vue from 'vue';
+import { Store } from 'vuex';
+import VueRouter, { RouterOptions, RouteConfig } from 'vue-router';
 import IApp from './interfaces/i-app';
 import Storage from './utils/storage';
 import History from './history';
@@ -13,8 +14,7 @@ declare module 'vue/types/vue' {
  * @class
  */
 export default class App implements IApp {
-    vue: Vue;
-    user: any;
+    bearerToken: string;
     storage: Storage;
     history: History;
     ready: boolean;
@@ -24,19 +24,15 @@ export default class App implements IApp {
     language: Language;
     $globals: any;
     requestErrorHandlers: any;
+    $router: VueRouter;
     /**
      * Initializes App
      * @constructor
      * @param {interfaces.IModel} User - a user model object
      * @param {object} config - everflow config
      */
-    constructor(userClass: any, config: any, plugins: Array<any>);
-    /**
-     * Configure global everflow settings
-     * @function processConfig
-     * @private
-     */
-    private processConfig;
+    constructor(config: any, routes: Array<RouteConfig>, routerOptions?: RouterOptions, vuePlugins?: Array<any>);
+    private __routerInit;
     /**
      * Load the user model specified in the constructor
      * @function loadModels
@@ -46,9 +42,9 @@ export default class App implements IApp {
     /**
      * Start the EverFlow application
      * @function run
-     * @param {Array<object>} routes - array of routes to be served by the app
+     * @param {Array<RouteConfig>} routes - array of routes to be served by the app
      */
-    run(routes: Array<any>): void;
+    run(store: Store<any>, injects?: any): void;
     /**
      * $router.push, goes to page name
      * @function go

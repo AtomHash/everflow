@@ -16,7 +16,7 @@ export default class History
      */
     constructor(app: App)
     {
-        this.router = app.vue.$router;
+        this.router = app.$router;
     }
 
     /**

@@ -10,6 +10,7 @@ import App from './app';
  export default class Request 
  {
      everflowApp: App;
+     token: string = '';
      endPoint:string = '';
      authorize: boolean = false;
      method: Method;
@@ -29,6 +30,7 @@ import App from './app';
      constructor(everflowApp: App, url: string, authorize: boolean = false)
      {
          this.everflowApp = everflowApp;
+         this.token = this.everflowApp.bearerToken;
          this.endPoint = url;
          this.authorize = authorize;
      }
@@ -180,7 +182,7 @@ import App from './app';
          var url: string = '';
          if (this.authorize)
          {
-             this.addHeader('Authorization', `Bearer ${this.everflowApp.user.token}`)
+             this.addHeader('Authorization', `Bearer ${this.token}`)
          }
         //added to support external links
         if (_.startsWith(this.endPoint.toLowerCase(), 'http'))
