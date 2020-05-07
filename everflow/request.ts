@@ -1,5 +1,5 @@
 ﻿import Axios, { AxiosInstance, AxiosPromise, AxiosResponse, Method, ResponseType } from 'axios';
-import * as _ from 'lodash';
+import { isFunction, startsWith, endsWith } from './utils/utils';
 import errors from './errors/--init--';
 import App from './app';
 
@@ -128,7 +128,7 @@ import App from './app';
      delete(data?: any): AxiosPromise
      {
          this.method = 'DELETE';
-         if (!_.isNil(data))
+         if (data)
          {
              this.data = data;
          }
@@ -185,18 +185,18 @@ import App from './app';
              this.addHeader('Authorization', `Bearer ${this.token}`)
          }
         //added to support external links
-        if (_.startsWith(this.endPoint.toLowerCase(), 'http'))
+        if (startsWith(this.endPoint.toLowerCase(), 'http'))
         {
             url = this.endPoint;
         } else {
             // make sure entry point starts with /
             if (this.everflowApp.config.debug)
             {
-                if (_.endsWith(this.everflowApp.config.apiURL, '/'))
+                if (endsWith(this.everflowApp.config.apiURL, '/'))
                 {
                     throw new errors.RequestBaseurlFormatError();
                 }
-                if (!_.startsWith(this.endPoint, '/'))
+                if (!startsWith(this.endPoint, '/'))
                 {
                     throw new errors.RequestEndPointFormatError();
                 }
@@ -215,7 +215,7 @@ import App from './app';
         let self= this;
         var iRetryFunction = function (error)
         {
-            var errorCode = _.isNil(error.response)? error.request.status : error.response.status;
+            var errorCode = !error.response? error.request.status : error.response.status;
             config['retries'] = config['retries'] - 1;
             if (errorCode === 500 && config['retries'] > 0)
             {

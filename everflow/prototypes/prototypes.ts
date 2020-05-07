@@ -1,4 +1,3 @@
-import * as _ from 'lodash';
 
 var prototypes = function()
 {
@@ -31,7 +30,7 @@ String.prototype.toJson = function (): object
 
 String.prototype.isEmpty = function (): boolean
 {
-    return _.isEmpty(this)
+    return !this ? true : false;
 };
 
 String.prototype.endsWith = function (suffix): boolean

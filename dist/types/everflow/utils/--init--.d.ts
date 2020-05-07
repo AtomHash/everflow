@@ -6,6 +6,7 @@ declare const _default: {
         online: boolean;
         removeHtml(value: string): string;
         microTime(): number;
+        tagTester(name: any): (obj: any) => boolean;
     };
     Storage: typeof Storage;
     DateTime: typeof DateTime;

@@ -17,15 +17,15 @@ fs.readdirSync('node_modules')
     nodeModules[mod] = 'commonjs ' + mod;
 });
 
-delete nodeModules['vue'];
+// delete nodeModules['vue'];
 // delete nodeModules['axios'];
 // delete nodeModules['crypto-js'];
 // delete nodeModules['localforage'];
 // delete nodeModules['lodash'];
 // delete nodeModules['moment'];
-delete nodeModules['vue-class-component'];
-delete nodeModules['vue-property-decorator'];
-delete nodeModules['vue-router'];
+// delete nodeModules['vue-class-component'];
+// delete nodeModules['vue-property-decorator'];
+// delete nodeModules['vue-router'];
 
 module.exports = {
   mode: 'production',

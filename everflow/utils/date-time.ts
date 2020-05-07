@@ -1,5 +1,4 @@
 import * as moment from 'moment';
-import * as _ from 'lodash';
 import App from '../app';
 
 /**
@@ -53,15 +52,15 @@ export default class DateTime
      */
     static moment(dateTime: moment.MomentInput = null, format: string = null): moment.Moment
     {
-        if (_.isEmpty(format))
+        if (!format)
         {
             format = `${DateTime.getDateFormat()} ${DateTime.getTimeFormat()}`;
         }
-        if (_.isEmpty(dateTime))
+        if (!dateTime)
         {
             dateTime = new Date();
         }
-        if (_.isEmpty(format))
+        if (!format)
         {
             format = 'MMMM Do YYYY, h:mm:ss a';
         }

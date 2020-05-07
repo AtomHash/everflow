@@ -1,4 +1,4 @@
-import * as _ from 'lodash';
+import { isFunction, startsWith, endsWith } from './utils/utils';
 import App from './app';
 
 /**
@@ -44,7 +44,7 @@ export default class Translator
     private static convertProperty(element, property)
     {
         var value = element[property];
-        if (_.isEmpty(value))
+        if (!value)
         {
             return;
         }
@@ -73,7 +73,7 @@ export default class Translator
         for (var key in keyList)
         {
             var objectKey = keyList[key];
-            if (!_.isFunction(objectKey))
+            if (!isFunction(objectKey))
             {
                 currentSelection = currentSelection[objectKey];
             }

@@ -1,4 +1,4 @@
-﻿import * as _ from 'lodash';
+﻿import { isFunction } from './utils/utils';
 import Vue, { VueConstructor } from 'vue';
 import App from './app';
 import decorators from './decorators/--init--'
@@ -17,7 +17,7 @@ class PageHelper
      */
     static pageReady(page)
     {
-        if (_.isFunction(page.ready))
+        if (isFunction(page.ready))
         {
             page.ready();
         }

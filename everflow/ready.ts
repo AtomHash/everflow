@@ -1,4 +1,4 @@
-﻿import * as _ from 'lodash';
+﻿import { isFunction } from './utils/utils';
 import Vue, { VueConstructor } from 'vue';
 import App from './app';
 import decorators from './decorators/--init--'
@@ -24,7 +24,7 @@ class Ready extends Vue
 var mixIns: object = {
     $refs: '',
     mounted: function () {
-        if (_.isFunction(this.ready))
+        if (isFunction(this.ready))
         {
             this.ready();
         }

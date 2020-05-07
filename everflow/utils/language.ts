@@ -1,4 +1,3 @@
-import * as _ from 'lodash';
 import LanguageModel from '../models/language-model';
 import App from '../app';
 import Storage from './storage';

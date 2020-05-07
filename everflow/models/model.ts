@@ -1,5 +1,4 @@
-﻿import * as _ from 'lodash';
-import Storage from '../utils/storage';
+﻿import Storage from '../utils/storage';
 
 /**
  * The primary Model - Future up to vuex states...
@@ -35,12 +34,12 @@ export default class Model
         var self = this;
         storage.get(this.saveName, function (error, value) {
             // map loaded values right into object
-            if (!_.isNil(value))
+            if (value)
             {
                 self.map(value);
             }
             // if callback, call it
-            if (!_.isNil(callback))
+            if (callback)
             {
                 new callback(self, value);
             }
@@ -50,7 +49,7 @@ export default class Model
     delete(callback: any = null, storage: Storage = this.__storage)
     {
         storage.remove(this.saveName, function () {
-            if (!_.isNil(callback))
+            if (callback)
             {
                 new callback();
             }

@@ -1,7 +1,6 @@
 ﻿import Vue, { ComponentOptions } from 'vue';
 import Vuex from 'vuex';
 import { Store } from 'vuex'
-import * as _ from 'lodash';
 import VueRouter, { RouterOptions, RouteConfig, RouterMode } from 'vue-router';
 import IApp from './interfaces/i-app';
 import Storage from './utils/storage';
@@ -48,25 +47,27 @@ declare module 'vue/types/vue' {
          this.language = new Language(this);
          this.__routerInit(routes, routerOptions);
          Vue.use(Vuex);
-         _.forEach(vuePlugins, function(plugin, index, arr){
-             Vue.use(plugin);
-         });
+         if(vuePlugins){
+             vuePlugins.forEach(function(plugin, index, arr){
+                 Vue.use(plugin);
+             });
+         }
      }
 
      private __routerInit(routes: Array<RouteConfig>, routerOptions?: RouterOptions)
      {
          Vue.use(VueRouter);
-         if (_.isNil(routerOptions))
+         if (!routerOptions)
          {
              routerOptions = {};
          }
          var routerMode: RouterMode = null;
-         if (_.isEmpty(this.config.routerMode))
+         if (!this.config.routerMode)
          {
              throw new errors.ConfigRouterModeError();
          }
          routerMode = this.config.routerMode;
-         if (_.isEmpty(routes))
+         if (!routes)
          {
              throw new errors.RoutesEmptyError();
          }
@@ -75,7 +76,7 @@ declare module 'vue/types/vue' {
              routes: routes
          };
          // Merge router options from defaults and user inputted
-         const routerOptionsMerged = _.merge({}, everflowDefaultRouterOptions, routerOptions);
+         const routerOptionsMerged = {...everflowDefaultRouterOptions, ...routerOptions};
          this.$router = new VueRouter(routerOptionsMerged);
      }
 
@@ -119,7 +120,7 @@ declare module 'vue/types/vue' {
      {
          Vue.use(Everflow, { everflowApp: this });
          var mountId: string = null;
-         if (_.isEmpty(this.config.mountId))
+         if (!this.config.mountId)
          {
              throw new errors.ConfigMountError();
          }
@@ -130,7 +131,9 @@ declare module 'vue/types/vue' {
              router: this.$router,
              store: store
          };
-         const vueOptionsMerged = _.merge({}, vueOptions, injects);
+         Object.assign({},vueOptions,injects);
+
+         const vueOptionsMerged = {...vueOptions, ...injects};
 
          // Create new vue object
          new Vue(vueOptionsMerged).$mount('#'+mountId);

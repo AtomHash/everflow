@@ -12,11 +12,11 @@ import utils from './everflow/utils/--init--';
 import models from './everflow/models/--init--';
 import decorators from './everflow/decorators/--init--';
 import * as interfaces from './everflow/interfaces/--init--';
-import NavigationGuards from './everflow/navigation-guards';
+import navigationGuards from './everflow/navigation-guards';
 
 export
 {
-    NavigationGuards,
+    navigationGuards,
     EverflowPluginOptions,
     VueRouter,
     App,

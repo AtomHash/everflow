@@ -11,6 +11,6 @@ import utils from './everflow/utils/--init--';
 import models from './everflow/models/--init--';
 import decorators from './everflow/decorators/--init--';
 import * as interfaces from './everflow/interfaces/--init--';
-import NavigationGuards from './everflow/navigation-guards';
-export { NavigationGuards, EverflowPluginOptions, VueRouter, App, Page, Ready, Request, errors, utils, models, decorators, interfaces, Translator, Security };
+import navigationGuards from './everflow/navigation-guards';
+export { navigationGuards, EverflowPluginOptions, VueRouter, App, Page, Ready, Request, errors, utils, models, decorators, interfaces, Translator, Security };
 export default Everflow;
