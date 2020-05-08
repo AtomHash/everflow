@@ -1,6 +1,6 @@
 ﻿import Axios, { AxiosInstance, AxiosPromise, AxiosResponse, Method, ResponseType } from 'axios';
 import { isFunction, startsWith, endsWith } from './utils/utils';
-import errors from './errors/--init--';
+import errors from './errors';
 import App from './app';
 
 /**
@@ -10,7 +10,8 @@ import App from './app';
  export default class Request 
  {
      everflowApp: App;
-     token: string = '';
+     everflowAPIURL: string;
+     bearerToken: string = '';
      endPoint:string = '';
      authorize: boolean = false;
      method: Method;
@@ -27,10 +28,9 @@ import App from './app';
      * @param {string} url - request url
      * @param {boolean} authorize - if true add JWT to request 
      */
-     constructor(everflowApp: App, url: string, authorize: boolean = false)
+     constructor(baseURL: string, url: string = '', authorize: boolean = false)
      {
-         this.everflowApp = everflowApp;
-         this.token = this.everflowApp.bearerToken;
+         this.everflowAPIURL = baseURL;
          this.endPoint = url;
          this.authorize = authorize;
      }
@@ -65,6 +65,39 @@ import App from './app';
      static getAxiosEngine(): AxiosInstance
      {
          return Axios
+     }
+
+    /**
+     * If true with adds a Bearer token to your request. token('<bearer-token>')
+     * @function auth
+     * @param {boolean} auth - URL for request
+     */
+     auth(auth: boolean): Request
+     {
+         this.authorize = auth;
+         return this;
+     }
+
+    /**
+     * Add a Bearer Token to your requests
+     * @function token
+     * @param {string} bearerToken - A JWT/Bearer Token for authorization. this.auth(true) plus token = authorized request! 
+     */
+     token(bearerToken: string): Request
+     {
+         this.bearerToken = bearerToken;
+         return this;
+     }
+
+    /**
+     * End point URL for this request.
+     * @function url
+     * @param {string} url - URL for request
+     */
+     url(url: string): Request
+     {
+         this.endPoint = url;
+         return this;
      }
 
     /**
@@ -182,26 +215,22 @@ import App from './app';
          var url: string = '';
          if (this.authorize)
          {
-             this.addHeader('Authorization', `Bearer ${this.token}`)
+             this.addHeader('Authorization', `Bearer ${this.bearerToken}`)
          }
         //added to support external links
         if (startsWith(this.endPoint.toLowerCase(), 'http'))
         {
             url = this.endPoint;
         } else {
-            // make sure entry point starts with /
-            if (this.everflowApp.config.debug)
+            if (endsWith(this.everflowAPIURL, '/'))
             {
-                if (endsWith(this.everflowApp.config.apiURL, '/'))
-                {
-                    throw new errors.RequestBaseurlFormatError();
-                }
-                if (!startsWith(this.endPoint, '/'))
-                {
-                    throw new errors.RequestEndPointFormatError();
-                }
+                throw new errors.RequestBaseurlFormatError();
             }
-            url = this.everflowApp.config.apiURL + this.endPoint;
+            if (!startsWith(this.endPoint, '/'))
+            {
+                throw new errors.RequestEndPointFormatError();
+            }
+            url = this.everflowAPIURL + this.endPoint;
         }
         var config = {
             url: url,

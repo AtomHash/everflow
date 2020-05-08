@@ -11,6 +11,6 @@ export default interface IApp {
     readyCallbacks: Array<any>;
     readyCallback(callback: any): void;
     config: any;
-    bearerToken: string;
     $router: VueRouter;
+    $globals: any;
 }

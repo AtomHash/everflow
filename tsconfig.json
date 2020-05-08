@@ -3,6 +3,7 @@
     "module": "esnext",
     "moduleResolution": "node",
     "target": "esnext",
+    "allowSyntheticDefaultImports": true,
     "lib": [
       "esnext",
       "dom",

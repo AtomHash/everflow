@@ -2,10 +2,11 @@ import { Store } from 'vuex';
 import VueRouter, { RouterOptions, RouteConfig } from 'vue-router';
 import IApp from './interfaces/i-app';
 import Storage from './utils/storage';
+import Request from './request';
 import Language from './utils/language';
 declare module 'vue/types/vue' {
     interface Vue {
-        $everflowApp: App;
+        $app: App;
     }
 }
 /**
@@ -13,11 +14,11 @@ declare module 'vue/types/vue' {
  * @class
  */
 export default class App implements IApp {
-    bearerToken: string;
+    request: Request;
     storage: Storage;
     ready: boolean;
     readyPermission: boolean;
-    readyCallbacks: Array<any>;
+    readyCallbacks: Array<CallableFunction>;
     config: any;
     language: Language;
     $globals: any;
@@ -32,11 +33,11 @@ export default class App implements IApp {
     constructor(config: any, routes: Array<RouteConfig>, routerOptions?: RouterOptions, vuePlugins?: Array<any>);
     private __routerInit;
     /**
-     * Load the user model specified in the constructor
-     * @function loadModels
+     * Load user defined callbacks on app load
+     * @function loadReadyCallbacks
      * @private
      */
-    private loadModels;
+    private loadReadyCallbacks;
     /**
      * Start the EverFlow application
      * @function run
@@ -53,7 +54,7 @@ export default class App implements IApp {
     /**
      * Add callbacks to trigger once app is loaded (models are loaded)
      * @function readyCallback
-     * @param {callable} callback - a callback to trigger on app ready
+     * @param {CallableFunction} callback - a callback to trigger on app ready
      */
-    readyCallback(callback: any): void;
+    readyCallback(callback: CallableFunction): void;
 }

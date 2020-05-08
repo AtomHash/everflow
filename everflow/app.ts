@@ -4,15 +4,17 @@ import { Store } from 'vuex'
 import VueRouter, { RouterOptions, RouteConfig, RouterMode } from 'vue-router';
 import IApp from './interfaces/i-app';
 import Storage from './utils/storage';
+import Request from './request';
 import UserModel from './models/user-model';
 import Language from './utils/language';
-import errors from './errors/--init--';
+import errors from './errors';
 import * as interfaces from './interfaces/--init--';
 import Everflow from './plugin/everflow-plugin';
+import { isFunction } from './utils/utils';
 
 declare module 'vue/types/vue' {
     interface Vue {
-        $everflowApp: App
+        $app: App
     }
 }
 
@@ -22,11 +24,11 @@ declare module 'vue/types/vue' {
  */
  export default class App implements IApp
  {
-     bearerToken: string;
+     request: Request;
      storage: Storage;
      ready: boolean = false;
      readyPermission: boolean = false;
-     readyCallbacks: Array<any> = [];
+     readyCallbacks: Array<CallableFunction> = [];
      config: any;
      language: Language;
      $globals: any = {};
@@ -81,34 +83,26 @@ declare module 'vue/types/vue' {
      }
 
     /**
-     * Load the user model specified in the constructor
-     * @function loadModels
+     * Load user defined callbacks on app load
+     * @function loadReadyCallbacks
      * @private
      */
-     private loadModels(): void
+     private loadReadyCallbacks(): void
      {
-         this.ready = true; //sets app state to ready.
-         // CRITICAL
-        /*
-        this.user.load(function () {
-            console.log('called Models Load in everflow.js')
-            app.ready = true; //sets app state to ready.
-            var status: boolean = true;
-                for (let callback of app.readyCallbacks)
-                {
-                    if (!_.isFunction(callback))
-                    {
-                        if (_.isFunction(callback.function))
-                        {
-                            callback.function();
-                        }
-                    } else {
-                        callback();
-                    }
-                }
-        }, this.storage);
-        */
-        // END - CRITICAL
+         for (let callback of this.readyCallbacks)
+         {
+             // if (!isFunction(callback))
+             // {
+             //     if (isFunction(callback.function))
+             //     {
+             //         callback.function();
+             //     }
+             // } else {
+             //     callback();
+             // }
+             callback(this);
+         }
+         this.ready = true;
     }
 
     /**
@@ -118,6 +112,8 @@ declare module 'vue/types/vue' {
      */
      run(store: Store<any>, injects: any = {}): void
      {
+         // init Request object
+         this.request = new Request(this.config.apiURL);
          Vue.use(Everflow, { everflowApp: this });
          var mountId: string = null;
          if (!this.config.mountId)
@@ -138,9 +134,8 @@ declare module 'vue/types/vue' {
          // Create new vue object
          new Vue(vueOptionsMerged).$mount('#'+mountId);
 
-         // Create new history wrapper for vuejs router history.
-         // this.history = new History(this);
-         this.loadModels();
+         // Load user custom callbacks for when the app starts
+         this.loadReadyCallbacks();
      }
 
     /**
@@ -157,9 +152,9 @@ declare module 'vue/types/vue' {
     /**
      * Add callbacks to trigger once app is loaded (models are loaded)
      * @function readyCallback
-     * @param {callable} callback - a callback to trigger on app ready
+     * @param {CallableFunction} callback - a callback to trigger on app ready
      */
-     readyCallback(callback)
+     readyCallback(callback: CallableFunction)
      {
          this.readyCallbacks.push(callback);
      }

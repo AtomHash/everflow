@@ -7,7 +7,6 @@ import Request from './everflow/request';
 import Prototypes from './everflow/prototypes/prototypes';
 import Translator from './everflow/translator';
 import Security from './everflow/security';
-import errors from './everflow/errors/--init--';
 import utils from './everflow/utils/--init--';
 import models from './everflow/models/--init--';
 import decorators from './everflow/decorators/--init--';
@@ -23,7 +22,6 @@ export
     Page,
     Ready,
     Request,
-    errors,
     utils,
     models,
     decorators,

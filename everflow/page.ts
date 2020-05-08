@@ -46,11 +46,11 @@ var mixIns: object = {
     $refs: '',
     created() 
     {
-        document.getElementById(this.$everflowApp.config.mountId).className += ` ${this.pageName}-everflow-page`;
+        document.getElementById(this.$app.config.mountId).className += ` ${this.pageName}-everflow-page`;
     },
     mounted()
     {
-        this.$everflowApp.readyPermission = true;
+        this.$app.readyPermission = true;
         PageHelper.pageReady(this);
         // document.title = this.pageName;
     }

@@ -3,7 +3,7 @@ import App from '../app';
 
 const Everflow: PluginObject<EverflowPluginOptions> = {
   install(Vue, options) {
-    Vue.prototype.$everflowApp = options.everflowApp;
+    Vue.prototype.$app = options.everflowApp;
   }
 };
 

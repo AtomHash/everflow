@@ -6,7 +6,8 @@ import App from './app';
  */
 export default class Request {
     everflowApp: App;
-    token: string;
+    everflowAPIURL: string;
+    bearerToken: string;
     endPoint: string;
     authorize: boolean;
     method: Method;
@@ -22,7 +23,7 @@ export default class Request {
      * @param {string} url - request url
      * @param {boolean} authorize - if true add JWT to request
      */
-    constructor(everflowApp: App, url: string, authorize?: boolean);
+    constructor(baseURL: string, url?: string, authorize?: boolean);
     /**
      * Perform multiple requests and end at the same time.
      * @function multiple
@@ -43,6 +44,24 @@ export default class Request {
      * @static
      */
     static getAxiosEngine(): AxiosInstance;
+    /**
+     * If true with adds a Bearer token to your request. token('<bearer-token>')
+     * @function auth
+     * @param {boolean} auth - URL for request
+     */
+    auth(auth: boolean): Request;
+    /**
+     * Add a Bearer Token to your requests
+     * @function token
+     * @param {string} bearerToken - A JWT/Bearer Token for authorization. this.auth(true) plus token = authorized request!
+     */
+    token(bearerToken: string): Request;
+    /**
+     * End point URL for this request.
+     * @function url
+     * @param {string} url - URL for request
+     */
+    url(url: string): Request;
     /**
      * Add header to Request
      * @function addHeader
