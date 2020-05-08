@@ -31,6 +31,13 @@ export default class App implements IApp {
      * @param {object} config - everflow config
      */
     constructor(config: any, routes: Array<RouteConfig>, routerOptions?: RouterOptions, vuePlugins?: Array<any>);
+    /**
+    * Vue Router init helper function
+    * @function __routerInit
+    * @param {Array<RouteConfig>} routes - An array of routes for Vue Router
+    * @param {RouterOptions} routerOptions - Vue Router options object
+    * @private
+    */
     private __routerInit;
     /**
      * Load user defined callbacks on app load

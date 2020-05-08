@@ -8,7 +8,7 @@ import Request from './request';
 import UserModel from './models/user-model';
 import Language from './utils/language';
 import errors from './errors';
-import * as interfaces from './interfaces/--init--';
+import * as interfaces from './interfaces';
 import Everflow from './plugin/everflow-plugin';
 import { isFunction } from './utils/utils';
 
@@ -56,6 +56,14 @@ declare module 'vue/types/vue' {
          }
      }
 
+
+     /**
+     * Vue Router init helper function
+     * @function __routerInit
+     * @param {Array<RouteConfig>} routes - An array of routes for Vue Router
+     * @param {RouterOptions} routerOptions - Vue Router options object
+     * @private
+     */
      private __routerInit(routes: Array<RouteConfig>, routerOptions?: RouterOptions)
      {
          Vue.use(VueRouter);

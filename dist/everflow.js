@@ -86,72 +86,72 @@ var t,r,i,n
 return e.enc.Base64}(r(2))},function(e,t,r){e.exports=function(e){!function(t){var r=e,i=r.lib,n=i.WordArray,s=i.Hasher,o=r.algo,a=[]
 !function(){for(var e=0;e<64;e++)a[e]=4294967296*t.abs(t.sin(e+1))|0}()
 var c=o.MD5=s.extend({_doReset:function(){this._hash=new n.init([1732584193,4023233417,2562383102,271733878])},_doProcessBlock:function(e,t){for(var r=0;r<16;r++){var i=t+r,n=e[i]
-e[i]=16711935&(n<<8|n>>>24)|4278255360&(n<<24|n>>>8)}var s=this._hash.words,o=e[t+0],c=e[t+1],u=e[t+2],h=e[t+3],d=e[t+4],f=e[t+5],l=e[t+6],p=e[t+7],_=e[t+8],y=e[t+9],g=e[t+10],m=e[t+11],v=e[t+12],S=e[t+13],w=e[t+14],b=e[t+15],E=s[0],x=s[1],A=s[2],H=s[3]
-E=FF(E,x,A,H,o,7,a[0])
-H=FF(H,E,x,A,c,12,a[1])
-A=FF(A,H,E,x,u,17,a[2])
-x=FF(x,A,H,E,h,22,a[3])
-E=FF(E,x,A,H,d,7,a[4])
-H=FF(H,E,x,A,f,12,a[5])
-A=FF(A,H,E,x,l,17,a[6])
-x=FF(x,A,H,E,p,22,a[7])
-E=FF(E,x,A,H,_,7,a[8])
-H=FF(H,E,x,A,y,12,a[9])
-A=FF(A,H,E,x,g,17,a[10])
-x=FF(x,A,H,E,m,22,a[11])
-E=FF(E,x,A,H,v,7,a[12])
-H=FF(H,E,x,A,S,12,a[13])
-A=FF(A,H,E,x,w,17,a[14])
-x=FF(x,A,H,E,b,22,a[15])
-E=GG(E,x,A,H,c,5,a[16])
-H=GG(H,E,x,A,l,9,a[17])
-A=GG(A,H,E,x,m,14,a[18])
-x=GG(x,A,H,E,o,20,a[19])
-E=GG(E,x,A,H,f,5,a[20])
-H=GG(H,E,x,A,g,9,a[21])
-A=GG(A,H,E,x,b,14,a[22])
-x=GG(x,A,H,E,d,20,a[23])
-E=GG(E,x,A,H,y,5,a[24])
-H=GG(H,E,x,A,w,9,a[25])
-A=GG(A,H,E,x,h,14,a[26])
-x=GG(x,A,H,E,_,20,a[27])
-E=GG(E,x,A,H,S,5,a[28])
-H=GG(H,E,x,A,u,9,a[29])
-A=GG(A,H,E,x,p,14,a[30])
-x=GG(x,A,H,E,v,20,a[31])
-E=HH(E,x,A,H,f,4,a[32])
-H=HH(H,E,x,A,_,11,a[33])
-A=HH(A,H,E,x,m,16,a[34])
-x=HH(x,A,H,E,w,23,a[35])
-E=HH(E,x,A,H,c,4,a[36])
-H=HH(H,E,x,A,d,11,a[37])
-A=HH(A,H,E,x,p,16,a[38])
-x=HH(x,A,H,E,g,23,a[39])
-E=HH(E,x,A,H,S,4,a[40])
-H=HH(H,E,x,A,o,11,a[41])
-A=HH(A,H,E,x,h,16,a[42])
-x=HH(x,A,H,E,l,23,a[43])
-E=HH(E,x,A,H,y,4,a[44])
-H=HH(H,E,x,A,v,11,a[45])
-A=HH(A,H,E,x,b,16,a[46])
-x=HH(x,A,H,E,u,23,a[47])
-E=II(E,x,A,H,o,6,a[48])
-H=II(H,E,x,A,p,10,a[49])
-A=II(A,H,E,x,w,15,a[50])
-x=II(x,A,H,E,f,21,a[51])
-E=II(E,x,A,H,v,6,a[52])
-H=II(H,E,x,A,h,10,a[53])
-A=II(A,H,E,x,g,15,a[54])
-x=II(x,A,H,E,c,21,a[55])
-E=II(E,x,A,H,_,6,a[56])
-H=II(H,E,x,A,b,10,a[57])
-A=II(A,H,E,x,l,15,a[58])
-x=II(x,A,H,E,S,21,a[59])
-E=II(E,x,A,H,d,6,a[60])
-H=II(H,E,x,A,m,10,a[61])
-A=II(A,H,E,x,u,15,a[62])
-x=II(x,A,H,E,y,21,a[63])
-s[0]=s[0]+E|0
+e[i]=16711935&(n<<8|n>>>24)|4278255360&(n<<24|n>>>8)}var s=this._hash.words,o=e[t+0],c=e[t+1],u=e[t+2],h=e[t+3],d=e[t+4],f=e[t+5],l=e[t+6],p=e[t+7],_=e[t+8],y=e[t+9],g=e[t+10],m=e[t+11],v=e[t+12],S=e[t+13],w=e[t+14],E=e[t+15],b=s[0],x=s[1],A=s[2],H=s[3]
+b=FF(b,x,A,H,o,7,a[0])
+H=FF(H,b,x,A,c,12,a[1])
+A=FF(A,H,b,x,u,17,a[2])
+x=FF(x,A,H,b,h,22,a[3])
+b=FF(b,x,A,H,d,7,a[4])
+H=FF(H,b,x,A,f,12,a[5])
+A=FF(A,H,b,x,l,17,a[6])
+x=FF(x,A,H,b,p,22,a[7])
+b=FF(b,x,A,H,_,7,a[8])
+H=FF(H,b,x,A,y,12,a[9])
+A=FF(A,H,b,x,g,17,a[10])
+x=FF(x,A,H,b,m,22,a[11])
+b=FF(b,x,A,H,v,7,a[12])
+H=FF(H,b,x,A,S,12,a[13])
+A=FF(A,H,b,x,w,17,a[14])
+x=FF(x,A,H,b,E,22,a[15])
+b=GG(b,x,A,H,c,5,a[16])
+H=GG(H,b,x,A,l,9,a[17])
+A=GG(A,H,b,x,m,14,a[18])
+x=GG(x,A,H,b,o,20,a[19])
+b=GG(b,x,A,H,f,5,a[20])
+H=GG(H,b,x,A,g,9,a[21])
+A=GG(A,H,b,x,E,14,a[22])
+x=GG(x,A,H,b,d,20,a[23])
+b=GG(b,x,A,H,y,5,a[24])
+H=GG(H,b,x,A,w,9,a[25])
+A=GG(A,H,b,x,h,14,a[26])
+x=GG(x,A,H,b,_,20,a[27])
+b=GG(b,x,A,H,S,5,a[28])
+H=GG(H,b,x,A,u,9,a[29])
+A=GG(A,H,b,x,p,14,a[30])
+x=GG(x,A,H,b,v,20,a[31])
+b=HH(b,x,A,H,f,4,a[32])
+H=HH(H,b,x,A,_,11,a[33])
+A=HH(A,H,b,x,m,16,a[34])
+x=HH(x,A,H,b,w,23,a[35])
+b=HH(b,x,A,H,c,4,a[36])
+H=HH(H,b,x,A,d,11,a[37])
+A=HH(A,H,b,x,p,16,a[38])
+x=HH(x,A,H,b,g,23,a[39])
+b=HH(b,x,A,H,S,4,a[40])
+H=HH(H,b,x,A,o,11,a[41])
+A=HH(A,H,b,x,h,16,a[42])
+x=HH(x,A,H,b,l,23,a[43])
+b=HH(b,x,A,H,y,4,a[44])
+H=HH(H,b,x,A,v,11,a[45])
+A=HH(A,H,b,x,E,16,a[46])
+x=HH(x,A,H,b,u,23,a[47])
+b=II(b,x,A,H,o,6,a[48])
+H=II(H,b,x,A,p,10,a[49])
+A=II(A,H,b,x,w,15,a[50])
+x=II(x,A,H,b,f,21,a[51])
+b=II(b,x,A,H,v,6,a[52])
+H=II(H,b,x,A,h,10,a[53])
+A=II(A,H,b,x,g,15,a[54])
+x=II(x,A,H,b,c,21,a[55])
+b=II(b,x,A,H,_,6,a[56])
+H=II(H,b,x,A,E,10,a[57])
+A=II(A,H,b,x,l,15,a[58])
+x=II(x,A,H,b,S,21,a[59])
+b=II(b,x,A,H,d,6,a[60])
+H=II(H,b,x,A,m,10,a[61])
+A=II(A,H,b,x,u,15,a[62])
+x=II(x,A,H,b,y,21,a[63])
+s[0]=s[0]+b|0
 s[1]=s[1]+x|0
 s[2]=s[2]+A|0
 s[3]=s[3]+H|0},_doFinalize:function(){var e=this._data,r=e.words,i=8*this._nDataBytes,n=8*e.sigBytes
@@ -186,15 +186,15 @@ c[r]=getFractionalBits(t.pow(e,1/3))
 r++}e++}}()
 var u=[],h=o.SHA256=s.extend({_doReset:function(){this._hash=new n.init(a.slice(0))},_doProcessBlock:function(e,t){for(var r=this._hash.words,i=r[0],n=r[1],s=r[2],o=r[3],a=r[4],h=r[5],d=r[6],f=r[7],l=0;l<64;l++){if(l<16)u[l]=0|e[t+l]
 else{var p=u[l-15],_=(p<<25|p>>>7)^(p<<14|p>>>18)^p>>>3,y=u[l-2],g=(y<<15|y>>>17)^(y<<13|y>>>19)^y>>>10
-u[l]=_+u[l-7]+g+u[l-16]}var m=a&h^~a&d,v=i&n^i&s^n&s,S=(i<<30|i>>>2)^(i<<19|i>>>13)^(i<<10|i>>>22),w=(a<<26|a>>>6)^(a<<21|a>>>11)^(a<<7|a>>>25),b=f+w+m+c[l]+u[l],E=S+v
+u[l]=_+u[l-7]+g+u[l-16]}var m=a&h^~a&d,v=i&n^i&s^n&s,S=(i<<30|i>>>2)^(i<<19|i>>>13)^(i<<10|i>>>22),w=(a<<26|a>>>6)^(a<<21|a>>>11)^(a<<7|a>>>25),E=f+w+m+c[l]+u[l],b=S+v
 f=d
 d=h
 h=a
-a=o+b|0
+a=o+E|0
 o=s
 s=n
 n=i
-i=b+E|0}r[0]=r[0]+i|0
+i=E+b|0}r[0]=r[0]+i|0
 r[1]=r[1]+n|0
 r[2]=r[2]+s|0
 r[3]=r[3]+o|0
@@ -342,7 +342,7 @@ this.reset()},reset:function(){c.reset.call(this)
 this._doReset()},process:function(e){this._append(e)
 return this._process()},finalize:function(e){e&&this._append(e)
 var t=this._doFinalize()
-return t},keySize:4,ivSize:4,_ENC_XFORM_MODE:1,_DEC_XFORM_MODE:2,_createHelper:function(){function selectCipherStrategy(e){return"string"==typeof e?A:b}return function(e){return{encrypt:function(t,r,i){return selectCipherStrategy(r).encrypt(e,t,r,i)},decrypt:function(t,r,i){return selectCipherStrategy(r).decrypt(e,t,r,i)}}}}()}),p=(s.StreamCipher=l.extend({_doFinalize:function(){var e=this._process(!0)
+return t},keySize:4,ivSize:4,_ENC_XFORM_MODE:1,_DEC_XFORM_MODE:2,_createHelper:function(){function selectCipherStrategy(e){return"string"==typeof e?A:E}return function(e){return{encrypt:function(t,r,i){return selectCipherStrategy(r).encrypt(e,t,r,i)},decrypt:function(t,r,i){return selectCipherStrategy(r).decrypt(e,t,r,i)}}}}()}),p=(s.StreamCipher=l.extend({_doFinalize:function(){var e=this._process(!0)
 return e},blockSize:1}),n.mode={}),_=s.BlockCipherMode=o.extend({createEncryptor:function(e,t){return this.Encryptor.create(e,t)},createDecryptor:function(e,t){return this.Decryptor.create(e,t)},init:function(e,t){this._cipher=e
 this._iv=t}}),y=p.CBC=function(){var e=_.extend()
 e.Encryptor=e.extend({processBlock:function(e,t){var r=this._cipher,i=r.blockSize
@@ -374,26 +374,26 @@ t=i?a.create([1398893684,1701076831]).concat(i).concat(r):r
 return t.toString(h)},parse:function(e){var t,r=h.parse(e),i=r.words
 if(1398893684==i[0]&&1701076831==i[1]){t=a.create(i.slice(2,4))
 i.splice(0,4)
-r.sigBytes-=16}return v.create({ciphertext:r,salt:t})}},b=s.SerializableCipher=o.extend({cfg:o.extend({format:w}),encrypt:function(e,t,r,i){i=this.cfg.extend(i)
+r.sigBytes-=16}return v.create({ciphertext:r,salt:t})}},E=s.SerializableCipher=o.extend({cfg:o.extend({format:w}),encrypt:function(e,t,r,i){i=this.cfg.extend(i)
 var n=e.createEncryptor(r,i),s=n.finalize(t),o=n.cfg
 return v.create({ciphertext:s,key:r,iv:o.iv,algorithm:e,mode:o.mode,padding:o.padding,blockSize:e.blockSize,formatter:i.format})},decrypt:function(e,t,r,i){i=this.cfg.extend(i)
 t=this._parse(t,i.format)
 var n=e.createDecryptor(r,i).finalize(t.ciphertext)
-return n},_parse:function(e,t){return"string"==typeof e?t.parse(e,this):e}}),E=n.kdf={},x=E.OpenSSL={execute:function(e,t,r,i){i||(i=a.random(8))
+return n},_parse:function(e,t){return"string"==typeof e?t.parse(e,this):e}}),b=n.kdf={},x=b.OpenSSL={execute:function(e,t,r,i){i||(i=a.random(8))
 var n=f.create({keySize:t+r}).compute(e,i),s=a.create(n.words.slice(t),4*r)
 n.sigBytes=4*t
-return v.create({key:n,iv:s,salt:i})}},A=s.PasswordBasedCipher=b.extend({cfg:b.cfg.extend({kdf:x}),encrypt:function(e,t,r,i){i=this.cfg.extend(i)
+return v.create({key:n,iv:s,salt:i})}},A=s.PasswordBasedCipher=E.extend({cfg:E.cfg.extend({kdf:x}),encrypt:function(e,t,r,i){i=this.cfg.extend(i)
 var n=i.kdf.execute(r,e.keySize,e.ivSize)
 i.iv=n.iv
-var s=b.encrypt.call(this,e,t,n.key,i)
+var s=E.encrypt.call(this,e,t,n.key,i)
 s.mixIn(n)
 return s},decrypt:function(e,t,r,i){i=this.cfg.extend(i)
 t=this._parse(t,i.format)
 var n=i.kdf.execute(r,e.keySize,e.ivSize,t.salt)
 i.iv=n.iv
-var s=b.decrypt.call(this,e,t,n.key,i)
+var s=E.decrypt.call(this,e,t,n.key,i)
 return s}}))))
-var i,n,s,o,a,c,u,h,d,f,l,p,_,y,g,m,v,S,w,b,E,x,A},function(e,t,r){"use strict"
+var i,n,s,o,a,c,u,h,d,f,l,p,_,y,g,m,v,S,w,E,b,x,A},function(e,t,r){"use strict"
 r.r(t)
 r.d(t,"navigationGuards",(function(){return V}))
 r.d(t,"EverflowPluginOptions",(function(){return EverflowPluginOptions}))
@@ -514,7 +514,7 @@ const i={router:this.$router,store:e}
 Object.assign({},i,t)
 const s={...i,...t}
 new c.a(s).$mount("#"+r)
-this.loadReadyCallbacks()}go(e,t={}){this.$router.push({name:e,params:t})}readyCallback(e){this.readyCallbacks.push(e)}}var g=r(12),m=r.n(g),v=r(0),S=v.Emit,w=v.Inject,b=v.Model,E=v.Prop,x=v.Provide,A=v.Watch,H={Component:m.a,Emit:S,Inject:w,Model:b,Prop:E,Provide:x,Watch:A},__decorate=function(e,t,r,i){var n,s=arguments.length,o=s<3?t:null===i?i=Object.getOwnPropertyDescriptor(t,r):i
+this.loadReadyCallbacks()}go(e,t={}){this.$router.push({name:e,params:t})}readyCallback(e){this.readyCallbacks.push(e)}}var g=r(12),m=r.n(g),v=r(0),S=v.Emit,w=v.Inject,E=v.Model,b=v.Prop,x=v.Provide,A=v.Watch,H={Component:m.a,Emit:S,Inject:w,Model:E,Prop:b,Provide:x,Watch:A},__decorate=function(e,t,r,i){var n,s=arguments.length,o=s<3?t:null===i?i=Object.getOwnPropertyDescriptor(t,r):i
 if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)o=Reflect.decorate(e,t,r,i)
 else for(var a=e.length-1;a>=0;a--)(n=e[a])&&(o=(s<3?n(o):s>3?n(t,r,o):n(t,r))||o)
 return s>3&&o&&Object.defineProperty(t,r,o),o}
@@ -524,19 +524,9 @@ var k={$refs:"",created(){document.getElementById(this.$app.config.mountId).clas
 if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)o=Reflect.decorate(e,t,r,i)
 else for(var a=e.length-1;a>=0;a--)(n=e[a])&&(o=(s<3?n(o):s>3?n(t,r,o):n(t,r))||o)
 return s>3&&o&&Object.defineProperty(t,r,o),o}
-let C=class Ready extends c.a{ready(){}}
-C=ready_decorate([H.Component({})],C)
-var B={$refs:"",mounted:function(){isFunction(this.ready)&&this.ready()}},P=C.extend({mixins:[B]}),prototypes_prototypes=function(){String.prototype.contains=function(e){return-1!=this.toLowerCase().indexOf(e.toLowerCase())}
-String.prototype.shorten=function(e,t){var r=this.length>e,i=r?this.substr(0,e-1):this
-i=t&&r?i.substr(0,i.lastIndexOf(" ")):i
-return r?i+"&hellip;":i}
-String.prototype.toJson=function(){try{return JSON.parse(this)}catch(e){return{}}}
-String.prototype.isEmpty=function(){return!this}
-String.prototype.endsWith=function(e){return this.substr(-e.length).toLowerCase()===e.toLowerCase()}
-Object.defineProperty(Array.prototype,"stringify",{enumerable:!1,value:function(){try{return JSON.stringify(this)}catch(e){return""}}})
-Object.defineProperty(Object.prototype,"stringify",{enumerable:!1,value:function(){return JSON.stringify(this)}})
-Object.defineProperty(Object.prototype,"getName",{value:function(){var e=/function (.{1,})\(/.exec(this.constructor.toString())
-return e&&e.length>1?e[1]:""},enumerable:!1})}
+let B=class Ready extends c.a{ready(){}}
+B=ready_decorate([H.Component({})],B)
+var C={$refs:"",mounted:function(){isFunction(this.ready)&&this.ready()}},P=B.extend({mixins:[C]})
 class translator_Translator{static loadData(e,t){var r=e.language
 return e.language.data[t][r.current]}static listKey(e){return e.split(".")}static convertProperty(e,t){var r=e[t]
 if(r){var i=r.match(/trans\('([\w.]+)'\)/g)
@@ -545,12 +535,12 @@ e[t]=translator_Translator.trans(o)}}}static trans(e,t=null){var r=translator_Tr
 delete r[0]
 for(var n in r){var s=r[n]
 isFunction(s)||(i=i[s])}return i}static convertPage(){for(var e=document.getElementsByTagName("*"),t=["placeholder","innerText","defaultValue"],r=0,i=e.length;r<i;r++)for(var n in t){var s=t[n],o=e[r]
-s in o&&translator_Translator.convertProperty(o,s)}}}var I=r(13),M=r.n(I),O=r(6),q=r.n(O),T=r(8),N=r.n(T),G=r(7),z=r.n(G),j=r(14),L=r.n(j)
+s in o&&translator_Translator.convertProperty(o,s)}}}var I=r(13),M=r.n(I),q=r(6),O=r.n(q),T=r(8),G=r.n(T),z=r(7),N=r.n(z),j=r(14),L=r.n(j)
 class security_Security{constructor(e){if(!e.config.security)throw new y.ConfigSecurityError
 if(!e.config.security.key)throw new y.ConfigSecurityKeyError
-this.key=e.config.security.key}encrypt(e){return security_Security.simple.aes.encrypt(e,this.key)}decrypt(e){return security_Security.simple.aes.decrypt(e,this.key)}}security_Security.hashes={sha256:M.a,md5:z.a}
-security_Security.encoders={base64:q.a,utf8:N.a}
-security_Security.decoders={base64:q.a,utf8:N.a}
+this.key=e.config.security.key}encrypt(e){return security_Security.simple.aes.encrypt(e,this.key)}decrypt(e){return security_Security.simple.aes.decrypt(e,this.key)}}security_Security.hashes={sha256:M.a,md5:N.a}
+security_Security.encoders={base64:O.a,utf8:G.a}
+security_Security.decoders={base64:O.a,utf8:G.a}
 security_Security.AES=L.a
 security_Security.simple={base64:{encode:e=>security_Security.encoders.base64.stringify(security_Security.encoders.utf8.parse(e)),decode:e=>security_Security.encoders.base64.parse(e).toString(security_Security.encoders.utf8)},aes:{encrypt(e,t){try{return encodeURIComponent(security_Security.simple.base64.encode(security_Security.AES.encrypt(e,t).toString()))}catch(e){return!1}},decrypt(e,t){try{return security_Security.AES.decrypt(security_Security.simple.base64.decode(decodeURIComponent(e)),t).toString(security_Security.encoders.utf8)}catch(e){return!1}}}}
 var K=r(15)
@@ -569,7 +559,6 @@ this.firstname=""
 this.lastname=""
 this.email=""}}},$=r(10),V={documentTitleNavGaurd:(e,t,r)=>{document.title=e.meta.title
 r()}}
-t.default=n
-prototypes_prototypes()}])}))
+t.default=n}])}))
 
 //# sourceMappingURL=everflow.js.map

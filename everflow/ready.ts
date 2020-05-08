@@ -1,7 +1,7 @@
 ﻿import { isFunction } from './utils/utils';
 import Vue, { VueConstructor } from 'vue';
 import App from './app';
-import decorators from './decorators/--init--'
+import decorators from './decorators'
 
 /**
  * Creates the Ready class to extend Vue. Adds ready() triggering

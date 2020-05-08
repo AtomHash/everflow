@@ -4,13 +4,12 @@ import App from './everflow/app';
 import Page from './everflow/page';
 import Ready from './everflow/ready';
 import Request from './everflow/request';
-import Prototypes from './everflow/prototypes/prototypes';
 import Translator from './everflow/translator';
 import Security from './everflow/security';
-import utils from './everflow/utils/--init--';
-import models from './everflow/models/--init--';
-import decorators from './everflow/decorators/--init--';
-import * as interfaces from './everflow/interfaces/--init--';
+import utils from './everflow/utils';
+import models from './everflow/models';
+import decorators from './everflow/decorators';
+import * as interfaces from './everflow/interfaces';
 import navigationGuards from './everflow/navigation-guards';
 
 export
@@ -30,5 +29,3 @@ export
     Security
 }
 export default Everflow;
-// Enable Prototypes
-Prototypes();
