@@ -64,7 +64,7 @@ export default class Language
           }
           // load un-loaded language.
 
-          return await axios.get(`/locales/${lang}.json`).then(function(response){
+          return await axios.get(`/i18n/${lang}.json`).then(function(response){
             i18n.setLocaleMessage(lang, response.data[lang])
             Language.loadedLanguages.push(lang)
             return Language.setLocale(i18n, lang)

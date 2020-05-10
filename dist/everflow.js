@@ -478,7 +478,7 @@ y.a.defaults.headers.common["Accept-Language"]=t
 if(document.querySelector("html")){const e=document.querySelector("html")
 e.setAttribute("lang",t)}}static async loadLanguageAsync(e,t="en"){if(e.locale===t)return Promise.resolve()
 if(language_Language.loadedLanguages.includes(t)){language_Language.setLocale(e,t)
-return Promise.resolve()}return await y.a.get(`/locales/${t}.json`).then((function(r){e.setLocaleMessage(t,r.data[t])
+return Promise.resolve()}return await y.a.get(`/i18n/${t}.json`).then((function(r){e.setLocaleMessage(t,r.data[t])
 language_Language.loadedLanguages.push(t)
 return language_Language.setLocale(e,t)}))}}language_Language.loadedLanguages=["en"]
 class app_App{constructor(e,t){this.ready=!1
