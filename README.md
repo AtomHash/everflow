@@ -37,8 +37,8 @@ Lots of work in progress from the v3 of Everflow you know. BREAKING changes are 
 
 ## Out-of-Box support
 
-:white_check_mark: i18n - <img width="24" src="https://raw.githubusercontent.com/kazupon/vue-i18n/v8.x/assets/vue-i18n-logo.png" /> <a href="https://kazupon.github.io/vue-i18n/" target="_blank">Vue-i18n</a></br>
-:white_check_mark: Routes - <a href="https://router.vuejs.org/" target="_blank">Vue Router</a><img width="24" src="https://vuejs.org/images/logo.png" /></br>
+:white_check_mark: i18n - <img width="20" src="https://raw.githubusercontent.com/kazupon/vue-i18n/v8.x/assets/vue-i18n-logo.png" /> <a href="https://kazupon.github.io/vue-i18n/" target="_blank">Vue-i18n</a></br>
+:white_check_mark: Routes - <img width="20" src="https://vuejs.org/images/logo.png" /> <a href="https://router.vuejs.org/" target="_blank">Vue Router</a></br>
 :white_check_mark: Security - <a href="https://github.com/brix/crypto-js" target="_blank">CryptoJS</a></br>
 :white_check_mark: Modules</br>
 :white_check_mark: API authorization / JWT Tokens / Requests</br>
