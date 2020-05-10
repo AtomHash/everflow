@@ -10,11 +10,11 @@
 <p align="center">A modular, batteries included framework for vue.js.</p>
 
 
-## Everflow
-A framework for a VueJS TypeScript application. Scalability and Modularity that utilizes vuejs <a href="https://vuejs.org" target="_blank"><img width="15" src="https://vuejs.org/images/logo.png"></a>.
+## What is Everflow?
+A TypeScript vue.js <a href="https://vuejs.org" target="_blank"><img width="20" src="https://vuejs.org/images/logo.png"> framework. Built with scalability and modular design in mind.</a>.
 
-### Alpha
-Lots of work in progress for this batteries included VueJS TypeScript framework.
+### Alpha - 4.0.0
+Lots of work in progress from the v3 of Everflow you know. BREAKING changes are guaranteed.
 
 ## Getting Started - VueJS Cli
 1. `vue create <app-name>`
@@ -35,15 +35,25 @@ Lots of work in progress for this batteries included VueJS TypeScript framework.
         - Where do you prefer placing config? **In dedicated config files**
 2. `vue add vue-cli-plugin-everflow`
 
+## Out-of-Box support
+
+:white_check_mark: i18n - Vue-i18n <a href="https://kazupon.github.io/vue-i18n/" target="_blank"><img width="24" src="https://raw.githubusercontent.com/kazupon/vue-i18n/v8.x/assets/vue-i18n-logo.png">
+:white_check_mark: Routes - Vue Router <a href="https://router.vuejs.org/" target="_blank"><img width="24" src="https://vuejs.org/images/logo.png">
+:white_check_mark: Security - CryptoJS <a href="https://router.vuejs.org/" target="_blank">https://github.com/brix/crypto-js</a>
+:white_check_mark: Modules
+:white_check_mark: API authorization / JWT Tokens / Requests
+:white_check_mark: Data Storage
+:white_check_mark: Build Tools
+
 ## Documentation
 Coming soon.
 
-### Everflow Design Pattern
+## Everflow Design Pattern
 Everflow code style conventions
 [Style Conventions](https://github.com/AtomHash/everflow-design-pattern)
 
 ## :copyright: License
 [MIT](http://opensource.org/licenses/MIT)
 
-### Everflow ❤ VueJS
+## Everflow ❤ VueJS
 Everflow is built for VueJs. We love you VueJs!
