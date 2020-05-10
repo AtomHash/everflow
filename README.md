@@ -11,7 +11,7 @@
 
 
 ## What is Everflow?
-A TypeScript vue.js <a href="https://vuejs.org" target="_blank"><img width="20" src="https://vuejs.org/images/logo.png"> framework. Built with scalability and modular design in mind.</a>.
+A TypeScript vue.js <a href="https://vuejs.org" target="_blank"><img width="20" src="https://vuejs.org/images/logo.png"></a> framework. Built with scalability and modular design in mind.
 
 ### Alpha - 4.0.0
 Lots of work in progress from the v3 of Everflow you know. BREAKING changes are guaranteed.
@@ -37,8 +37,8 @@ Lots of work in progress from the v3 of Everflow you know. BREAKING changes are 
 
 ## Out-of-Box support
 
-:white_check_mark: i18n - Vue-i18n <a href="https://kazupon.github.io/vue-i18n/" target="_blank"><img width="24" src="https://raw.githubusercontent.com/kazupon/vue-i18n/v8.x/assets/vue-i18n-logo.png"></br>
-:white_check_mark: Routes - Vue Router <a href="https://router.vuejs.org/" target="_blank"><img width="24" src="https://vuejs.org/images/logo.png"></br>
+:white_check_mark: i18n - Vue-i18n <a href="https://kazupon.github.io/vue-i18n/" target="_blank"><img width="24" src="https://raw.githubusercontent.com/kazupon/vue-i18n/v8.x/assets/vue-i18n-logo.png"></a></br>
+:white_check_mark: Routes - Vue Router <a href="https://router.vuejs.org/" target="_blank"><img width="24" src="https://vuejs.org/images/logo.png"></a></br>
 :white_check_mark: Security - CryptoJS <a href="https://router.vuejs.org/" target="_blank">https://github.com/brix/crypto-js</a></br>
 :white_check_mark: Modules</br>
 :white_check_mark: API authorization / JWT Tokens / Requests</br>
