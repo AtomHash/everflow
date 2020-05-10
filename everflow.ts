@@ -4,7 +4,7 @@ import App from './everflow/app';
 import Page from './everflow/page';
 import Ready from './everflow/ready';
 import Request from './everflow/request';
-import Translator from './everflow/translator';
+import Language from './everflow/language';
 import Security from './everflow/security';
 import utils from './everflow/utils';
 import models from './everflow/models';
@@ -25,7 +25,7 @@ export
     models,
     decorators,
     interfaces,
-    Translator,
+    Language,
     Security
 }
 export default Everflow;

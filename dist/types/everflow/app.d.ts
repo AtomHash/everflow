@@ -1,9 +1,9 @@
 import { Store } from 'vuex';
-import VueRouter, { RouterOptions, RouteConfig } from 'vue-router';
-import IApp from './interfaces/i-app';
+import VueRouter from 'vue-router';
+import { IApp, IAppOptions } from './interfaces';
 import Storage from './utils/storage';
 import Request from './request';
-import Language from './utils/language';
+import Language from './language';
 declare module 'vue/types/vue' {
     interface Vue {
         $app: App;
@@ -30,7 +30,7 @@ export default class App implements IApp {
      * @param {interfaces.IModel} User - a user model object
      * @param {object} config - everflow config
      */
-    constructor(config: any, routes: Array<RouteConfig>, routerOptions?: RouterOptions, vuePlugins?: Array<any>);
+    constructor(config: any, appOptions: IAppOptions);
     /**
     * Vue Router init helper function
     * @function __routerInit
@@ -49,6 +49,7 @@ export default class App implements IApp {
      * Start the EverFlow application
      * @function run
      * @param {Array<RouteConfig>} routes - array of routes to be served by the app
+     * @param {Object} injects - use name: plugin syntax
      */
     run(store: Store<any>, injects?: any): void;
     /**

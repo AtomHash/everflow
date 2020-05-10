@@ -2,7 +2,7 @@
 import VueRouter, { RouterOptions, RouteConfig, RouterMode } from 'vue-router';
 import Storage from '../utils/storage';
 import UserModel from '../models/user-model';
-import Language from '../utils/language';
+import Language from '../language';
 
 export default interface IApp
 {

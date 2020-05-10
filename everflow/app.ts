@@ -1,14 +1,12 @@
-﻿import Vue, { ComponentOptions } from 'vue';
-import Vuex from 'vuex';
-import { Store } from 'vuex'
+﻿import Vue from 'vue';
+import Vuex, { Store } from 'vuex';
+import VueI18n from 'vue-i18n';
 import VueRouter, { RouterOptions, RouteConfig, RouterMode } from 'vue-router';
-import IApp from './interfaces/i-app';
+import { IApp, IAppOptions } from './interfaces';
 import Storage from './utils/storage';
 import Request from './request';
-import UserModel from './models/user-model';
-import Language from './utils/language';
+import Language from './language';
 import errors from './errors';
-import * as interfaces from './interfaces';
 import Everflow from './plugin/everflow-plugin';
 import { isFunction } from './utils/utils';
 
@@ -42,15 +40,29 @@ declare module 'vue/types/vue' {
      * @param {interfaces.IModel} User - a user model object 
      * @param {object} config - everflow config
      */
-     constructor(config: any, routes: Array<RouteConfig>, routerOptions?: RouterOptions, vuePlugins?: Array<any>)
+     constructor(config: any, appOptions: IAppOptions)
      {
+         if (!appOptions.routerOptions)
+         {
+             // default to object
+             appOptions.routerOptions = {};
+         }
+         if (!appOptions.vuePlugins)
+         {
+             // default to array
+             appOptions.vuePlugins = [];
+         }
          this.config = config;
          this.storage = new Storage(config.storage);
-         this.language = new Language(this);
-         this.__routerInit(routes, routerOptions);
+         this.__routerInit(appOptions.routes, appOptions.routerOptions);
          Vue.use(Vuex);
-         if(vuePlugins){
-             vuePlugins.forEach(function(plugin, index, arr){
+         if (appOptions.defaultI18nMessages)
+         {
+             Vue.use(VueI18n);
+             this.language = new Language(this, appOptions.defaultI18nMessages);
+         }
+         if(appOptions.vuePlugins){
+             appOptions.vuePlugins.forEach(function(plugin, index, arr){
                  Vue.use(plugin);
              });
          }
@@ -117,6 +129,7 @@ declare module 'vue/types/vue' {
      * Start the EverFlow application
      * @function run
      * @param {Array<RouteConfig>} routes - array of routes to be served by the app
+     * @param {Object} injects - use name: plugin syntax
      */
      run(store: Store<any>, injects: any = {}): void
      {
@@ -135,7 +148,13 @@ declare module 'vue/types/vue' {
              router: this.$router,
              store: store
          };
-         Object.assign({},vueOptions,injects);
+
+         // Setup vue-i18n
+         if (this.language)
+         {
+             vueOptions['i18n'] = this.language.i18n;
+         }
+         Object.assign({}, vueOptions, injects);
 
          const vueOptionsMerged = {...vueOptions, ...injects};
 

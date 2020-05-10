@@ -1,6 +1,6 @@
 {
   "name": "everflow",
-  "version": "4.0.0-alpha.5",
+  "version": "4.0.0-alpha.6",
   "description": "Everflow is a fully modular framework for VueJS to make code reuse easier.",
   "main": "./dist/everflow.js",
   "typings": "./dist/types/everflow.d.ts",
@@ -22,6 +22,7 @@
     "moment": "^2.25.3",
     "vue": "^2.6.11",
     "vue-class-component": "^7.2.3",
+    "vue-i18n": "^8.17.4",
     "vue-property-decorator": "^8.4.2",
     "vue-router": "^3.1.6",
     "vuex": "^3.3.0"

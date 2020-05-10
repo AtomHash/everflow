@@ -1,6 +1,6 @@
 import VueRouter from 'vue-router';
 import Storage from '../utils/storage';
-import Language from '../utils/language';
+import Language from '../language';
 export default interface IApp {
     storage: Storage;
     go(name: string): void;
