@@ -37,13 +37,13 @@ Lots of work in progress from the v3 of Everflow you know. BREAKING changes are 
 
 ## Out-of-Box support
 
-:white_check_mark: i18n - Vue-i18n <a href="https://kazupon.github.io/vue-i18n/" target="_blank"><img width="24" src="https://raw.githubusercontent.com/kazupon/vue-i18n/v8.x/assets/vue-i18n-logo.png">
-:white_check_mark: Routes - Vue Router <a href="https://router.vuejs.org/" target="_blank"><img width="24" src="https://vuejs.org/images/logo.png">
-:white_check_mark: Security - CryptoJS <a href="https://router.vuejs.org/" target="_blank">https://github.com/brix/crypto-js</a>
-:white_check_mark: Modules
-:white_check_mark: API authorization / JWT Tokens / Requests
-:white_check_mark: Data Storage
-:white_check_mark: Build Tools
+:white_check_mark: i18n - Vue-i18n <a href="https://kazupon.github.io/vue-i18n/" target="_blank"><img width="24" src="https://raw.githubusercontent.com/kazupon/vue-i18n/v8.x/assets/vue-i18n-logo.png"></br>
+:white_check_mark: Routes - Vue Router <a href="https://router.vuejs.org/" target="_blank"><img width="24" src="https://vuejs.org/images/logo.png"></br>
+:white_check_mark: Security - CryptoJS <a href="https://router.vuejs.org/" target="_blank">https://github.com/brix/crypto-js</a></br>
+:white_check_mark: Modules</br>
+:white_check_mark: API authorization / JWT Tokens / Requests</br>
+:white_check_mark: Data Storage</br>
+:white_check_mark: Build Tools</br>
 
 ## Documentation
 Coming soon.
