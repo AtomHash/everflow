@@ -1,0 +1,10 @@
+{
+    "inputFiles": ["./everflow"],
+    "theme": "./docs/themes/typedoc-everflow",
+    "readme": "./docs/README.md",
+    "mode": "file",
+    "exclude": "**/*-error.ts",
+    "out": "./docs/dist",
+    "disableOutputCheck": true,
+    "name": "API"
+}

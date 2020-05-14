@@ -13,9 +13,6 @@
 ## What is Everflow?
 A TypeScript vue.js <a href="https://vuejs.org" target="_blank"><img width="20" src="https://vuejs.org/images/logo.png"></a> framework. Built with scalability and modular design in mind.
 
-### Alpha - 4.0.0
-Lots of work in progress from the v3 of Everflow you know. BREAKING changes are guaranteed.
-
 ## Getting Started - VueJS Cli
 1. `vue create <app-name>`
     - babel (required)
@@ -36,6 +33,16 @@ Lots of work in progress from the v3 of Everflow you know. BREAKING changes are 
 2. `vue add vue-cli-plugin-everflow`
 
 ## Out-of-Box support
+:white_check_mark: i18n - <img width="15" src="https://raw.githubusercontent.com/kazupon/vue-i18n/v8.x/assets/vue-i18n-logo.png" /> <a href="https://kazupon.github.io/vue-i18n/" target="_blank">Vue-i18n</a></br>
+:white_check_mark: Routes - <img width="15" src="https://vuejs.org/images/logo.png" /> <a href="https://router.vuejs.org/" target="_blank">Vue Router</a></br>
+:white_check_mark: Security - <a href="https://github.com/brix/crypto-js" target="_blank">CryptoJS</a></br>
+:white_check_mark: Modules</br>
+:white_check_mark: API authorization / JWT Tokens / Requests</br>
+:white_check_mark: Data Storage</br>
+:white_check_mark: Build Tools</br>
+
+## Super Small Impact
+Everflow adds all the features required for an enterprise level application with a very small size impact. For a matter of the fact only ~36KB minified!
 
 :white_check_mark: i18n - <img width="15" src="https://raw.githubusercontent.com/kazupon/vue-i18n/v8.x/assets/vue-i18n-logo.png" /> <a href="https://kazupon.github.io/vue-i18n/" target="_blank">Vue-i18n</a></br>
 :white_check_mark: Routes - <img width="15" src="https://vuejs.org/images/logo.png" /> <a href="https://router.vuejs.org/" target="_blank">Vue Router</a></br>
@@ -46,11 +53,10 @@ Lots of work in progress from the v3 of Everflow you know. BREAKING changes are 
 :white_check_mark: Build Tools</br>
 
 ## Documentation
-Coming soon.
+Check out the docs and getting started help at [everflowjs.github.io](https://everflowjs.github.io/v4/guide/)
 
 ## Everflow Design Pattern
-Everflow code style conventions
-[Style Conventions](https://github.com/AtomHash/everflow-design-pattern)
+Check out the recommended [Style Conventions](https://everflowjs.github.io/v4/style-guide/)
 
 ## :copyright: License
 [MIT](http://opensource.org/licenses/MIT)
