@@ -1,6 +1,5 @@
 ﻿import { isFunction } from './utils/utils';
 import Vue, { VueConstructor } from 'vue';
-import App from './app';
 import decorators from './decorators'
 
 /**

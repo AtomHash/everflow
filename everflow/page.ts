@@ -1,6 +1,5 @@
 ﻿import { isFunction } from './utils/utils';
 import Vue, { VueConstructor } from 'vue';
-import App from './app';
 import decorators from './decorators'
 
 /**
@@ -15,7 +14,7 @@ class PageHelper
      * @param {Page} page - Page class
      * @static
      */
-    static pageReady(page)
+    static pageReady(page: Page)
     {
         if (isFunction(page.ready))
         {

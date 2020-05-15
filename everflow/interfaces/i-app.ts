@@ -1,7 +1,5 @@
-﻿import Vue from 'vue';
-import VueRouter, { RouterOptions, RouteConfig, RouterMode } from 'vue-router';
+﻿import VueRouter from 'vue-router';
 import Storage from '../utils/storage';
-import UserModel from '../models/user-model';
 import Language from '../language';
 
 export default interface IApp
@@ -13,7 +11,7 @@ export default interface IApp
     ready: boolean;
     readyPermission: boolean;
     readyCallbacks: Array<any>;
-    readyCallback(callback): void;
+    readyCallback(callback: any): void;
     config: any;
     $router: VueRouter;
     $globals: any;

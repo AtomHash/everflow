@@ -1,4 +1,4 @@
-import VueRouter, { RouterOptions, RouteConfig, RouterMode } from 'vue-router';
+import { RouterOptions, RouteConfig } from 'vue-router';
 
 export default interface IAppOptions 
 {

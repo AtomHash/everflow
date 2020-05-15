@@ -34,10 +34,10 @@ export default class Request {
     /**
      * Axios spread function to handle mutiple response callbacks
      * @function spread
-     * @param {callable} callback - callback with a paramter for each response in Request.multiple([])
+     * @param {object} callback - callback with a paramter for each response in Request.multiple([])
      * @static
      */
-    static spread(callback: any): (array: {}[]) => {};
+    static spread(callback: (...args: {}[]) => {}): (array: {}[]) => {};
     /**
      * Get Axios default engine
      * @function getAxiosEngine
@@ -68,7 +68,7 @@ export default class Request {
      * @param {string} name - name of header
      * @param {string} value - value of header
      */
-    addHeader(name: any, value: any): Request;
+    addHeader(name: string, value: string): Request;
     /**
      * Retry the Request on failure(HTTP 500)
      * @function retry

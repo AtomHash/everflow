@@ -1,4 +1,4 @@
-import * as moment from 'moment';
+import moment from 'moment';
 import App from '../app';
 
 /**
@@ -17,7 +17,6 @@ export default class DateTime
     {
         var dateFormat = null;
         try {
-            var config = everflowApp.config;
             dateFormat = everflowApp.config.datetime.date.format;
         } catch (e){
             dateFormat = 'YYYY-MM-DD';
@@ -35,7 +34,6 @@ export default class DateTime
     {
         var timeFormat = null;
         try {
-            var config = everflowApp.config;
             timeFormat = everflowApp.config.datetime.time.format;
         } catch (e){
             timeFormat = 'LTS';

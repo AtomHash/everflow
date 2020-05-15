@@ -395,17 +395,17 @@ var s=E.decrypt.call(this,e,t,n.key,i)
 return s}}))))
 var i,n,s,o,a,c,u,h,f,d,l,p,_,g,y,m,v,S,w,E,b,x,A},function(e,t,r){"use strict"
 r.r(t)
-r.d(t,"navigationGuards",(function(){return X}))
+r.d(t,"navigationGuards",(function(){return J}))
 r.d(t,"EverflowPluginOptions",(function(){return EverflowPluginOptions}))
 r.d(t,"VueRouter",(function(){return o.a}))
 r.d(t,"App",(function(){return app_App}))
 r.d(t,"Page",(function(){return C}))
 r.d(t,"Ready",(function(){return M}))
 r.d(t,"Request",(function(){return request_Request}))
-r.d(t,"utils",(function(){return $}))
-r.d(t,"models",(function(){return V}))
+r.d(t,"utils",(function(){return V}))
+r.d(t,"models",(function(){return Y}))
 r.d(t,"decorators",(function(){return D}))
-r.d(t,"interfaces",(function(){return Y}))
+r.d(t,"interfaces",(function(){return X}))
 r.d(t,"Language",(function(){return language_Language}))
 r.d(t,"Security",(function(){return security_Security}))
 const i={install(e,t){e.prototype.$app=t.everflowApp}}
@@ -531,26 +531,24 @@ security_Security.encoders={base64:T.a,utf8:L.a}
 security_Security.decoders={base64:T.a,utf8:L.a}
 security_Security.AES=K.a
 security_Security.simple={base64:{encode:e=>security_Security.encoders.base64.stringify(security_Security.encoders.utf8.parse(e)),decode:e=>security_Security.encoders.base64.parse(e).toString(security_Security.encoders.utf8)},aes:{encrypt(e,t){try{return encodeURIComponent(security_Security.simple.base64.encode(security_Security.AES.encrypt(e,t).toString()))}catch(e){return!1}},decrypt(e,t){try{return security_Security.AES.decrypt(security_Security.simple.base64.decode(decodeURIComponent(e)),t).toString(security_Security.encoders.utf8)}catch(e){return!1}}}}
-var W=r(16)
+var W=r(16),$=r.n(W)
 class date_time_DateTime{static getDateFormat(e=null){var t=null
-try{e.config
-t=e.config.datetime.date.format}catch(e){t="YYYY-MM-DD"}return t}static getTimeFormat(e=null){var t=null
-try{e.config
-t=e.config.datetime.time.format}catch(e){t="LTS"}return t}static moment(e=null,t=null){t||(t=`${date_time_DateTime.getDateFormat()} ${date_time_DateTime.getTimeFormat()}`)
+try{t=e.config.datetime.date.format}catch(e){t="YYYY-MM-DD"}return t}static getTimeFormat(e=null){var t=null
+try{t=e.config.datetime.time.format}catch(e){t="LTS"}return t}static moment(e=null,t=null){t||(t=`${date_time_DateTime.getDateFormat()} ${date_time_DateTime.getTimeFormat()}`)
 e||(e=new Date)
 t||(t="MMMM Do YYYY, h:mm:ss a")
-return W(e,t)}static date(e=null){return date_time_DateTime.moment(e).format(date_time_DateTime.getDateFormat())}static time(e=null){return date_time_DateTime.moment(e).format(date_time_DateTime.getTimeFormat())}}var $={Utils:_,Storage:storage_Storage,DateTime:date_time_DateTime}
+return $()(e,t)}static date(e=null){return date_time_DateTime.moment(e).format(date_time_DateTime.getDateFormat())}static time(e=null){return date_time_DateTime.moment(e).format(date_time_DateTime.getTimeFormat())}}var V={Utils:_,Storage:storage_Storage,DateTime:date_time_DateTime}
 class Model{constructor(e){this.saveName="defaultModel"
 this.__storage=null
 this.__storage=e}map(e){var t=this
 Object.keys(e).map((function(r,i){r in t&&(t[r]=e[r])}))}save(e=null,t=null,r=this.__storage){r.set(this.saveName,this,e,t)}load(e,t=this.__storage){var r=this
 t.get(this.saveName,(function(t,i){i&&r.map(i)
-e&&new e(r,i)}))}delete(e=null,t=this.__storage){t.remove(this.saveName,(function(){e&&new e}))}}var V={Model:Model,UserModel:class user_model_UserModel extends Model{constructor(){super(...arguments)
+e&&new e(r,i)}))}delete(e=null,t=this.__storage){t.remove(this.saveName,(function(){e&&new e}))}}var Y={Model:Model,UserModel:class user_model_UserModel extends Model{constructor(){super(...arguments)
 this.saveName="user"
 this.token=null
 this.firstname=""
 this.lastname=""
-this.email=""}}},Y=r(11),X={documentTitleNavGaurd:(e,t,r)=>{document.title=e.meta.title
+this.email=""}}},X=r(11),J={documentTitleNavGaurd:(e,t,r)=>{document.title=e.meta.title
 r()}}
 t.default=n}])}))
 

@@ -1,4 +1,4 @@
-import * as moment from 'moment';
+import moment from 'moment';
 /**
  * Adds the ability to convert dates and times using config options.
  * @class

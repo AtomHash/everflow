@@ -11,16 +11,4 @@ export default class UserModel extends Model
     firstname: string   = '';
     lastname: string    = '';
     email: string       = '';
-
-    /*
-    signOut(location: string = 'login', locationParams: any = {})
-    {
-        var app = window.app;
-        app.user.delete(function ()
-        {
-            app.user = new UserModel();
-            app.go(location, locationParams);
-        });
-    }
-    */
 }

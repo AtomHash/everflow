@@ -8,7 +8,6 @@ import Request from './request';
 import Language from './language';
 import errors from './errors';
 import Everflow from './plugin/everflow-plugin';
-import { isFunction } from './utils/utils';
 
 declare module 'vue/types/vue' {
     interface Vue {
@@ -61,7 +60,8 @@ declare module 'vue/types/vue' {
              Vue.use(VueI18n);
              this.language = new Language(this, appOptions.defaultI18nMessages);
          }
-         if(appOptions.vuePlugins){
+         if(appOptions.vuePlugins)
+         {
              appOptions.vuePlugins.forEach(function(plugin, index, arr){
                  Vue.use(plugin);
              });

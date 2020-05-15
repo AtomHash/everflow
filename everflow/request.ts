@@ -1,5 +1,5 @@
 ﻿import Axios, { AxiosInstance, AxiosPromise, AxiosResponse, Method, ResponseType } from 'axios';
-import { isFunction, startsWith, endsWith } from './utils/utils';
+import { startsWith, endsWith } from './utils/utils';
 import errors from './errors';
 import App from './app';
 
@@ -7,7 +7,7 @@ import App from './app';
  * Creates an Everflow Request object. Intergrates Axios into the Everflow framework.
  * @class
  */
- export default class Request 
+ export default class Request
  {
      everflowApp: App;
      everflowAPIURL: string;
@@ -49,10 +49,10 @@ import App from './app';
     /**
      * Axios spread function to handle mutiple response callbacks
      * @function spread
-     * @param {callable} callback - callback with a paramter for each response in Request.multiple([])
+     * @param {object} callback - callback with a paramter for each response in Request.multiple([])
      * @static
      */
-     static spread(callback): (array: {}[]) => {}
+     static spread(callback: (...args: {}[]) => {}): (array: {}[]) => {}
      {
          return Axios.spread(callback)
      }
@@ -106,7 +106,7 @@ import App from './app';
      * @param {string} name - name of header
      * @param {string} value - value of header
      */
-     addHeader(name, value): Request
+     addHeader(name: string, value: string): Request
      {
          this.headers[name] = value
          return this;
