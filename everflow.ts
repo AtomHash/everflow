@@ -2,7 +2,7 @@ import Everflow, { EverflowPluginOptions } from './everflow/plugin/everflow-plug
 import VueRouter from 'vue-router';
 import App from './everflow/app';
 import Page from './everflow/page';
-import Ready from './everflow/ready';
+import ReadyComponent from './everflow/ready-component';
 import Request from './everflow/request';
 import Language from './everflow/language';
 import Security from './everflow/security';

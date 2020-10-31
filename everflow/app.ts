@@ -55,10 +55,10 @@ declare module 'vue/types/vue' {
          this.storage = new Storage(config.storage);
          this.__routerInit(appOptions.routes, appOptions.routerOptions);
          Vue.use(Vuex);
-         if (appOptions.defaultI18nMessages)
+         if (appOptions.defaultLocaleMessages)
          {
              Vue.use(VueI18n);
-             this.language = new Language(this, appOptions.defaultI18nMessages);
+             this.language = new Language(this, appOptions.defaultLocaleMessages);
          }
          if(appOptions.vuePlugins)
          {

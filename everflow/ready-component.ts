@@ -7,7 +7,7 @@ import decorators from './decorators'
  * @class
  */
 @decorators.Component({})
-class Ready extends Vue
+class ReadyComponent extends Vue
 {
     ready()
     {
@@ -30,4 +30,4 @@ var mixIns: object = {
         return;
     }
 }
-export default Ready.extend({ mixins: [mixIns] }) as VueConstructor;
+export default ReadyComponent.extend({ mixins: [mixIns] }) as VueConstructor;

@@ -17,15 +17,7 @@ fs.readdirSync('node_modules')
     nodeModules[mod] = 'commonjs ' + mod;
 });
 
-// delete nodeModules['vue'];
-// delete nodeModules['axios'];
 // delete nodeModules['crypto-js'];
-// delete nodeModules['localforage'];
-// delete nodeModules['lodash'];
-// delete nodeModules['moment'];
-// delete nodeModules['vue-class-component'];
-// delete nodeModules['vue-property-decorator'];
-// delete nodeModules['vue-router'];
 
 module.exports = {
   mode: 'production',
@@ -44,9 +36,6 @@ module.exports = {
    optimization: {
     minimize: true,
     minimizer: [new TerserPlugin({
-        parallel: true,
-        cache: true,
-        sourceMap: true,
         terserOptions: {
           output: {
             comments: false,
@@ -60,20 +49,6 @@ module.exports = {
         }
       })],
   },
-  /*
-  plugins: [
-    new UglifyJsPlugin({
-        cache: true,
-        parallel: true,
-        uglifyOptions: {
-          compress: true,
-          ecma: 5,
-          mangle: true
-        },
-        sourceMap: true
-      })
-  ],
-  */
   externals: nodeModules,
   module: {
       rules: [
@@ -84,6 +59,7 @@ module.exports = {
     ]
   },
   resolve: {
+
       alias: {
         'vue$': 'vue/dist/vue.esm.js'
       },
@@ -91,6 +67,5 @@ module.exports = {
   },
   performance: {
     hints: false
-  },
-  devtool: '#source-map'
+  }
 }

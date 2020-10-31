@@ -31,11 +31,6 @@ export default class Language
         return Language.loadLanguageAsync(this.i18n, i18nName);
     }
 
-    // locale (i18nName: string) : Language
-    // {
-    //     return Language.loadLanguageAsync(this.i18n, i18nName)
-    // }
-
     private static setLocale (i18n: VueI18n, lang: string)
     {
         i18n.locale = lang
