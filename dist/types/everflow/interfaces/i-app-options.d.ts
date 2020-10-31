@@ -3,5 +3,5 @@ export default interface IAppOptions {
     routes: Array<RouteConfig>;
     routerOptions?: RouterOptions;
     vuePlugins?: Array<any>;
-    defaultI18nMessages?: any;
+    defaultLocaleMessages?: any;
 }

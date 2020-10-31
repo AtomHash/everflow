@@ -19,7 +19,7 @@ export
     VueRouter,
     App,
     Page,
-    Ready,
+    ReadyComponent,
     Request,
     utils,
     models,

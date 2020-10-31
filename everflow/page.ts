@@ -25,7 +25,7 @@ class PageHelper
 
 /**
  * Creates the Page class to extend Vue. Adds routeName, pageName, permissions and everflowPageLoadChange() 
- * @class
+ * @class Page
  */
 @decorators.Component({})
 class Page extends Vue

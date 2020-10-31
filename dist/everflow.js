@@ -5,24 +5,24 @@ for(t=0;t<256;t++){var i=n^n<<1^n<<2^n<<3^n<<4
 i=i>>>8^255&i^99
 o[r]=i
 s[i]=r
-var g=e[r],y=e[g],v=e[y],m=257*e[i]^16843008*i
-a[r]=m<<24|m>>>8
-c[r]=m<<16|m>>>16
-u[r]=m<<8|m>>>24
-l[r]=m
-m=16843009*v^65537*y^257*g^16843008*r
-h[i]=m<<24|m>>>8
-f[i]=m<<16|m>>>16
-d[i]=m<<8|m>>>24
-p[i]=m
-if(r){r=g^e[e[e[v^g]]]
+var y=e[r],g=e[y],v=e[g],_=257*e[i]^16843008*i
+a[r]=_<<24|_>>>8
+c[r]=_<<16|_>>>16
+u[r]=_<<8|_>>>24
+l[r]=_
+_=16843009*v^65537*g^257*y^16843008*r
+h[i]=_<<24|_>>>8
+f[i]=_<<16|_>>>16
+d[i]=_<<8|_>>>24
+p[i]=_
+if(r){r=y^e[e[e[v^y]]]
 n^=e[e[n]]}else r=n=1}}()
-var g=[0,1,2,4,8,16,32,64,128,27,54],y=i.AES=n.extend({_doReset:function(){if(!this._nRounds||this._keyPriorReset!==this._key){for(var e=this._keyPriorReset=this._key,t=e.words,r=e.sigBytes/4,n=this._nRounds=r+6,i=4*(n+1),s=this._keySchedule=[],a=0;a<i;a++)if(a<r)s[a]=t[a]
+var y=[0,1,2,4,8,16,32,64,128,27,54],g=i.AES=n.extend({_doReset:function(){if(!this._nRounds||this._keyPriorReset!==this._key){for(var e=this._keyPriorReset=this._key,t=e.words,r=e.sigBytes/4,n=this._nRounds=r+6,i=4*(n+1),s=this._keySchedule=[],a=0;a<i;a++)if(a<r)s[a]=t[a]
 else{l=s[a-1]
 if(a%r)r>6&&a%r==4&&(l=o[l>>>24]<<24|o[l>>>16&255]<<16|o[l>>>8&255]<<8|o[255&l])
 else{l=l<<8|l>>>24
 l=o[l>>>24]<<24|o[l>>>16&255]<<16|o[l>>>8&255]<<8|o[255&l]
-l^=g[a/r|0]<<24}s[a]=s[a-r]^l}for(var c=this._invKeySchedule=[],u=0;u<i;u++){a=i-u
+l^=y[a/r|0]<<24}s[a]=s[a-r]^l}for(var c=this._invKeySchedule=[],u=0;u<i;u++){a=i-u
 if(u%4)var l=s[a]
 else l=s[a-4]
 c[u]=u<4||a<=4?l:h[o[l>>>24]]^f[o[l>>>16&255]]^d[o[l>>>8&255]]^p[o[255&l]]}}},encryptBlock:function(e,t){this._doCryptBlock(e,t,this._keySchedule,a,c,u,l,o)},decryptBlock:function(e,t){var r=e[t+1]
@@ -31,16 +31,16 @@ e[t+3]=r
 this._doCryptBlock(e,t,this._invKeySchedule,h,f,d,p,s)
 r=e[t+1]
 e[t+1]=e[t+3]
-e[t+3]=r},_doCryptBlock:function(e,t,r,n,i,o,s,a){for(var c=this._nRounds,u=e[t]^r[0],l=e[t+1]^r[1],h=e[t+2]^r[2],f=e[t+3]^r[3],d=4,p=1;p<c;p++){var g=n[u>>>24]^i[l>>>16&255]^o[h>>>8&255]^s[255&f]^r[d++],y=n[l>>>24]^i[h>>>16&255]^o[f>>>8&255]^s[255&u]^r[d++],v=n[h>>>24]^i[f>>>16&255]^o[u>>>8&255]^s[255&l]^r[d++],m=n[f>>>24]^i[u>>>16&255]^o[l>>>8&255]^s[255&h]^r[d++]
-u=g
-l=y
+e[t+3]=r},_doCryptBlock:function(e,t,r,n,i,o,s,a){for(var c=this._nRounds,u=e[t]^r[0],l=e[t+1]^r[1],h=e[t+2]^r[2],f=e[t+3]^r[3],d=4,p=1;p<c;p++){var y=n[u>>>24]^i[l>>>16&255]^o[h>>>8&255]^s[255&f]^r[d++],g=n[l>>>24]^i[h>>>16&255]^o[f>>>8&255]^s[255&u]^r[d++],v=n[h>>>24]^i[f>>>16&255]^o[u>>>8&255]^s[255&l]^r[d++],_=n[f>>>24]^i[u>>>16&255]^o[l>>>8&255]^s[255&h]^r[d++]
+u=y
+l=g
 h=v
-f=m}g=(a[u>>>24]<<24|a[l>>>16&255]<<16|a[h>>>8&255]<<8|a[255&f])^r[d++],y=(a[l>>>24]<<24|a[h>>>16&255]<<16|a[f>>>8&255]<<8|a[255&u])^r[d++],v=(a[h>>>24]<<24|a[f>>>16&255]<<16|a[u>>>8&255]<<8|a[255&l])^r[d++],m=(a[f>>>24]<<24|a[u>>>16&255]<<16|a[l>>>8&255]<<8|a[255&h])^r[d++]
-e[t]=g
-e[t+1]=y
+f=_}y=(a[u>>>24]<<24|a[l>>>16&255]<<16|a[h>>>8&255]<<8|a[255&f])^r[d++],g=(a[l>>>24]<<24|a[h>>>16&255]<<16|a[f>>>8&255]<<8|a[255&u])^r[d++],v=(a[h>>>24]<<24|a[f>>>16&255]<<16|a[u>>>8&255]<<8|a[255&l])^r[d++],_=(a[f>>>24]<<24|a[u>>>16&255]<<16|a[l>>>8&255]<<8|a[255&h])^r[d++]
+e[t]=y
+e[t+1]=g
 e[t+2]=v
-e[t+3]=m},keySize:8})
-t.AES=n._createHelper(y)}()
+e[t+3]=_},keySize:8})
+t.AES=n._createHelper(g)}()
 return e.AES}(r(249),r(269),r(214),r(888),r(109))},109:function(e,t,r){e.exports=(n=r(249),r(888),void(n.lib.Cipher||function(e){var t=n,r=t.lib,i=r.Base,o=r.WordArray,s=r.BufferedBlockAlgorithm,a=t.enc,c=(a.Utf8,a.Base64),u=t.algo,l=u.EvpKDF,h=r.Cipher=s.extend({cfg:i.extend(),createEncryptor:function(e,t){return this.create(this._ENC_XFORM_MODE,e,t)},createDecryptor:function(e,t){return this.create(this._DEC_XFORM_MODE,e,t)},init:function(e,t,r){this.cfg=this.cfg.extend(r)
 this._xformMode=e
 this._key=t
@@ -62,10 +62,10 @@ this._prevBlock=i}})
 function xorBlock(t,r,n){var i,o=this._iv
 if(o){i=o
 this._iv=e}else i=this._prevBlock
-for(var s=0;s<n;s++)t[r+s]^=i[s]}return t}(),g=t.pad={},y=g.Pkcs7={pad:function(e,t){for(var r=4*t,n=r-e.sigBytes%r,i=n<<24|n<<16|n<<8|n,s=[],a=0;a<n;a+=4)s.push(i)
+for(var s=0;s<n;s++)t[r+s]^=i[s]}return t}(),y=t.pad={},g=y.Pkcs7={pad:function(e,t){for(var r=4*t,n=r-e.sigBytes%r,i=n<<24|n<<16|n<<8|n,s=[],a=0;a<n;a+=4)s.push(i)
 var c=o.create(s,n)
 e.concat(c)},unpad:function(e){var t=255&e.words[e.sigBytes-1>>>2]
-e.sigBytes-=t}},v=(r.BlockCipher=h.extend({cfg:h.cfg.extend({mode:p,padding:y}),reset:function(){var e
+e.sigBytes-=t}},v=(r.BlockCipher=h.extend({cfg:h.cfg.extend({mode:p,padding:g}),reset:function(){var e
 h.reset.call(this)
 var t=this.cfg,r=t.iv,n=t.mode
 if(this._xformMode==this._ENC_XFORM_MODE)e=n.createEncryptor
@@ -75,12 +75,12 @@ else{this._mode=e.call(n,this,r&&r.words)
 this._mode.__creator=e}},_doProcessBlock:function(e,t){this._mode.processBlock(e,t)},_doFinalize:function(){var e,t=this.cfg.padding
 if(this._xformMode==this._ENC_XFORM_MODE){t.pad(this._data,this.blockSize)
 e=this._process(!0)}else{e=this._process(!0)
-t.unpad(e)}return e},blockSize:4}),r.CipherParams=i.extend({init:function(e){this.mixIn(e)},toString:function(e){return(e||this.formatter).stringify(this)}})),m=t.format={},_=m.OpenSSL={stringify:function(e){var t,r=e.ciphertext,n=e.salt
+t.unpad(e)}return e},blockSize:4}),r.CipherParams=i.extend({init:function(e){this.mixIn(e)},toString:function(e){return(e||this.formatter).stringify(this)}})),_=t.format={},m=_.OpenSSL={stringify:function(e){var t,r=e.ciphertext,n=e.salt
 t=n?o.create([1398893684,1701076831]).concat(n).concat(r):r
 return t.toString(c)},parse:function(e){var t,r=c.parse(e),n=r.words
 if(1398893684==n[0]&&1701076831==n[1]){t=o.create(n.slice(2,4))
 n.splice(0,4)
-r.sigBytes-=16}return v.create({ciphertext:r,salt:t})}},w=r.SerializableCipher=i.extend({cfg:i.extend({format:_}),encrypt:function(e,t,r,n){n=this.cfg.extend(n)
+r.sigBytes-=16}return v.create({ciphertext:r,salt:t})}},w=r.SerializableCipher=i.extend({cfg:i.extend({format:m}),encrypt:function(e,t,r,n){n=this.cfg.extend(n)
 var i=e.createEncryptor(r,n),o=i.finalize(t),s=i.cfg
 return v.create({ciphertext:o,key:r,iv:s.iv,algorithm:e,mode:s.mode,padding:s.padding,blockSize:e.blockSize,formatter:n.format})},decrypt:function(e,t,r,n){n=this.cfg.extend(n)
 t=this._parse(t,n.format)
@@ -189,7 +189,7 @@ return n}})))
 var n,i,o,s,a,c,u},214:function(e,t,r){e.exports=function(e){!function(t){var r=e,n=r.lib,i=n.WordArray,o=n.Hasher,s=r.algo,a=[]
 !function(){for(var e=0;e<64;e++)a[e]=4294967296*t.abs(t.sin(e+1))|0}()
 var c=s.MD5=o.extend({_doReset:function(){this._hash=new i.init([1732584193,4023233417,2562383102,271733878])},_doProcessBlock:function(e,t){for(var r=0;r<16;r++){var n=t+r,i=e[n]
-e[n]=16711935&(i<<8|i>>>24)|4278255360&(i<<24|i>>>8)}var o=this._hash.words,s=e[t+0],c=e[t+1],u=e[t+2],l=e[t+3],h=e[t+4],f=e[t+5],d=e[t+6],p=e[t+7],g=e[t+8],y=e[t+9],v=e[t+10],m=e[t+11],_=e[t+12],w=e[t+13],S=e[t+14],b=e[t+15],k=o[0],x=o[1],E=o[2],B=o[3]
+e[n]=16711935&(i<<8|i>>>24)|4278255360&(i<<24|i>>>8)}var o=this._hash.words,s=e[t+0],c=e[t+1],u=e[t+2],l=e[t+3],h=e[t+4],f=e[t+5],d=e[t+6],p=e[t+7],y=e[t+8],g=e[t+9],v=e[t+10],_=e[t+11],m=e[t+12],w=e[t+13],S=e[t+14],b=e[t+15],k=o[0],x=o[1],E=o[2],B=o[3]
 k=FF(k,x,E,B,s,7,a[0])
 B=FF(B,k,x,E,c,12,a[1])
 E=FF(E,B,k,x,u,17,a[2])
@@ -198,33 +198,33 @@ k=FF(k,x,E,B,h,7,a[4])
 B=FF(B,k,x,E,f,12,a[5])
 E=FF(E,B,k,x,d,17,a[6])
 x=FF(x,E,B,k,p,22,a[7])
-k=FF(k,x,E,B,g,7,a[8])
-B=FF(B,k,x,E,y,12,a[9])
+k=FF(k,x,E,B,y,7,a[8])
+B=FF(B,k,x,E,g,12,a[9])
 E=FF(E,B,k,x,v,17,a[10])
-x=FF(x,E,B,k,m,22,a[11])
-k=FF(k,x,E,B,_,7,a[12])
+x=FF(x,E,B,k,_,22,a[11])
+k=FF(k,x,E,B,m,7,a[12])
 B=FF(B,k,x,E,w,12,a[13])
 E=FF(E,B,k,x,S,17,a[14])
 x=FF(x,E,B,k,b,22,a[15])
 k=GG(k,x,E,B,c,5,a[16])
 B=GG(B,k,x,E,d,9,a[17])
-E=GG(E,B,k,x,m,14,a[18])
+E=GG(E,B,k,x,_,14,a[18])
 x=GG(x,E,B,k,s,20,a[19])
 k=GG(k,x,E,B,f,5,a[20])
 B=GG(B,k,x,E,v,9,a[21])
 E=GG(E,B,k,x,b,14,a[22])
 x=GG(x,E,B,k,h,20,a[23])
-k=GG(k,x,E,B,y,5,a[24])
+k=GG(k,x,E,B,g,5,a[24])
 B=GG(B,k,x,E,S,9,a[25])
 E=GG(E,B,k,x,l,14,a[26])
-x=GG(x,E,B,k,g,20,a[27])
+x=GG(x,E,B,k,y,20,a[27])
 k=GG(k,x,E,B,w,5,a[28])
 B=GG(B,k,x,E,u,9,a[29])
 E=GG(E,B,k,x,p,14,a[30])
-x=GG(x,E,B,k,_,20,a[31])
+x=GG(x,E,B,k,m,20,a[31])
 k=HH(k,x,E,B,f,4,a[32])
-B=HH(B,k,x,E,g,11,a[33])
-E=HH(E,B,k,x,m,16,a[34])
+B=HH(B,k,x,E,y,11,a[33])
+E=HH(E,B,k,x,_,16,a[34])
 x=HH(x,E,B,k,S,23,a[35])
 k=HH(k,x,E,B,c,4,a[36])
 B=HH(B,k,x,E,h,11,a[37])
@@ -234,26 +234,26 @@ k=HH(k,x,E,B,w,4,a[40])
 B=HH(B,k,x,E,s,11,a[41])
 E=HH(E,B,k,x,l,16,a[42])
 x=HH(x,E,B,k,d,23,a[43])
-k=HH(k,x,E,B,y,4,a[44])
-B=HH(B,k,x,E,_,11,a[45])
+k=HH(k,x,E,B,g,4,a[44])
+B=HH(B,k,x,E,m,11,a[45])
 E=HH(E,B,k,x,b,16,a[46])
 x=HH(x,E,B,k,u,23,a[47])
 k=II(k,x,E,B,s,6,a[48])
 B=II(B,k,x,E,p,10,a[49])
 E=II(E,B,k,x,S,15,a[50])
 x=II(x,E,B,k,f,21,a[51])
-k=II(k,x,E,B,_,6,a[52])
+k=II(k,x,E,B,m,6,a[52])
 B=II(B,k,x,E,l,10,a[53])
 E=II(E,B,k,x,v,15,a[54])
 x=II(x,E,B,k,c,21,a[55])
-k=II(k,x,E,B,g,6,a[56])
+k=II(k,x,E,B,y,6,a[56])
 B=II(B,k,x,E,b,10,a[57])
 E=II(E,B,k,x,d,15,a[58])
 x=II(x,E,B,k,w,21,a[59])
 k=II(k,x,E,B,h,6,a[60])
-B=II(B,k,x,E,m,10,a[61])
+B=II(B,k,x,E,_,10,a[61])
 E=II(E,B,k,x,u,15,a[62])
-x=II(x,E,B,k,y,21,a[63])
+x=II(x,E,B,k,g,21,a[63])
 o[0]=o[0]+k|0
 o[1]=o[1]+x|0
 o[2]=o[2]+E|0
@@ -303,8 +303,8 @@ return!0}function getFractionalBits(e){return 4294967296*(e-(0|e))|0}for(var e=2
 c[r]=getFractionalBits(t.pow(e,1/3))
 r++}e++}}()
 var u=[],l=s.SHA256=o.extend({_doReset:function(){this._hash=new i.init(a.slice(0))},_doProcessBlock:function(e,t){for(var r=this._hash.words,n=r[0],i=r[1],o=r[2],s=r[3],a=r[4],l=r[5],h=r[6],f=r[7],d=0;d<64;d++){if(d<16)u[d]=0|e[t+d]
-else{var p=u[d-15],g=(p<<25|p>>>7)^(p<<14|p>>>18)^p>>>3,y=u[d-2],v=(y<<15|y>>>17)^(y<<13|y>>>19)^y>>>10
-u[d]=g+u[d-7]+v+u[d-16]}var m=a&l^~a&h,_=n&i^n&o^i&o,w=(n<<30|n>>>2)^(n<<19|n>>>13)^(n<<10|n>>>22),S=(a<<26|a>>>6)^(a<<21|a>>>11)^(a<<7|a>>>25),b=f+S+m+c[d]+u[d],k=w+_
+else{var p=u[d-15],y=(p<<25|p>>>7)^(p<<14|p>>>18)^p>>>3,g=u[d-2],v=(g<<15|g>>>17)^(g<<13|g>>>19)^g>>>10
+u[d]=y+u[d-7]+v+u[d-16]}var _=a&l^~a&h,m=n&i^n&o^i&o,w=(n<<30|n>>>2)^(n<<19|n>>>13)^(n<<10|n>>>22),S=(a<<26|a>>>6)^(a<<21|a>>>11)^(a<<7|a>>>25),b=f+S+_+c[d]+u[d],k=w+m
 f=h
 h=l
 l=a
@@ -330,9 +330,9 @@ e._hash=this._hash.clone()
 return e}})
 r.SHA256=o._createHelper(l)
 r.HmacSHA256=o._createHmacHelper(l)}(Math)
-return e.SHA256}(r(249))},986:(e,t,r)=>{"use strict"
+return e.SHA256}(r(249))},944:(e,t,r)=>{"use strict"
 r.r(t)
-r.d(t,{App:()=>App,EverflowPluginOptions:()=>EverflowPluginOptions,Language:()=>Language,Page:()=>I,Ready:()=>q,Request:()=>Request,Security:()=>Security,VueRouter:()=>a(),decorators:()=>R,default:()=>Q,interfaces:()=>n,models:()=>V,navigationGuards:()=>J,utils:()=>X})
+r.d(t,{App:()=>App,EverflowPluginOptions:()=>EverflowPluginOptions,Language:()=>Language,Page:()=>A,ReadyComponent:()=>q,Request:()=>Request,Security:()=>Security,VueRouter:()=>a(),decorators:()=>R,default:()=>Q,interfaces:()=>n,models:()=>V,navigationGuards:()=>J,utils:()=>X})
 var n={}
 r.r(n)
 const i={install(e,t){e.prototype.$app=t.everflowApp}}
@@ -344,16 +344,16 @@ const l=require("vuex")
 var h=r.n(l)
 const f=require("vue-i18n")
 var d=r.n(f)
-const p=require("localforage"),g={online:navigator.onLine,removeHtml:e=>e.replace(/<\/?[^>]+(>|$)/g,""),microTime(){var e=(new Date).getTime(),t=Math.floor(e/1e3)
+const p=require("localforage"),y={online:navigator.onLine,removeHtml:e=>e.replace(/<\/?[^>]+(>|$)/g,""),microTime(){var e=(new Date).getTime(),t=Math.floor(e/1e3)
 return t},tagTester:e=>function(t){return toString.call(t)==="[object "+e+"]"}},isFunction=function(e){return"function"==typeof e},startsWith=function(e,t,r=null){const{length:n}=e
 r=null==r?0:r
 r<0?r=0:r>n&&(r=n)
 t=""+t
-return e.slice(r,r+t.length)==t},y=g
+return e.slice(r,r+t.length)==t},g=y
 class Storage{constructor(e){var t={driver:[p.INDEXEDDB,p.WEBSQL,p.LOCALSTORAGE],name:"everflow-db",storeName:"default",size:4980736},r={...t,...e}
 p.config(r)}set(e,t,r,n){p.setItem(e,t).then((function(e){isFunction(r)&&r(e)})).catch((function(e){isFunction(n)&&n(e)}))}get(e,t){p.getItem(e,t)}remove(e,t=null){t?p.removeItem(e,t):p.removeItem(e)}}const v=require("axios")
-var m=r.n(v)
-class ConfigRouterModeError extends Error{constructor(){super('App.config.routerMode missing. Must be "hash", "history" or "abstract"')}}class ConfigMountError extends Error{constructor(){super("Cannot find mountId in config file")}}class RoutesEmptyError extends Error{constructor(){super("Routes passed to App.run([]) cannot be blank")}}class RequestEndPointFormatError extends Error{constructor(){super("Request endpoint error. Make sure a / is on all routes.")}}class RequestBaseurlFormatError extends Error{constructor(){super("Request apiURL in evconfig.json format error. Make sure the apiURL in the config does not end with a /")}}class RequestPrefixFormatError extends Error{constructor(){super("Request prefix error. Make sure prefix starts with a / and does NOT end with a /")}}class ConfigSecurityKeyError extends Error{constructor(){super('App.config.security is missing. Please add {"security": {"key": "<aes-key-string-format>"}} to your evconfig.json')}}class config_security_key_error_ConfigSecurityKeyError extends Error{constructor(){super('App.config.security.key is missing. Please add "key": "<aes-key-string-format>" under security in the evconfig.json.')}}const _={ConfigSecurityError:ConfigSecurityKeyError,ConfigSecurityKeyError:config_security_key_error_ConfigSecurityKeyError,ConfigRouterModeError,ConfigMountError,RoutesEmptyError,RequestEndPointFormatError,RequestBaseurlFormatError,RequestPrefixFormatError}
+var _=r.n(v)
+class ConfigRouterModeError extends Error{constructor(){super('App.config.routerMode missing. Must be "hash", "history" or "abstract"')}}class ConfigMountError extends Error{constructor(){super("Cannot find mountId in config file")}}class RoutesEmptyError extends Error{constructor(){super("Routes passed to App.run([]) cannot be blank")}}class RequestEndPointFormatError extends Error{constructor(){super("Request endpoint error. Make sure a / is on all routes.")}}class RequestBaseurlFormatError extends Error{constructor(){super("Request apiURL in evconfig.json format error. Make sure the apiURL in the config does not end with a /")}}class RequestPrefixFormatError extends Error{constructor(){super("Request prefix error. Make sure prefix starts with a / and does NOT end with a /")}}class ConfigSecurityKeyError extends Error{constructor(){super('App.config.security is missing. Please add {"security": {"key": "<aes-key-string-format>"}} to your evconfig.json')}}class config_security_key_error_ConfigSecurityKeyError extends Error{constructor(){super('App.config.security.key is missing. Please add "key": "<aes-key-string-format>" under security in the evconfig.json.')}}const m={ConfigSecurityError:ConfigSecurityKeyError,ConfigSecurityKeyError:config_security_key_error_ConfigSecurityKeyError,ConfigRouterModeError,ConfigMountError,RoutesEmptyError,RequestEndPointFormatError,RequestBaseurlFormatError,RequestPrefixFormatError}
 class Request{constructor(e,t="",r=!1){this.bearerToken=""
 this.endPoint=""
 this.authorize=!1
@@ -365,7 +365,7 @@ this.maxTime=8e3
 this.disableAllButtons=!1
 this.everflowAPIURL=e
 this.endPoint=t
-this.authorize=r}static multiple(e){return m().all(e)}static spread(e){return m().spread(e)}static getAxiosEngine(){return m()}auth(e){this.authorize=e
+this.authorize=r}static multiple(e){return _().all(e)}static spread(e){return _().spread(e)}static getAxiosEngine(){return _()}auth(e){this.authorize=e
 return this}token(e){this.bearerToken=e
 return this}url(e){this.endPoint=e
 return this}addHeader(e,t){this.headers[e]=t
@@ -389,9 +389,9 @@ r=void 0===r?n:+r
 r<0||r!=r?r=0:r>n&&(r=n)
 const i=r
 r-=t.length
-return r>=0&&e.slice(r,i)==t}(this.everflowAPIURL,"/"))throw new _.RequestBaseurlFormatError
-if(!startsWith(this.endPoint,"/"))throw new _.RequestEndPointFormatError
-e=this.everflowAPIURL+this.endPoint}var t={url:e,method:this.method,headers:this.headers,responseType:this.responseType,timeout:this.maxTime,data:JSON.stringify(this.data)},r=m().create(t)
+return r>=0&&e.slice(r,i)==t}(this.everflowAPIURL,"/"))throw new m.RequestBaseurlFormatError
+if(!startsWith(this.endPoint,"/"))throw new m.RequestEndPointFormatError
+e=this.everflowAPIURL+this.endPoint}var t={url:e,method:this.method,headers:this.headers,responseType:this.responseType,timeout:this.maxTime,data:JSON.stringify(this.data)},r=_().create(t)
 var iRetryFunction=function(e){var n=e.response?e.response.status:e.request.status
 t.retries=t.retries-1
 return 500===n&&t.retries>0?r.request(t):Promise.reject(e)}
@@ -408,11 +408,11 @@ return r.request(t)}}class Language{constructor(e,t){this.locale=e=>Language.loa
 let r=e.config.i18n.defaultLocale,n=e.config.i18n.fallbackLocale
 r&&"user"===r&&(r=navigator.language.split("-")[0])
 this.i18n=new(d())({locale:r,fallbackLocale:n,messages:t})}static setLocale(e,t){e.locale=t
-m().defaults.headers.common["Accept-Language"]=t
+_().defaults.headers.common["Accept-Language"]=t
 if(document.querySelector("html")){const e=document.querySelector("html")
 e.setAttribute("lang",t)}}static async loadLanguageAsync(e,t="en"){if(e.locale===t)return Promise.resolve()
 if(Language.loadedLanguages.includes(t)){Language.setLocale(e,t)
-return Promise.resolve()}return await m().get(`/i18n/${t}.json`).then((function(r){e.setLocaleMessage(t,r.data[t])
+return Promise.resolve()}return await _().get(`/i18n/${t}.json`).then((function(r){e.setLocaleMessage(t,r.data[t])
 Language.loadedLanguages.push(t)
 return Language.setLocale(e,t)}))}}Language.loadedLanguages=["en"]
 class App{constructor(e,t){this.ready=!1
@@ -426,19 +426,19 @@ this.config=e
 this.storage=new Storage(e.storage)
 this.__routerInit(t.routes,t.routerOptions)
 u().use(h())
-if(t.defaultI18nMessages){u().use(d())
-this.language=new Language(this,t.defaultI18nMessages)}t.vuePlugins&&t.vuePlugins.forEach((function(e,t,r){u().use(e)}))}__routerInit(e,t){u().use(a())
+if(t.defaultLocaleMessages){u().use(d())
+this.language=new Language(this,t.defaultLocaleMessages)}t.vuePlugins&&t.vuePlugins.forEach((function(e,t,r){u().use(e)}))}__routerInit(e,t){u().use(a())
 t||(t={})
 var r
-if(!this.config.routerMode)throw new _.ConfigRouterModeError
+if(!this.config.routerMode)throw new m.ConfigRouterModeError
 r=this.config.routerMode
-if(!e)throw new _.RoutesEmptyError
+if(!e)throw new m.RoutesEmptyError
 const n={mode:r,routes:e},i={...n,...t}
 this.$router=new(a())(i)}loadReadyCallbacks(){for(let e of this.readyCallbacks)e(this)
 this.ready=!0}run(e,t={}){this.request=new Request(this.config.apiURL)
 u().use(o,{everflowApp:this})
 var r
-if(!this.config.mountId)throw new _.ConfigMountError
+if(!this.config.mountId)throw new m.ConfigMountError
 r=this.config.mountId
 const n={router:this.$router,store:e}
 this.language&&(n.i18n=this.language.i18n)
@@ -454,19 +454,19 @@ else for(var a=e.length-1;a>=0;a--)(i=e[a])&&(s=(o<3?i(s):o>3?i(t,r,s):i(t,r))||
 return o>3&&s&&Object.defineProperty(t,r,s),s}
 let C=class Page extends(u()){ready(){}}
 C=__decorate([R.Component({})],C)
-var P={$refs:"",created(){document.getElementById(this.$app.config.mountId).className+=` ${this.pageName}-everflow-page`},mounted(){this.$app.readyPermission=!0;(class PageHelper{static pageReady(e){isFunction(e.ready)&&e.ready()}}).pageReady(this)}}
-const I=C.extend({mixins:[P]})
-var ready_decorate=function(e,t,r,n){var i,o=arguments.length,s=o<3?t:null===n?n=Object.getOwnPropertyDescriptor(t,r):n
+var P={$refs:"",created(){},mounted(){this.$app.readyPermission=!0;(class PageHelper{static pageReady(e){isFunction(e.ready)&&e.ready()}}).pageReady(this)}}
+const A=C.extend({mixins:[P]})
+var ready_component_decorate=function(e,t,r,n){var i,o=arguments.length,s=o<3?t:null===n?n=Object.getOwnPropertyDescriptor(t,r):n
 if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)s=Reflect.decorate(e,t,r,n)
 else for(var a=e.length-1;a>=0;a--)(i=e[a])&&(s=(o<3?i(s):o>3?i(t,r,s):i(t,r))||s)
 return o>3&&s&&Object.defineProperty(t,r,s),s}
-let A=class Ready extends(u()){ready(){}}
-A=ready_decorate([R.Component({})],A)
+let I=class ReadyComponent extends(u()){ready(){}}
+I=ready_component_decorate([R.Component({})],I)
 var D={$refs:"",mounted:function(){isFunction(this.ready)&&this.ready()}}
-const q=A.extend({mixins:[D]})
+const q=I.extend({mixins:[D]})
 var z=r(153),O=r.n(z),L=r(269),T=r.n(L),G=r(743),j=r.n(G),U=r(214),N=r.n(U),K=r(452),$=r.n(K)
-class Security{constructor(e){if(!e.config.security)throw new _.ConfigSecurityError
-if(!e.config.security.key)throw new _.ConfigSecurityKeyError
+class Security{constructor(e){if(!e.config.security)throw new m.ConfigSecurityError
+if(!e.config.security.key)throw new m.ConfigSecurityKeyError
 this.key=e.config.security.key}encrypt(e){return Security.simple.aes.encrypt(e,this.key)}decrypt(e){return Security.simple.aes.decrypt(e,this.key)}}Security.hashes={sha256:O(),md5:N()}
 Security.encoders={base64:T(),utf8:j()}
 Security.decoders={base64:T(),utf8:j()}
@@ -479,7 +479,7 @@ try{t=e.config.datetime.date.format}catch(e){t="YYYY-MM-DD"}return t}static getT
 try{t=e.config.datetime.time.format}catch(e){t="LTS"}return t}static moment(e=null,t=null){t||(t=`${DateTime.getDateFormat()} ${DateTime.getTimeFormat()}`)
 e||(e=new Date)
 t||(t="MMMM Do YYYY, h:mm:ss a")
-return Y()(e,t)}static date(e=null){return DateTime.moment(e).format(DateTime.getDateFormat())}static time(e=null){return DateTime.moment(e).format(DateTime.getTimeFormat())}}const X={Utils:y,Storage,DateTime}
+return Y()(e,t)}static date(e=null){return DateTime.moment(e).format(DateTime.getDateFormat())}static time(e=null){return DateTime.moment(e).format(DateTime.getTimeFormat())}}const X={Utils:g,Storage,DateTime}
 class Model{constructor(e){this.saveName="defaultModel"
 this.__storage=null
 this.__storage=e}map(e){var t=this
@@ -504,4 +504,4 @@ try{return this||new Function("return this")()}catch(e){if("object"==typeof wind
 __webpack_require__.o=(e,t)=>Object.prototype.hasOwnProperty.call(e,t)
 __webpack_require__.r=e=>{"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})
 Object.defineProperty(e,"__esModule",{value:!0})}
-return __webpack_require__(986)})()}))
+return __webpack_require__(944)})()}))

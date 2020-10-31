@@ -2,7 +2,7 @@ import Everflow, { EverflowPluginOptions } from './everflow/plugin/everflow-plug
 import VueRouter from 'vue-router';
 import App from './everflow/app';
 import Page from './everflow/page';
-import Ready from './everflow/ready';
+import ReadyComponent from './everflow/ready-component';
 import Request from './everflow/request';
 import Language from './everflow/language';
 import Security from './everflow/security';
@@ -11,5 +11,5 @@ import models from './everflow/models';
 import decorators from './everflow/decorators';
 import * as interfaces from './everflow/interfaces';
 import navigationGuards from './everflow/navigation-guards';
-export { navigationGuards, EverflowPluginOptions, VueRouter, App, Page, Ready, Request, utils, models, decorators, interfaces, Language, Security };
+export { navigationGuards, EverflowPluginOptions, VueRouter, App, Page, ReadyComponent, Request, utils, models, decorators, interfaces, Language, Security };
 export default Everflow;
