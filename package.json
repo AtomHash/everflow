@@ -1,6 +1,6 @@
 {
   "name": "everflow",
-  "version": "4.0.0-beta.1",
+  "version": "4.0.0-beta.2",
   "description": "Everflow is a fully modular framework for VueJS to make code reuse easier.",
   "main": "./dist/everflow.js",
   "typings": "./dist/types/everflow.d.ts",
@@ -14,17 +14,17 @@
   "devDependencies": {
     "vuepress": "1.7.1",
     "@types/crypto-js": "^4.0.1",
-    "file-loader": "^6.2.0",
+    "file-loader": "^6.0.0",
     "fs-extra": "^9.0.1",
     "path": "^0.12.7",
     "prompts": "^2.4.0",
-    "terser-webpack-plugin": "^5.0.3",
+    "terser-webpack-plugin": "^3.0.1",
     "ts-loader": "^8.0.7",
     "typedoc": "0.17.7",
     "typedoc-plugin-markdown": "2.2.17",
     "typescript": "^4.0.5",
-    "webpack": "^5.3.2",
-    "webpack-cli": "^4.1.0"
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
   },
   "dependencies": {
     "axios": "^0.21.0",

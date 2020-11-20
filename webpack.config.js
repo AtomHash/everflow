@@ -17,8 +17,6 @@ fs.readdirSync('node_modules')
     nodeModules[mod] = 'commonjs ' + mod;
 });
 
-// delete nodeModules['crypto-js'];
-
 module.exports = {
   mode: 'production',
   context: __dirname,
