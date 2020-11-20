@@ -1,15 +1,20 @@
-﻿import * as _ from 'lodash';
-import Storage from '../utils/storage';
+﻿import Storage from '../utils/storage';
 
 /**
- * The primary Model
+ * The primary Model - Future up to vuex states...
  * @class
  */
 export default class Model
 {
     saveName: string = 'defaultModel';
+    __storage: Storage = null;
 
-    map(object: object) {
+    constructor(storage: Storage){
+        this.__storage = storage;
+    }
+
+    map(object: object)
+    {
         var model = this;
         Object.keys(object).map(function (key, index) {
             if (key in model)
@@ -19,32 +24,32 @@ export default class Model
         });
     }
 
-    save(storage: Storage = window.app.storage)
+    save(onSuccess: CallableFunction|null = null, onFail: CallableFunction|null = null, storage: Storage = this.__storage)
     {
-        storage.set(this.saveName, this);
+        storage.set(this.saveName, this, onSuccess, onFail);
     }
 
-    load(callback: any = null, storage: Storage = window.app.storage)
+    load(callback: any, storage: Storage = this.__storage)
     {
         var self = this;
         storage.get(this.saveName, function (error, value) {
             // map loaded values right into object
-            if (!_.isNil(value))
+            if (value)
             {
                 self.map(value);
             }
             // if callback, call it
-            if (!_.isNil(callback))
+            if (callback)
             {
                 new callback(self, value);
             }
         });
     }
 
-    delete(callback: any = null, storage: Storage = window.app.storage)
+    delete(callback: any = null, storage: Storage = this.__storage)
     {
         storage.remove(this.saveName, function () {
-            if (!_.isNil(callback))
+            if (callback)
             {
                 new callback();
             }

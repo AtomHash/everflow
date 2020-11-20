@@ -1,14 +1,17 @@
 ﻿import Axios, { AxiosInstance, AxiosPromise, AxiosResponse, Method, ResponseType } from 'axios';
-import * as _ from 'lodash';
-import errors from './errors/--init--';
+import { startsWith, endsWith } from './utils/utils';
+import errors from './errors';
+import App from './app';
 
 /**
  * Creates an Everflow Request object. Intergrates Axios into the Everflow framework.
  * @class
  */
- export default class Request 
+ export default class Request
  {
-     config: any = window.app.config;
+     everflowApp: App;
+     everflowAPIURL: string;
+     bearerToken: string = '';
      endPoint:string = '';
      authorize: boolean = false;
      method: Method;
@@ -25,8 +28,9 @@ import errors from './errors/--init--';
      * @param {string} url - request url
      * @param {boolean} authorize - if true add JWT to request 
      */
-     constructor(url: string, authorize: boolean = false)
+     constructor(baseURL: string, url: string = '', authorize: boolean = false)
      {
+         this.everflowAPIURL = baseURL;
          this.endPoint = url;
          this.authorize = authorize;
      }
@@ -45,10 +49,10 @@ import errors from './errors/--init--';
     /**
      * Axios spread function to handle mutiple response callbacks
      * @function spread
-     * @param {callable} callback - callback with a paramter for each response in Request.multiple([])
+     * @param {object} callback - callback with a paramter for each response in Request.multiple([])
      * @static
      */
-     static spread(callback): (array: {}[]) => {}
+     static spread(callback: (...args: {}[]) => {}): (array: {}[]) => {}
      {
          return Axios.spread(callback)
      }
@@ -64,12 +68,45 @@ import errors from './errors/--init--';
      }
 
     /**
+     * If true with adds a Bearer token to your request. token('<bearer-token>')
+     * @function auth
+     * @param {boolean} auth - URL for request
+     */
+     auth(auth: boolean): Request
+     {
+         this.authorize = auth;
+         return this;
+     }
+
+    /**
+     * Add a Bearer Token to your requests
+     * @function token
+     * @param {string} bearerToken - A JWT/Bearer Token for authorization. this.auth(true) plus token = authorized request! 
+     */
+     token(bearerToken: string): Request
+     {
+         this.bearerToken = bearerToken;
+         return this;
+     }
+
+    /**
+     * End point URL for this request.
+     * @function url
+     * @param {string} url - URL for request
+     */
+     url(url: string): Request
+     {
+         this.endPoint = url;
+         return this;
+     }
+
+    /**
      * Add header to Request
      * @function addHeader
      * @param {string} name - name of header
      * @param {string} value - value of header
      */
-     addHeader(name, value): Request
+     addHeader(name: string, value: string): Request
      {
          this.headers[name] = value
          return this;
@@ -124,7 +161,7 @@ import errors from './errors/--init--';
      delete(data?: any): AxiosPromise
      {
          this.method = 'DELETE';
-         if (!_.isNil(data))
+         if (data)
          {
              this.data = data;
          }
@@ -178,38 +215,22 @@ import errors from './errors/--init--';
          var url: string = '';
          if (this.authorize)
          {
-             this.addHeader('Authorization', `Bearer ${window.app.user.token}`)
+             this.addHeader('Authorization', `Bearer ${this.bearerToken}`)
          }
         //added to support external links
-        if (_.startsWith(this.endPoint.toLowerCase(), 'http'))
+        if (startsWith(this.endPoint.toLowerCase(), 'http'))
         {
             url = this.endPoint;
         } else {
-            // make sure entry point starts with /
-            if (window.app.config.debug)
+            if (endsWith(this.everflowAPIURL, '/'))
             {
-                if (_.endsWith(window.app.config.baseURL, '/'))
-                {
-                    throw new errors.RequestBaseurlFormatError();
-                }
-                if (!_.startsWith(this.endPoint, '/'))
-                {
-                    throw new errors.RequestEndPointFormatError();
-                }
-                if (_.has(window.app.config, 'prefix'))
-                {
-                    if (!_.startsWith(window.app.config.prefix, '/') || _.endsWith(window.app.config.prefix, '/'))
-                    {
-                        throw new errors.RequestPrefixFormatError();
-                    }
-                }
+                throw new errors.RequestBaseurlFormatError();
             }
-            var prefix = "";
-            if (_.has(window.app.config, 'prefix'))
+            if (!startsWith(this.endPoint, '/'))
             {
-                prefix = window.app.config.prefix;
+                throw new errors.RequestEndPointFormatError();
             }
-            url = window.app.config.baseURL + prefix + this.endPoint;
+            url = this.everflowAPIURL + this.endPoint;
         }
         var config = {
             url: url,
@@ -223,9 +244,10 @@ import errors from './errors/--init--';
         let self= this;
         var iRetryFunction = function (error)
         {
-            var errorCode = _.isNil(error.response)? error.request.status : error.response.status;
+            var errorCode = !error.response? error.request.status : error.response.status;
             config['retries'] = config['retries'] - 1;
-            if (errorCode === 500 && config['retries'] > 0) {
+            if (errorCode === 500 && config['retries'] > 0)
+            {
                 return ax.request(config);
             }
             return Promise.reject(error);

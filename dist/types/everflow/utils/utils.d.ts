@@ -1,25 +1,13 @@
-declare const _default: {
+/**************************
+* Random useful functions *
+***************************/
+declare const utils: {
     online: boolean;
-    validate: {
-        email: (string: any) => boolean;
-        phone: (string: any) => boolean;
-        number: (string: any) => boolean;
-    };
-    browser: {
-        getName: () => string;
-        getVersion: () => string;
-    };
-    url: {
-        decode(url: string): string;
-        encode(url: string): string;
-    };
-    json: {
-        isString(json: any): boolean;
-        isObject(data: any): boolean;
-        encode(jsonString: string): any;
-        decode(json: any): string;
-    };
     removeHtml(value: string): string;
     microTime(): number;
+    tagTester(name: any): (obj: any) => boolean;
 };
-export default _default;
+export declare const isFunction: (value: any) => boolean;
+export declare const endsWith: (string: any, target: any, position?: any) => boolean;
+export declare const startsWith: (string: any, target: any, position?: any) => boolean;
+export default utils;

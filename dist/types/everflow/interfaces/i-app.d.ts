@@ -1,18 +1,16 @@
-import Vue from 'vue';
+import VueRouter from 'vue-router';
 import Storage from '../utils/storage';
-import History from '../history';
-import Language from '../utils/language';
+import Language from '../language';
 export default interface IApp {
-    currentView: Vue;
-    user: any;
     storage: Storage;
     go(name: string): void;
     go(name: string, data: any): void;
-    history: History;
     language: Language;
     ready: boolean;
     readyPermission: boolean;
     readyCallbacks: Array<any>;
     readyCallback(callback: any): void;
     config: any;
+    $router: VueRouter;
+    $globals: any;
 }

@@ -1,5 +1,5 @@
 ﻿import * as storage from 'localforage';
-import * as _ from 'lodash';
+import { isFunction } from './utils';
 
 /**
  * Creates an Everflow Storage object. Adds the ability to load objects and save objects in localstorage(ASYNC)
@@ -20,7 +20,7 @@ export default class Storage
             storeName: 'default',
             size: 4980736
         }
-        var newConfig = _.merge(defaultEverflowStorageConfig, config);
+        var newConfig = {...defaultEverflowStorageConfig, ...config};
         storage.config(newConfig);
     }
 
@@ -30,9 +30,15 @@ export default class Storage
      * @param {string} key - local storage index-key
      * @param {any} value - value to save
      */
-    set(key: string, value: any): void 
+    set(key: string, value: any, onSuccess: CallableFunction|null, onFail:CallableFunction|null): void 
     {
-        storage.setItem(key, value);
+        storage.setItem(key, value).then(function (value) {
+            if (isFunction(onSuccess)) {
+                onSuccess(value);
+            }}).catch(function (err) {
+            if (isFunction(onFail)){
+                onFail(err);
+            }});
     }
 
     /**
@@ -43,7 +49,7 @@ export default class Storage
      */
     get(key: string, callback): void
     {
-        storage.getItem(key, callback);
+        storage.getItem(key, callback)
     }
 
     /**
@@ -54,7 +60,7 @@ export default class Storage
      */
     remove(key: string, callback = null): void
     {
-        if (!_.isNil(callback))
+        if (callback)
         {
             storage.removeItem(key, callback);
             return;

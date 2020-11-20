@@ -1,41 +1,31 @@
-import * as _ from 'lodash';
-import Vue from 'vue';
+import Everflow, { EverflowPluginOptions } from './everflow/plugin/everflow-plugin';
 import VueRouter from 'vue-router';
 import App from './everflow/app';
-import History from './everflow/history';
 import Page from './everflow/page';
-import Permission from './everflow/permission';
-import Ready from './everflow/ready';
+import ReadyComponent from './everflow/ready-component';
 import Request from './everflow/request';
-import Prototypes from './everflow/prototypes/prototypes';
-import Translator from './everflow/translator';
+import Language from './everflow/language';
 import Security from './everflow/security';
-import errors from './everflow/errors/--init--';
-import utils from './everflow/utils/--init--';
-import models from './everflow/models/--init--';
-import decorators from './everflow/decorators/--init--';
-import permissions from './everflow/permissions/--init--';
-import * as interfaces from './everflow/interfaces/--init--';
+import utils from './everflow/utils';
+import models from './everflow/models';
+import decorators from './everflow/decorators';
+import * as interfaces from './everflow/interfaces';
+import navigationGuards from './everflow/navigation-guards';
 
 export
 {
-    _,
-    Vue,
+    navigationGuards,
+    EverflowPluginOptions,
     VueRouter,
     App,
-    History,
     Page,
-    Permission,
-    Ready,
+    ReadyComponent,
     Request,
-    errors,
     utils,
     models,
     decorators,
-    permissions,
     interfaces,
-    Translator,
+    Language,
     Security
 }
-// Enable Prototypes
-Prototypes();
+export default Everflow;
