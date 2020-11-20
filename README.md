@@ -44,16 +44,8 @@ A TypeScript vue.js <a href="https://vuejs.org" target="_blank"><img width="20" 
 ## Super Small Impact
 Everflow adds all the features required for an enterprise level application with a very small size impact. For a matter of the fact only ~36KB minified!
 
-:white_check_mark: i18n - <img width="15" src="https://raw.githubusercontent.com/kazupon/vue-i18n/v8.x/assets/vue-i18n-logo.png" /> <a href="https://kazupon.github.io/vue-i18n/" target="_blank">Vue-i18n</a></br>
-:white_check_mark: Routes - <img width="15" src="https://vuejs.org/images/logo.png" /> <a href="https://router.vuejs.org/" target="_blank">Vue Router</a></br>
-:white_check_mark: Security - <a href="https://github.com/brix/crypto-js" target="_blank">CryptoJS</a></br>
-:white_check_mark: Modules</br>
-:white_check_mark: API authorization / JWT Tokens / Requests</br>
-:white_check_mark: Data Storage</br>
-:white_check_mark: Build Tools</br>
-
 ## Documentation
-Check out the docs and getting started help at [everflowjs.github.io](https://everflowjs.github.io/v4/guide/)
+Check out the docs and getting started at [everflowjs.github.io](https://everflowjs.github.io/v4/guide/)
 
 ## Everflow Design Pattern
 Check out the recommended [Style Conventions](https://everflowjs.github.io/v4/style-guide/)
